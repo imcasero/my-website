@@ -4,6 +4,7 @@
     --background-color: white;
     --primary-color: #A057FC;
     --darkened-primary-color-30: #6E43AF;
+    --lightened-primary-color: #DFA7FF;
 }
 #root{
     width: 100%;
