@@ -1,0 +1,27 @@
+.container {
+    font-family: Heebo;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container h3{
+    font-family: Jetbrains Mono;
+    color: var(--primary-color);
+    font-size: 1.4em;
+}
+.container .description {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+.container .description article{
+    width: 50%;
+}
+.container .description img{
+    width: 30%;
+}
