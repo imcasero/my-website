@@ -12,8 +12,10 @@ export default function Projects({
     <section id="projects" className={css.container}>
       <h3>Projects</h3>
       <div className={css.technologies}>
-        {technologiesArray.map((tech) => (
-          <button className={css[tech.toLowerCase()]}>{tech}</button>
+        {technologiesArray.map((tech, index) => (
+          <button key={index} className={css[tech.toLowerCase()]}>
+            {tech}
+          </button>
         ))}
       </div>
       <ul>{children}</ul>
