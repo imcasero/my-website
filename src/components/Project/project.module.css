@@ -19,13 +19,14 @@
 }
 .card img{
     width: 90%;
+    border-radius: 5px;
 }
 .data p{
     font-size: 0.7;
     font-weight: 400;
 }
 .links{
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: start;
     align-items: center;
