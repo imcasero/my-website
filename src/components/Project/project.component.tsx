@@ -12,12 +12,12 @@ export default function Project({ data }: { data: IProject }): ReactElement {
         <h4>{data.name}</h4>
         <p>{data.description}</p>
         <div className={css.links}>
-          <a href={data.repository} target="blank">
+          <a href={data.repository} target="_blank">
             <img src={github} alt="github" />
             Github
           </a>
           {data.deploy && (
-            <a href={data.deploy} target="blank">
+            <a href={data.deploy} target="_blank">
               <img src={deploy} alt="github" />
               Deploy
             </a>

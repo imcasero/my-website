@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import css from "./projects.module.css";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+import { Technologies } from "../model";
+
+const technologiesArray: string[] = Object.values(Technologies);
 export default function Projects({
   children,
 }: {
@@ -9,6 +11,11 @@ export default function Projects({
   return (
     <section id="projects" className={css.container}>
       <h3>Projects</h3>
+      <div className={css.technologies}>
+        {technologiesArray.map((tech) => (
+          <button className={css[tech.toLowerCase()]}>{tech}</button>
+        ))}
+      </div>
       <ul>{children}</ul>
     </section>
   );

@@ -8,6 +8,7 @@
     justify-content: start;
     align-items: center;
     margin: 40px 0 ;
+    min-height: 450px;
 }
 .data{
     width: 100%;
@@ -58,55 +59,47 @@
 }
 .technologies span {
     width: fit-content;
-    padding: 0.2em 0.5em;
-    border-radius: 999px; /* Un valor alto para un borde redondeado más natural */
-    margin: 0.2em; /* Margen entre las tecnologías */
+    padding: 0.5em 0.5em;
+    border-radius: 15px; 
+    margin: 0.2em; 
 }
 /* Clases para cada tecnología */
 .react {
-    /* Estilos para la tecnología React */
-    background-color: #61dafb; /* Ejemplo de color de fondo */
-    color: #fff; /* Ejemplo de color de texto */
-    /* Otros estilos deseados */
+    background-color: #61dafb; 
+    color: #fff;
 }
 
 .javascript {
-    /* Estilos para la tecnología JavaScript */
-    background-color: #f0db4f; /* Ejemplo de color de fondo */
-    color: #000; /* Ejemplo de color de texto */
-    /* Otros estilos deseados */
+    background-color: #f0db4f; 
+    color: #000;
+    
 }
 
 .html {
-    /* Estilos para la tecnología HTML */
-    background-color: #e34c26; /* Ejemplo de color de fondo */
-    color: #fff; /* Ejemplo de color de texto */
-    /* Otros estilos deseados */
+    background-color: #e34c26; 
+    color: #fff;
+    
 }
 
 .css {
-    /* Estilos para la tecnología CSS */
-    background-color: #2965f1; /* Ejemplo de color de fondo */
-    color: #fff; /* Ejemplo de color de texto */
-    /* Otros estilos deseados */
+    background-color: #2965f1; 
+    color: #fff;
+    
 }
 
 .typescript {
-    /* Estilos para la tecnología TypeScript */
-    background-color: #3178c6; /* Ejemplo de color de fondo */
-    color: #fff; /* Ejemplo de color de texto */
-    /* Otros estilos deseados */
+    background-color: #3178c6; 
+    color: #fff;
+    
 }
 
 .pokeapi {
-    /* Estilos para la tecnología PokeAPI */
-    background-color: #ef5350; /* Ejemplo de color de fondo */
-    color: #fff; /* Ejemplo de color de texto */
-    /* Otros estilos deseados */
+    background-color: #ef5350; 
+    color: #fff;
+    
 }
 .animations {
-    /* Estilos para la tecnología Animations (arcoíris) */
     background: linear-gradient(45deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #3b1de8, #dd00f3, #ff2400);
-    color: #fff; /* Color del texto */
-    /* Otros estilos deseados */
+    color: #fff; 
+    
 }
