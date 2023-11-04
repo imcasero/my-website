@@ -1,6 +1,7 @@
 import css from "./about.module.css";
 import photo from "../../assets/ilustration.svg";
-export default function About() {
+import { ReactNode } from "react";
+export default function About(): ReactNode {
   return (
     <section id="about" className={css.container}>
       <h3>About me</h3>

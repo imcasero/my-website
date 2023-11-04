@@ -1,5 +1,6 @@
+import { ReactNode } from "react";
 import css from "./header.module.css";
-export function Header() {
+export function Header(): ReactNode {
   return (
     <header className={css.header}>
       <h1>DIEGO CASERO MARTIN</h1>
@@ -12,7 +13,7 @@ export function Header() {
             <a href="#about">About me</a>
           </li>
           <li>
-            <a href="#proyects">Proyectos</a>
+            <a href="#projects">Projects</a>
           </li>
           <li>
             <a href="#skills">Skills</a>

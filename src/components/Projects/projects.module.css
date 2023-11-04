@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+.container h3{
+    font-family: Jetbrains Mono;
+    color: var(--primary-color);
+    font-size: 1.4em;
+}
+.container ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row ;
+    flex-wrap: wrap;
+    gap: 10%;
+}

@@ -1,6 +1,7 @@
+import { ReactNode } from "react";
 import photo from "../../assets/photo.png";
 import css from "./home.module.css";
-export function Home() {
+export function Home(): ReactNode {
   return (
     <section className={css.home} id="home">
       <img src={photo} alt="profile photo" className={css.img} />
