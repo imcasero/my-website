@@ -31,6 +31,27 @@
     font-family: Heebo;
     font-weight: 300;
 }
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.contact a {
+    width: 20%;
+}
+.contact a:hover img {
+    transform: scale(1.2);
+    transition: transform 0.3s;
+}
+
+.contact a img {
+    transition: transform 0.3s;
+    max-width: 30%; 
+    height: auto; 
+}
 @keyframes cursorAnimation {
     0% {
         opacity: 1; 

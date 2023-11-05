@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import { IProject } from "../model";
 import css from "./project.module.css";
-import github from "../../assets/github.png";
-import deploy from "../../assets/deploy.png";
+import github from "../../assets/github.svg";
+import deploy from "../../assets/deploy.svg";
 
 export default function Project({ data }: { data: IProject }): ReactElement {
   return (
