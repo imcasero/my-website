@@ -1,3 +1,5 @@
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 import css from "./skills.module.css";
 import reactSVG from "/skills/react.svg";
 import angularSVG from "/skills/angular.svg";
@@ -18,8 +20,8 @@ export default function Skills() {
     TypeScript: typescriptSVG,
     JavaScript: javascriptSVG,
     CSS: cssSVG,
-    Tailwind: tailwindSVG,
     Bootstrap: bootstrapSVG,
+    Tailwind: tailwindSVG,
     Sass: sassSVG,
     GitHub: githubSVG,
     Git: gitSVG,
@@ -28,16 +30,29 @@ export default function Skills() {
 
   const renderSlides = () => {
     return Object.entries(svgFiles).map(([key, photo]: [string, string]) => (
-      <li key={key}>
-        <img src={photo} alt={key} />
-      </li>
+      <div key={key} className={css.slide}>
+        <img src={photo} alt={key} className={css.img} />
+      </div>
     ));
+  };
+
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 1500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
   };
 
   return (
     <section className={css.container} id="skills">
       <h3>Skills</h3>
-      <ul>{renderSlides()}</ul>
+      <div>
+        <Slider {...settings}>{renderSlides()}</Slider>
+      </div>
     </section>
   );
 }
