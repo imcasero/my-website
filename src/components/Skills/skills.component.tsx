@@ -35,7 +35,7 @@ export default function Skills() {
   };
 
   return (
-    <section className={css.container}>
+    <section className={css.container} id="skills">
       <h3>Skills</h3>
       <ul>{renderSlides()}</ul>
     </section>
