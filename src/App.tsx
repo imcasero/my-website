@@ -5,6 +5,7 @@ import { Header } from "./components/Header/header.component";
 import { Home } from "./components/Home/home.component";
 import Projects from "./components/Projects/projects.component";
 import { IProject, projects } from "./components/model";
+import Skills from "./components/Skills/skills.component";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
             return <Project key={dataProject.name} data={dataProject} />;
           })}
         </Projects>
+        <Skills />
       </main>
     </>
   );
