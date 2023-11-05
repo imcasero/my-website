@@ -6,6 +6,7 @@
     position: fixed;
     margin: auto;
     background-color: white;
+    min-height: 10vh;
 }
   
 nav ul {
