@@ -22,9 +22,10 @@
     color: var(--primary-color);
     animation: cursorAnimation 1s infinite;
 }
-.title h3{
+.title h3 {
     font-size: 1em;
     font-weight: 500;
+    color: var(--primary-color);
 }
 .title p{
     font-size: 0.8em;
