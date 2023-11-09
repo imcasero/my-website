@@ -9,7 +9,6 @@ import cssSVG from "/skills/css.svg";
 import sassSVG from "/skills/sass.svg";
 import tailwindSVG from "/skills/tailwind.svg";
 import bootstrapSVG from "/skills/bootstrap.svg";
-import agileSVG from "/skills/agile.svg";
 import gitSVG from "/skills/git.svg";
 import githubSVG from "/skills/github.svg";
 
@@ -25,13 +24,13 @@ export default function Skills() {
     Sass: sassSVG,
     GitHub: githubSVG,
     Git: gitSVG,
-    Agile: agileSVG,
   };
 
   const renderSlides = () => {
     return Object.entries(svgFiles).map(([key, photo]: [string, string]) => (
       <div key={key} className={css.slide}>
         <img src={photo} alt={key} className={css.img} />
+        <h4 className={css.technologiTitle}>{key}</h4>
       </div>
     ));
   };
