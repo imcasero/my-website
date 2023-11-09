@@ -12,7 +12,7 @@
     font-size: 1.4em;
 }
 .container .description {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -43,14 +43,25 @@
 
 /* Large devices (desktops) - 992px o mayor */
 @media (min-width: 992px) {
+    .container .description {
+        width: 80%;
+    }
     .container .description img{
         width: 30%;
+        display: block;
+    }
+    .container .description article{
+        width: 50%;
     }
 }
 
 /* Extra large devices (large desktops) - 1200px o mayor */
 @media (min-width: 1200px) {
+    .container .description {
+        width: 80%;
+    }
     .container .description img{
+        display: block;
         width: 30%;
     }
     .container .description article{

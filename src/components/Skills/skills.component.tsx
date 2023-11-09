@@ -44,6 +44,26 @@ export default function Skills() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1000,
+    responsive: [
+      {
+        breakpoint: 1024, // Media Query para tabletas y escritorios más grandes
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 768, // Media Query para tabletas y dispositivos más pequeños
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 576, // Media Query para dispositivos móviles
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   };
 
   return (

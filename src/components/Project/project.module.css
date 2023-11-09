@@ -119,19 +119,14 @@
 }
 
 @media (min-width: 576px) {
-    /* No se aplican cambios adicionales a la clase .card */
+    .data p {
+        height: auto;
+    }
 }
 
 @media (min-width: 768px) {
-    .card {
-        width: 60%;
-    }
-    /* Ajustes específicos para otros elementos dentro de .card */
-}
-
-@media (min-width: 992px) {
-    .card {
-        width: 50%;
+    .data p {
+        height: auto;
     }
     /* Ajustes específicos para otros elementos dentro de .card */
 }
