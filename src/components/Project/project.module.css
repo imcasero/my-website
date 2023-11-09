@@ -11,7 +11,7 @@
     min-height: 450px;
 }
 .data{
-    width: 100%;
+    width: 90%;
 }
 .data h4 {
     color: var(--primary-color);
@@ -24,9 +24,10 @@
 .data p{
     font-size: 0.7;
     font-weight: 400;
+    height: 75px;
 }
 .links{
-    width: 95%;
+    width: 90%;
     display: flex;
     justify-content: start;
     align-items: center;

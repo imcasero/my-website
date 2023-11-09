@@ -3,6 +3,7 @@ import photo from "../../assets/photo.png";
 import github from "../../assets/github.svg";
 import linkedin from "../../assets/linkedin.svg";
 import twitter from "../../assets/twitter.svg";
+import cv from "../../assets/cv.svg";
 import css from "./home.module.css";
 export function Home(): ReactNode {
   return (
@@ -35,6 +36,13 @@ export function Home(): ReactNode {
             rel="noopener noreferrer"
           >
             <img src={twitter} alt="twitter" />
+          </a>
+          <a
+            href="/diego_casero_en.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={cv} alt="twitter" />
           </a>
         </div>
       </div>
