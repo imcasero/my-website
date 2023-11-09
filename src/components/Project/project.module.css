@@ -105,3 +105,29 @@
     color: #fff; 
     
 }
+
+@media (max-width: 575.98px) {
+    .card {
+        width: 90%;
+        margin: 20px 0;
+        min-height: auto;
+    }
+    .data p {
+        font-size: 0.5rem;
+        height: auto;
+    }
+}
+
+@media (min-width: 576px) {
+    .data p {
+        height: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .data p {
+        height: auto;
+    }
+    /* Ajustes específicos para otros elementos dentro de .card */
+}
+
