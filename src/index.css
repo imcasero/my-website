@@ -2,4 +2,14 @@
 :root{
     /* Aqui agregar las variables de entorno de css */
     font-family: inter;
+    --background : #272727;
+    --color-light : #FFFFFF;
+    --color-medium: #CCCCCC;
+    --title-weight: 700;
+    --subtitle-weight: 500;
+    --normal-weight: 400;
+    --ligh-weight: 300;
+}
+body{
+    background-color: var(--background);
 }
