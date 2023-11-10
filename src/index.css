@@ -13,3 +13,8 @@
 body{
     background-color: var(--background);
 }
+#root{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

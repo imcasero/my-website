@@ -1,4 +1,6 @@
-import css from "./page.module.css";
-export default function home() {
-  return <main className={css.home}>home</main>;
+import { ReactElement } from 'react';
+import css from './pages.module.css'
+
+export function HomePage(): ReactElement {
+  return <section className={css.home}>hola desde home</section>;
 }
