@@ -6,14 +6,14 @@ import {
 
   RouterProvider,
 } from "react-router-dom";
-import { HeaderComponent } from './components/header/header.component';
+import { Layout } from './pages/layout.page';
 import { Career, Home, Projects } from './pages';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element:
-      <HeaderComponent />
+      <Layout />
     ,
     children: [
       { path: '', element: <Home /> },
