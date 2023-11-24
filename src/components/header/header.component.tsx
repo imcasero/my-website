@@ -15,16 +15,16 @@ export default function HeaderComponent(): ReactElement {
         navigate('/', { replace: true })
     }
     return (
-        <header>
-            <nav>
+        <header className="w-full flex items-center justify-center">
+            <nav className="w-3/4 flex items-center justify-around">
                 <button onClick={handleHome}>
                     <img src={Icon} alt="icono" />
                 </button>
-                <ul>
-                    <li onClick={handleProjects}>
+                <ul className="w-1/2 flex justify-around ">
+                    <li onClick={handleProjects} className="cursor-pointer ">
                         Projects
                     </li>
-                    <li onClick={handleCarrer}>
+                    <li onClick={handleCarrer} className="cursor-pointer">
                         Carrer
                     </li>
                 </ul>
