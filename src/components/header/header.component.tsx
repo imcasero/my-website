@@ -15,7 +15,7 @@ export default function HeaderComponent(): ReactElement {
         navigate('/', { replace: true })
     }
     return (
-        <header className="w-full flex items-center justify-center">
+        <header className="w-full flex items-center justify-center text-text">
             <nav className="w-3/4 flex items-center justify-around">
                 <button onClick={handleHome}>
                     <img src={Icon} alt="icono" />
