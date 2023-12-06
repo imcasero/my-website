@@ -5,9 +5,10 @@ export default {
     extend: {},
     colors: {
       background: "#272727",
-      subtitel: "#C5C5C5",
-      titel: "#FFFFFF",
+      subtitle: "#C5C5C5",
+      title: "#FFFFFF",
       text: "#CCCCCC",
+      link: "#B4B4B4",
     },
     fontFamily: {
       sans: ["Inter"],
