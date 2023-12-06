@@ -13,13 +13,13 @@ export function Home(): ReactElement {
                 <h2 className="text-subtitle text-base font-medium">I write code and love it</h2>
                 <img className="mt-6" src={profile} alt="profile" />
                 <div className="flex items-center justify-between w-48 mt-6">
-                    <a href="" target="_blank">
+                    <a href="https://github.com/imcasero" target="_blank">
                         <img src={github} alt="github" />
                     </a>
-                    <a href="" target="_blank">
+                    <a href="https://www.linkedin.com/in/imcasero/" target="_blank">
                         <img src={linkedin} alt="linkedin" />
                     </a>
-                    <a href="" target="_blank">
+                    <a href="https://twitter.com/imcasero_dev" target="_blank">
                         <img src={twitter} alt="twitter" />
                     </a>
                 </div>
