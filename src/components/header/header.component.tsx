@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import Icon from '/myIcon.svg';
+import Icon from '/myIcon.png';
 import { useNavigate } from "react-router-dom";
 export default function HeaderComponent(): ReactElement {
     const navigate = useNavigate();
