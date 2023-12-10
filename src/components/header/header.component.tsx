@@ -15,11 +15,11 @@ export default function HeaderComponent(): ReactElement {
     }
     return (
         <header className="w-screen flex items-center justify-center text-text">
-            <nav className="w-3/4 flex items-center justify-between">
+            <nav className="w-3/4 flex md:flex-row flex-col  items-center justify-between">
                 <button onClick={handleHome}>
                     <img src={Icon} alt="icono" className="w-24" />
                 </button>
-                <ul className="w-1/2 flex justify-around ">
+                <ul className="w-1/2 flex md:flex-row flex-col  justify-around items-center gap-4">
                     <li onClick={handleProjects} className="cursor-pointer hover:text-title">
                         Projects
                     </li>
