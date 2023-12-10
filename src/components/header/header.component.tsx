@@ -20,10 +20,10 @@ export default function HeaderComponent(): ReactElement {
                     <img src={Icon} alt="icono" className="w-24" />
                 </button>
                 <ul className="w-1/2 flex justify-around ">
-                    <li onClick={handleProjects} className="cursor-pointer ">
+                    <li onClick={handleProjects} className="cursor-pointer hover:text-title">
                         Projects
                     </li>
-                    <li onClick={handleCarrer} className="cursor-pointer">
+                    <li onClick={handleCarrer} className="cursor-pointer hover:text-title">
                         Carrer
                     </li>
                 </ul>
