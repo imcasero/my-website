@@ -5,6 +5,7 @@ export default {
     extend: {},
     colors: {
       background: "#272727",
+      tag: "#3C3C3C",
       subtitle: "#C5C5C5",
       title: "#FFFFFF",
       text: "#CCCCCC",

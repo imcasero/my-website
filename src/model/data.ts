@@ -26,16 +26,6 @@ export const projects: IProject[] = [
     technologies: [Technologies.JAVASCRIPT, Technologies.API, Technologies.CSS],
   },
   {
-    name: "Tip Calculator",
-    description:
-      "This project utilizes TypeScript and allows the user to input a bill amount and a percentage to calculate the total bill with tip.",
-    year: 2023,
-    image: "/projects/tip-calculator.png",
-    deploy: "https://imcasero.github.io/Tip-Calculator",
-    repository: "https://github.com/imcasero/Tip-Calculator",
-    technologies: [Technologies.TYPESCRIPT, Technologies.CSS],
-  },
-  {
     name: "Bottles",
     description:
       "This repository showcases a concise project aimed at refining CSS skills, focusing on animations and their implementation.",
@@ -44,6 +34,16 @@ export const projects: IProject[] = [
     deploy: "https://imcasero.github.io/bottles",
     repository: "https://github.com/imcasero/bottles",
     technologies: [Technologies.CSS, Technologies.ANIMATIONS],
+  },
+  {
+    name: "Tip Calculator",
+    description:
+      "This project utilizes TypeScript and allows the user to input a bill amount and a percentage to calculate the total bill with tip.",
+    year: 2023,
+    image: "/projects/tip-calculator.png",
+    deploy: "https://imcasero.github.io/Tip-Calculator",
+    repository: "https://github.com/imcasero/Tip-Calculator",
+    technologies: [Technologies.TYPESCRIPT, Technologies.CSS],
   },
 ];
 export const experiences: IExperience[] = [
