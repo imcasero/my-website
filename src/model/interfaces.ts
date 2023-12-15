@@ -1,4 +1,5 @@
 export interface IProject {
+  id: number;
   name: string;
   description: string;
   year: number;
@@ -23,6 +24,7 @@ export enum Month {
 }
 
 export interface IExperience {
+  id: number;
   bussines: string;
   from: { month: Month; year: Date };
   to: { month: Month; year: Date } | "Current";

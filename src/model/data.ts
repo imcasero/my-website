@@ -2,6 +2,7 @@ import { IExperience, IProject, Month, Technologies } from "./interfaces";
 
 export const projects: IProject[] = [
   {
+    id: 1,
     name: "To do List",
     description:
       "Contained within this repository is the codebase for a React application designed as a comprehensive to-do list.",
@@ -16,6 +17,7 @@ export const projects: IProject[] = [
     ],
   },
   {
+    id: 2,
     name: "Pokedex",
     description:
       "Contained within this repository is the Pokedex application, which utilizes JavaScript and CSS for its development.",
@@ -26,6 +28,7 @@ export const projects: IProject[] = [
     technologies: [Technologies.JAVASCRIPT, Technologies.API, Technologies.CSS],
   },
   {
+    id: 3,
     name: "Bottles",
     description:
       "This repository showcases a concise project aimed at refining CSS skills, focusing on animations and their implementation.",
@@ -36,6 +39,7 @@ export const projects: IProject[] = [
     technologies: [Technologies.CSS, Technologies.ANIMATIONS],
   },
   {
+    id: 4,
     name: "Tip Calculator",
     description:
       "This project utilizes TypeScript and allows the user to input a bill amount and a percentage to calculate the total bill with tip.",
@@ -48,6 +52,7 @@ export const projects: IProject[] = [
 ];
 export const experiences: IExperience[] = [
   {
+    id: 2,
     bussines: "Globant",
     from: { month: Month.August, year: new Date(2023, Month.August) },
     to: "Current",
@@ -70,6 +75,7 @@ export const experiences: IExperience[] = [
     ],
   },
   {
+    id: 1,
     bussines: "Inetum",
     from: { month: Month.April, year: new Date(2023, Month.April) },
     to: { month: Month.June, year: new Date(2023, Month.June) },

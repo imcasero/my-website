@@ -22,7 +22,7 @@ export default function ProjectComponent({ data }: { data: IProject }): ReactEle
                 </div>
                 <ul className="flex gap-4">
                     {data.technologies.map((tech: string) => {
-                        return <li className="bg-tag py-1 px-4 rounded-lg">{tech}</li>
+                        return <li className="bg-tag py-1 px-4 rounded-lg" key={tech}>{tech}</li>
                     })}
                 </ul>
             </div>
