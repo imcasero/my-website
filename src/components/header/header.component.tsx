@@ -24,7 +24,7 @@ export default function HeaderComponent(): ReactElement {
                         Projects
                     </li>
                     <li onClick={handleCarrer} className="cursor-pointer hover:text-title">
-                        Carrer
+                        Career
                     </li>
                 </ul>
             </nav>
