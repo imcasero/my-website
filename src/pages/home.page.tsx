@@ -7,6 +7,7 @@ import twitter from '../assets/twitter.svg';
 
 export function Home(): ReactElement {
     return (
+        //TODO make more component for this pages, and make better repsonsive
         <section className="max-w-screen-lg flex lg:flex-row flex-col  mt-48 justify-center items-center">
             <div className="lg:w-1/3 w-auto">
                 <h1 className="text-title text-3xl font-bold">DIEGO CASERO</h1>
