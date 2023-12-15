@@ -56,6 +56,7 @@ export const experiences: IExperience[] = [
     bussines: "Globant",
     from: { month: Month.August, year: 2023 },
     to: "Current",
+    position: "Web UI developer",
     description:
       "Development of interfaces using React, Angular, and styled with CSS/SASS for complex web applications. Collaboration with multidisciplinary teams to integrate design and functionality. Use of Git and GitHub for version control and Agile with Scrum for project collaboration.",
     technologies: [
@@ -79,6 +80,7 @@ export const experiences: IExperience[] = [
     bussines: "Inetum",
     from: { month: Month.April, year: 2023 },
     to: { month: Month.June, year: 2023 },
+    position: "Fullstack Developer",
     description:
       "Interface layout tasks and utilization of the Figma platform for application design. Backend development using .NET, contributing to the design and creation of robust solutions for specific projects.",
     technologies: [

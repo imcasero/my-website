@@ -33,6 +33,7 @@ export interface IExperience {
   bussines: string;
   from: IMonthYear;
   to: IMonthYear | "Current";
+  position: string;
   description: string;
   technologies: Technologies[];
 }
