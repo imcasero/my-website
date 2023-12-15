@@ -23,11 +23,16 @@ export enum Month {
   December = 11,
 }
 
+export interface IMonthYear {
+  month: Month;
+  year: number;
+}
+
 export interface IExperience {
   id: number;
   bussines: string;
-  from: { month: Month; year: Date };
-  to: { month: Month; year: Date } | "Current";
+  from: IMonthYear;
+  to: IMonthYear | "Current";
   description: string;
   technologies: Technologies[];
 }

@@ -54,7 +54,7 @@ export const experiences: IExperience[] = [
   {
     id: 2,
     bussines: "Globant",
-    from: { month: Month.August, year: new Date(2023, Month.August) },
+    from: { month: Month.August, year: 2023 },
     to: "Current",
     description:
       "Development of interfaces using React, Angular, and styled with CSS/SASS for complex web applications. Collaboration with multidisciplinary teams to integrate design and functionality. Use of Git and GitHub for version control and Agile with Scrum for project collaboration.",
@@ -77,8 +77,8 @@ export const experiences: IExperience[] = [
   {
     id: 1,
     bussines: "Inetum",
-    from: { month: Month.April, year: new Date(2023, Month.April) },
-    to: { month: Month.June, year: new Date(2023, Month.June) },
+    from: { month: Month.April, year: 2023 },
+    to: { month: Month.June, year: 2023 },
     description:
       "Interface layout tasks and utilization of the Figma platform for application design. Backend development using .NET, contributing to the design and creation of robust solutions for specific projects.",
     technologies: [
