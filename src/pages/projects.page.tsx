@@ -8,7 +8,7 @@ export function Projects(): ReactElement {
         <>
             <ProjectsComponent>
                 {projects.map((dataProject: IProject) => {
-                    console.log("ID:", dataProject.id); return <ProjectComponent data={dataProject} key={dataProject.id} />;
+                    return <ProjectComponent data={dataProject} key={dataProject.id} />;
                 })}
             </ProjectsComponent>
         </>
