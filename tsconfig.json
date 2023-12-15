@@ -20,14 +20,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "noImplicitAny": true,
-    "types": ["vitest/globals"]
+    "noImplicitAny": true
   },
-  "exclude": [
-  ],
-  "include": [
-    "src",
-    "vite.config.ts"
-  ],
+  "exclude": [],
+  "include": ["src", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
