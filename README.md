@@ -1,34 +1,42 @@
-# Portfolio Repository
+# My Portfolio - Frontend Developer
 
 This repository hosts my portfolio, showcasing my projects and experiences built with React, Tailwind CSS, and Vite.
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+## Main Technologies Used
 
-This template offers a minimal setup for a robust portfolio with features such as:
+**React** - Library for building user interfaces.
+**TypeScript** - Typed programming language.
+**Vite** - Fast build tool for web applications.
+**Tailwind CSS** - Utility CSS framework.
+**Framer Motion** - Library for animations in React.
+**React Router DOM** - Routing for React applications.
+**Vercel** - Platform for deploying web projects.
 
-- **React with HMR**: Utilizes React to create a dynamic and interactive user interface, with Hot Module Replacement (HMR) for a smooth development experience.
-- **TypeScript Integration**: Seamlessly incorporates TypeScript for enhanced type safety and code reliability.
-- **Tailwind CSS Configuration**: Tailwind CSS is integrated and configured to cater to personalized styling needs, ensuring a sleek and customizable design.
+## Contribution
 
-## Plugins
+Contributions are welcome! If you have ideas, issues, or improvements for
+the project, feel free to open an issue or send a pull request.
 
-The repository includes the following official Vite plugins:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md): Uses Babel for Fast Refresh during development.
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc): Utilizes SWC for Fast Refresh, providing an alternative approach.
+1. **Clone the repository:**
 
-## ESLint Configuration
+   ```bash
+   git clone https://github.com/your-username/my-website.git
+   ```
 
-For those working on a production-ready application, it's recommended to expand the ESLint configuration:
+2. **Install dependencies:**
 
-- Configure the top-level `parserOptions` in `.eslintrc.js` as follows:
+   ```bash
+   cd my-website
+   npm i
+   ```
 
-```js
-parserOptions: {
-  ecmaVersion: 'latest',
-  sourceType: 'module',
-  project: ['./tsconfig.json', './tsconfig.node.json'],
-  tsconfigRootDir: __dirname,
-},
+## Use linting
+
+for use the lint run:
+
+```bash
+  npm run lint
 ```

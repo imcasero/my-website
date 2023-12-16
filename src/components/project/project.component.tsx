@@ -2,10 +2,15 @@ import { ReactElement } from "react";
 import { IProject } from "../../model";
 import arrow from '../../assets/arrow.svg';
 import TechComponent from "../tech/tech.component";
+import { motion } from 'framer-motion';
+import { variants } from "../../utils/effect.motion";
 
 export default function ProjectComponent({ data }: { data: IProject }): ReactElement {
+    const animationVariants = variants(0.1);
     return (
-        <li className="flex flex-col my-4 gap-8 lg:w-3/4 w-full">
+        <motion.li initial="hidden"
+            animate="visible"
+            variants={animationVariants} className="flex flex-col my-4 gap-8 lg:w-3/4 w-full">
             <img className="w-auto" src={data.image} alt="project image" />
             <div className="w-full flex flex-col">
                 <h3 className="text-2xl mb-2 font-semibold text-subtitle gap-2">{data.name} <span className="text-lg text-link font-light">{data.year}</span></h3>
@@ -28,6 +33,6 @@ export default function ProjectComponent({ data }: { data: IProject }): ReactEle
                     })}
                 </ul>
             </div>
-        </li>
+        </motion.li>
     )
 }
