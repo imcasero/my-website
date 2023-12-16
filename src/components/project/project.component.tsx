@@ -21,7 +21,7 @@ export default function ProjectComponent({ data }: { data: IProject }): ReactEle
                         </a>
                     )}
                 </div>
-                <ul className="flex gap-4">
+                <ul className="flex gap-1">
                     {data.technologies.map((tech: string) => {
                         return <TechComponent tech={tech} key={tech} />
                     })}

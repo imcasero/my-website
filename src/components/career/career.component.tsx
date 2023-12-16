@@ -18,7 +18,7 @@ export default function CareerComponent({ data }: { data: IExperience }): ReactE
                 <p className="mb-4 text-link font-medium">
                     {data.description}
                 </p>
-                <ul className="flex flex-wrap gap-4">
+                <ul className="flex flex-wrap gap-1">
                     {data.technologies.map((tech: string) => {
                         return <TechComponent tech={tech} key={tech} />
                     })}
