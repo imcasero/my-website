@@ -13,8 +13,8 @@ export default function CareerComponent({ data }: { data: IExperience }): ReactE
     return (
         <motion.li initial="hidden"
             animate="visible"
-            variants={animationVariants} className="flex flex-col lg:flex-row mb-20 gap-8 w-3/4" >
-            <div className="w-2/3">
+            variants={animationVariants} className="flex flex-col lg:flex-row mb-20 gap-8 lg:w-3/4 w-full" >
+            <div className="lg:w-2/3 w-full">
                 <h3 className="text-2xl mb-2 font-semibold text-subtitle">{data.bussines}</h3>
                 <span className="text-sm text-link">{customDateFormat(data.from)} / {customDateFormat(data.to)}</span>
             </div>
