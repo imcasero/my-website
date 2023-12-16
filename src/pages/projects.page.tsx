@@ -6,7 +6,6 @@ import { IProject, projects } from "../model";
 export function Projects(): ReactElement {
     return (
         <>
-            //TODO review this style for better UX
             <ProjectsComponent>
                 {projects.map((dataProject: IProject) => {
                     return <ProjectComponent data={dataProject} key={dataProject.id} />;
