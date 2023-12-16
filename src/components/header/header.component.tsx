@@ -17,7 +17,7 @@ export default function HeaderComponent(): ReactElement {
         <header className="w-full flex items-center justify-center text-text">
             <nav className="w-3/4 flex md:flex-row flex-col  items-center justify-between">
                 <button onClick={handleHome}>
-                    <img src={Icon} alt="icono" className="w-24" />
+                    <img src={Icon} alt="icono" className="w-12" />
                 </button>
                 <ul className="w-1/2 flex md:flex-row flex-col  justify-around items-center gap-4">
                     <li onClick={handleProjects} className="cursor-pointer hover:text-title">
