@@ -7,7 +7,7 @@ export default function HeaderComponent(): ReactElement {
     const handleProjects = () => {
         navigate('/projects', { replace: true })
     }
-    const handleCarrer = () => {
+    const handlecareer = () => {
         navigate('/career', { replace: true })
     }
     const handleHome = () => {
@@ -23,7 +23,7 @@ export default function HeaderComponent(): ReactElement {
                     <li onClick={handleProjects} className="cursor-pointer hover:text-title">
                         Projects
                     </li>
-                    <li onClick={handleCarrer} className="cursor-pointer hover:text-title">
+                    <li onClick={handlecareer} className="cursor-pointer hover:text-title">
                         Career
                     </li>
                 </ul>

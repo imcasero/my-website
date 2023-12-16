@@ -8,14 +8,14 @@ const customDateFormat = (data: IMonthYear | "Current"): string => {
 
 export default function CareerComponent({ data }: { data: IExperience }): ReactElement {
     return (
-        <li className="flex flex-col lg:flex-row m-4 gap-8 w-3/4" >
-            <div className="w-1/2">
-                <h3 className="text-2xl mb-2">{data.bussines}</h3>
+        <li className="flex flex-col lg:flex-row mb-20 gap-8 w-3/4" >
+            <div className="w-2/3">
+                <h3 className="text-2xl mb-2 font-semibold text-subtitle">{data.bussines}</h3>
                 <span className="text-sm text-link">{customDateFormat(data.from)} / {customDateFormat(data.to)}</span>
             </div>
             <div className="w-full lg:w-1/2">
-                <h4 className="text-xl mb-2"> {data.position}</h4>
-                <p className="mb-4 text-link font-medium">
+                <h4 className="text-xl mb-2 font-medium text-subtitle"> {data.position}</h4>
+                <p className="mb-6 text-text font-light">
                     {data.description}
                 </p>
                 <ul className="flex flex-wrap gap-1">
