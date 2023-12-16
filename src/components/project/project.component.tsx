@@ -6,7 +6,7 @@ import TechComponent from "../tech/tech.component";
 
 export default function ProjectComponent({ data }: { data: IProject }): ReactElement {
     return (
-        <li className="flex flex-col lg:flex-row my-4 gap-8 w-3/4">
+        <li className="flex flex-col my-4 gap-8 w-3/4">
             <img className="min-w-1/3" src={data.image} alt="project image" />
             <div className="w-2/3 flex flex-col">
                 <h3 className="text-2xl mb-2 font-semibold text-subtitle gap-2">{data.name} <span className="text-lg text-link font-light">{data.year}</span></h3>
