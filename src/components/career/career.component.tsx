@@ -20,7 +20,7 @@ export default function CareerComponent({ data }: { data: IExperience }): ReactE
                 </p>
                 <ul className="flex flex-wrap gap-4">
                     {data.technologies.map((tech: string) => {
-                        return <TechComponent tech={tech} />
+                        return <TechComponent tech={tech} key={tech} />
                     })}
                 </ul>
             </div>
