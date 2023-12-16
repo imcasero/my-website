@@ -5,13 +5,19 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ## Main Technologies Used
 
-**React** - Library for building user interfaces.
-**TypeScript** - Typed programming language.
-**Vite** - Fast build tool for web applications.
-**Tailwind CSS** - Utility CSS framework.
-**Framer Motion** - Library for animations in React.
-**React Router DOM** - Routing for React applications.
-**Vercel** - Platform for deploying web projects.
+- **React** - Library for building user interfaces.  
+  
+- **TypeScript** - Typed programming language.  
+  
+- **Vite** - Fast build tool for web applications.  
+  
+- **Tailwind CSS** - Utility CSS framework.  
+  
+- **Framer Motion** - Library for animations in React.  
+  
+- **React Router DOM** - Routing for React applications.  
+  
+- **Vercel** - Platform for deploying web projects.  
 
 ## Contribution
 
@@ -35,7 +41,7 @@ the project, feel free to open an issue or send a pull request.
 
 ## Use linting
 
-for use the lint run:
+For use the lint run:
 
 ```bash
   npm run lint
