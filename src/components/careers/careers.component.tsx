@@ -14,7 +14,7 @@ export default function CareersComponent({
                 variants={animationVariants} className="text-title text-3xl font-bold mb-2 ">Career</motion.h2>
             <motion.h3 initial="hidden"
                 animate="visible"
-                variants={animationVariants} className="text-subtitle text-base font-medium mb-8" >Here are some about my career.</motion.h3>
+                variants={animationVariants} className="text-subtitle text-base font-medium mb-8" >Here is something about my career.</motion.h3>
             <ul className="flex flex-col justify-center w-full" >{children}</ul>
         </section >
     );
