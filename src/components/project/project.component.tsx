@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { IProject } from "../../model";
 import github from '../../assets/github.svg';
 import deploy from '../../assets/deploy.svg';
+import TechComponent from "../tech/tech.component";
 
 export default function ProjectComponent({ data }: { data: IProject }): ReactElement {
     return (
@@ -20,10 +21,9 @@ export default function ProjectComponent({ data }: { data: IProject }): ReactEle
                         </a>
                     )}
                 </div>
-                //TODO make a component for this, we use the same logic in career.component.tsx
                 <ul className="flex gap-4">
                     {data.technologies.map((tech: string) => {
-                        return <li className="bg-tag py-1 px-4 rounded-lg" key={tech}>{tech}</li>
+                        return <TechComponent tech={tech} />
                     })}
                 </ul>
             </div>

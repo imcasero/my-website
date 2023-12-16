@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { IExperience, IMonthYear, Month } from "../../model";
+import TechComponent from "../tech/tech.component";
 
 const customDateFormat = (data: IMonthYear | "Current"): string => {
     return data === "Current" ? "Current" : `${Month[data.month]} ${data.year}`;
@@ -17,10 +18,9 @@ export default function CareerComponent({ data }: { data: IExperience }): ReactE
                 <p className="mb-4 text-link font-medium">
                     {data.description}
                 </p>
-                //TODO make a component for this, we use the same logic in career.component.tsx
                 <ul className="flex flex-wrap gap-4">
                     {data.technologies.map((tech: string) => {
-                        return <li className="bg-tag py-1 px-4 rounded-lg" key={tech}>{tech}</li>
+                        return <TechComponent tech={tech} />
                     })}
                 </ul>
             </div>
