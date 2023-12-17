@@ -8,6 +8,7 @@ export const projects: IProject[] = [
       "Contained within this repository is the codebase for a React application designed as a comprehensive to-do list.",
     year: 2023,
     image: "/projects/to-doList.png",
+    deploy: "https://imcasero.github.io/to-doList/",
     repository: "https://github.com/imcasero/to-doList",
     technologies: [
       Technologies.REACT,
