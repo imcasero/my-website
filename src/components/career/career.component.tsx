@@ -4,8 +4,8 @@ import TechComponent from "../tech/tech.component";
 import { motion } from "framer-motion";
 import { variants } from "../../utils/effect.motion";
 
-const customDateFormat = (data: IMonthYear | "Current"): string => {
-    return data === "Current" ? "Current" : `${Month[data.month]} ${data.year}`;
+const customDateFormat = (data: IMonthYear | "Present"): string => {
+    return data === "Present" ? "Present" : `${Month[data.month]} ${data.year}`;
 }
 
 export default function CareerComponent({ data }: { data: IExperience }): ReactElement {

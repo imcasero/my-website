@@ -32,7 +32,7 @@ export interface IExperience {
   id: number;
   bussines: string;
   from: IMonthYear;
-  to: IMonthYear | "Current";
+  to: IMonthYear | "Present";
   position: string;
   description: string;
   technologies: Technologies[];
@@ -55,7 +55,7 @@ export enum Technologies {
   TDD = "TDD",
   FIGMA = "Figma",
   BOOTSTRAP = "Bootstrap",
-  DOTNET = ".NET",
+  DOTNET = "DOTNET",
   CSHARP = "CSharp",
   VB = "VB.NET",
   SQL = "SQL",
