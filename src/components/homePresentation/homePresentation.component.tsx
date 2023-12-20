@@ -12,7 +12,10 @@ export default function HomePresentationComponent() {
             variants={animationVariants} className="lg:w-1/3 w-auto">
             <h1 className="text-title text-3xl font-bold">DIEGO CASERO</h1>
             <h2 className="text-subtitle text-base font-medium">I write code and love it</h2>
-            <img className="mt-6" src={profile} alt="profile" />
+            <div className="flex justify-center w-48">
+
+                <img className="mt-2 h-48" src={profile} alt="profile" />
+            </div>
             <div className="flex items-center justify-between w-48 mt-6">
                 <a href="https://github.com/imcasero" target="_blank" className="transform transition-transform hover:scale-110">
                     <img src={github} alt="github" />
