@@ -11,7 +11,7 @@ export default function HomeDescriptionComponent() {
             <p className="text-base font-normal mt-4">I take pleasure in executing tasks with a focus on achieving the highest quality possible and consistently tackling challenges. Apart from coding, I have an interest in sports and traveling.</p>
             <div className="flex mt-8 gap-6 ">
                 <a className="hover:text-title text-link flex gap-2" href="/diego_casero_en.pdf" target="_blank">
-                    See mi CV
+                    See my CV
                     <img src={arrow} alt="arrow" />
                 </a>
                 <a className="hover:text-title text-link flex gap-2" href="mailto:diegocaserosmr@gmail.com" target="_blank">
