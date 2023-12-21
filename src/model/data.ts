@@ -66,7 +66,6 @@ export const experiences: IExperience[] = [
       Technologies.JAVASCRIPT,
       Technologies.CSS,
       Technologies.SASS,
-      Technologies.VSCODE,
       Technologies.GITHUB,
       Technologies.GIT,
       Technologies.VSCODE,
