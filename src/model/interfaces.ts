@@ -48,6 +48,7 @@ export enum Technologies {
   CSS = "CSS",
   API = "API",
   ANIMATIONS = "Animations",
+  TAILWIND = "Tailwind",
   GIT = "Git",
   VSCODE = "VS Code",
   SCRUM = "Scrum",

@@ -3,17 +3,17 @@ import { IExperience, IProject, Month, Technologies } from "./interfaces";
 export const projects: IProject[] = [
   {
     id: 1,
-    name: "To do List",
+    name: "All I Do",
     description:
-      "Contained within this repository is the codebase for a React application designed as a comprehensive to-do list.",
+      "Contained within this repository is the codebase for a React with Typescript and Tailwind application designed as a comprehensive to-do list.",
     year: 2023,
     image: "/projects/to-doList.png",
-    deploy: "https://imcasero.github.io/to-doList/",
-    repository: "https://github.com/imcasero/to-doList",
+    deploy: "https://all-i-do.vercel.app",
+    repository: "https://github.com/imcasero/all-i-do",
     technologies: [
       Technologies.REACT,
-      Technologies.JAVASCRIPT,
-      Technologies.CSS,
+      Technologies.TYPESCRIPT,
+      Technologies.TAILWIND,
     ],
   },
   {
