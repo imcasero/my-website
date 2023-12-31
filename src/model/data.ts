@@ -29,13 +29,13 @@ export const projects: IProject[] = [
   },
   {
     id: 3,
-    name: "Bottles",
+    name: "Animated Vessel",
     description:
       "This repository showcases a concise project aimed at refining CSS skills, focusing on animations and their implementation.",
     year: 2021,
     image: "/projects/bottle.png",
-    deploy: "https://imcasero.github.io/bottles",
-    repository: "https://github.com/imcasero/bottles",
+    deploy: "https://imcasero.github.io/AnimatedVessel/",
+    repository: "https://github.com/imcasero/AnimatedVessel",
     technologies: [Technologies.CSS, Technologies.ANIMATIONS],
   },
   {
