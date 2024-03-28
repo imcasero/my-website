@@ -5,6 +5,7 @@ import HeaderComponent from "../components/header/header.component";
 export function Layout(): ReactElement {
     return (
         <>
+
             <HeaderComponent />
             <Outlet />
         </>
