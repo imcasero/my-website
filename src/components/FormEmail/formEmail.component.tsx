@@ -28,7 +28,7 @@ const FormEmailComponent: React.FC<FormEmailProps> = ({ onClose }) => {
     <motion.div initial="hidden"
       animate="visible"
       variants={animationVariants} className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 backdrop-blur-md">
-      <div className="bg-white p-6 rounded-lg w-1/2">
+      <div className="bg-white p-6 rounded-lg w-96">
         <form onSubmit={handleSubmit} className="space-y-4">
           <label htmlFor="email" className="block text-title">
             Email Address
