@@ -11,7 +11,7 @@ export default function ProjectComponent({ data }: { data: IProject }): ReactEle
         <motion.li initial="hidden"
             animate="visible"
             variants={animationVariants} className="flex flex-col my-4 gap-8 lg:w-3/4 w-full">
-            <img className="w-auto" src={data.image} alt="project image" />
+            <img className="w-auto rounded-md" src={data.image} alt="project image" />
             <div className="w-full flex flex-col">
                 <h3 className="text-2xl mb-2 font-semibold text-subtitle gap-2">{data.name} <span className="text-lg text-link font-light">{data.year}</span></h3>
                 <p className="mb-2 font-medium">{data.description}</p>

@@ -7,7 +7,7 @@ export const projects: IProject[] = [
     description:
       "Contained within this repository is the codebase for a React with Typescript and Tailwind application designed as a comprehensive to-do list.",
     year: 2023,
-    image: "/projects/to-doList.png",
+    image: "/projects/to-doList.webp",
     deploy: "https://all-i-do.vercel.app",
     repository: "https://github.com/imcasero/all-i-do",
     technologies: [
@@ -22,7 +22,7 @@ export const projects: IProject[] = [
     description:
       "Contained within this repository is the Pokedex application, which utilizes JavaScript and CSS for its development.",
     year: 2023,
-    image: "/projects/pokedex.png",
+    image: "/projects/pokedex.webp",
     deploy: "https://imcasero.github.io/pokedex",
     repository: "https://github.com/imcasero/pokedex",
     technologies: [Technologies.JAVASCRIPT, Technologies.API, Technologies.CSS],
@@ -33,7 +33,7 @@ export const projects: IProject[] = [
     description:
       "This repository showcases a concise project aimed at refining CSS skills, focusing on animations and their implementation.",
     year: 2021,
-    image: "/projects/bottle.png",
+    image: "/projects/bottle.webp",
     deploy: "https://imcasero.github.io/AnimatedVessel/",
     repository: "https://github.com/imcasero/AnimatedVessel",
     technologies: [Technologies.CSS, Technologies.ANIMATIONS],
@@ -44,7 +44,7 @@ export const projects: IProject[] = [
     description:
       "This project utilizes TypeScript and allows the user to input a bill amount and a percentage to calculate the total bill with tip.",
     year: 2023,
-    image: "/projects/tip-calculator.png",
+    image: "/projects/tip-calculator.webp",
     deploy: "https://imcasero.github.io/Tip-Calculator",
     repository: "https://github.com/imcasero/Tip-Calculator",
     technologies: [Technologies.TYPESCRIPT, Technologies.CSS],
