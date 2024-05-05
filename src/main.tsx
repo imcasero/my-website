@@ -8,6 +8,7 @@ import { Layout } from './pages/layout.page';
 import { Career, Home, Projects } from './pages';
 import './index.css';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Analytics />
+    <SpeedInsights />
     <RouterProvider router={router} />
   </React.StrictMode>
 )
