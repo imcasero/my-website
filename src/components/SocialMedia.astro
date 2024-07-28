@@ -1,0 +1,25 @@
+---
+import { EmailIcon } from "./icons/Email";
+import { GithubIcon } from "./icons/Github";
+import { LinkedinIcon } from "./icons/Linkedin";
+import { XIcon } from "./icons/X";
+
+
+const { additionalClasses = "" } = Astro.props;
+---
+  
+  <div class=` ${additionalClasses}`>
+    <a target="_blank" href="https://www.linkedin.com/in/imcasero/">
+      <LinkedinIcon/>
+    </a>
+    <a target="_blank" href="https://github.com/imcasero">
+      <GithubIcon/>
+    </a>
+    <a target="_blank" href="https://x.com/imcasero_dev">
+      <XIcon/>
+    </a>
+    <a target="_blank" href="mailto:diegocaserosmr@gmail.com">
+      <EmailIcon/>
+    </a>
+
+  </div>

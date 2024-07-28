@@ -24,6 +24,9 @@ export default {
       width: {
         main: "48rem",
       },
+      backgroundImage: {
+        "custom-gradient": "linear-gradient(to right, #14C5A2 0%, #5DEB98 95%)",
+      },
     },
   },
   plugins: [],
