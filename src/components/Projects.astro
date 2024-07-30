@@ -13,9 +13,9 @@ const projects = [
 
 <section>
   <h2 class="font-semibold text-lg mb-6">Projects</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-9">
     {projects.map(project => (
-      <Card title={project.title} description={project.description} />
+      <Card {...projects} />
     ))}
   </div>
 </section>

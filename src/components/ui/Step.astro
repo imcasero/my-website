@@ -1,0 +1,18 @@
+---
+import { ArrowIcon } from "@components/icons/Arrow";
+
+const { job, startDate, endDate, company, website, description } = Astro.props;
+---
+
+<div class="w-full mx-auto flex flex-col gap-3">
+  <div>
+    <span class="font-medium text-sm">
+      {startDate} - {endDate}
+    </span>
+    <h3 class="text-xl font-semibold text-gray-800">{job}</h3>
+    <a href={website} target="_blank" class=" flex items-center gap-1 text-sm font-medium hover:text-teal-500"> 
+      {company} <ArrowIcon />
+    </a>
+  </div>
+    <p class="text-sm">{description}</p>
+</div>
