@@ -1,0 +1,34 @@
+---
+import Card from "./ui/Card.astro";
+
+const projects = [
+  {
+    title: "All I Do",
+    description: "📝 A stylish and functional to-do list.",
+    deploy: "https://all-i-do.vercel.app/",
+    repository: "https://github.com/imcasero/all-i-do",
+    techs: ["React", "Typescript", "Tailwind", "Vercel"],
+  },
+  {
+    title: "Pokedex",
+    description: "🔍 A Pokédex web app for searching Pokémon.",
+    deploy: "https://imcasero.github.io/pokedex/",
+    repository: "https://github.com/imcasero/pokedex",
+    techs: ["Javascrit", "API", "CSS", "Actions"],
+  },
+  {
+    title: "Animated Vessel",
+    description: "🎨 A project featuring a bottle that changes color and sways",
+    deploy: "https://imcasero.github.io/AnimatedVessel/",
+    repository: "https://github.com/imcasero/AnimatedVessel",
+    techs: ["CSS", "HTML", "Animation", "Actions"],
+  },
+];
+---
+
+<section>
+  <h2 class="font-semibold text-lg mb-6">Projects</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-9">
+    {projects.map((project) => <Card {...project} />)}
+  </div>
+</section>
