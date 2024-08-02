@@ -1,8 +1,35 @@
 ---
-const { title, description } = Astro.props;
+import { ArrowIcon } from "@components/icons/Arrow";
+import Tag from "./Tag.astro";
+import { GithubIcon } from "@components/icons/Github";
+
+const { title, description, deploy, repository, techs } = Astro.props;
 ---
 
-<div class="border p-4 rounded-md shadow-md h-32">
-  <h3 >{title}</h3>
-  <p>{description}</p>
+<div class="border p-4 rounded-md shadow-md h-40 flex flex-col gap-4">
+  <div class="w-full flex flex-row justify-between items-center">
+    <a
+      href={deploy}
+      target="_blank"
+      class="text-sm font-medium hover:text-teal-500 hover:underline"
+    >
+      <h3 class="flex items-center gap-1">{title} <ArrowIcon /></h3>
+    </a>
+    <a
+      href={repository}
+      target="_blank"
+      rel="repository"
+      class="hover:text-teal-500"
+    >
+      <GithubIcon width="1.2rem" />
+    </a>
+  </div>
+  <p class="text-sm">{description}</p>
+  <div class="w-full flex flex-wrap gap-1">
+    {
+      techs.map((tech: string) => {
+        return <Tag name={tech} />;
+      })
+    }
+  </div>
 </div>
