@@ -1,54 +1,88 @@
-# Astro Starter Kit: Basics
+# Portfolio with Astro, TypeScript, and pnpm
 
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This is a personal portfolio project built with [Astro](https://astro.build), using [TypeScript](https://www.typescriptlang.org/) and managed with [pnpm](https://pnpm.io/).
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+The project contains the following folders and files:
 
 ```text
 /
+├── .astro/
+├── .vscode/
+├── dist/
+├── node_modules/
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── imcasero.png
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   │   ├── icons/
+│   │   │   ├── Arrow.tsx
+│   │   │   ├── Email.tsx
+│   │   │   ├── Github.tsx
+│   │   │   ├── Linkedin.tsx
+│   │   │   └── X.tsx
+│   │   └── ui/
+│   │       ├── Card.astro
+│   │       ├── FormModal.astro
+│   │       ├── Modal.astro
+│   │       ├── SocialMedia.astro
+│   │       ├── Step.astro
+│   │       ├── Tag.astro
+│   │       ├── Career.astro
+│   │       ├── Footer.astro
+│   │       ├── Home.astro
+│   │       └── Projects.astro
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
 │       └── index.astro
-└── package.json
+├── .gitignore
+├── astro.config.mjs
+├── package.json
+├── README.md
+├── tailwind.config.mjs
+└── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Description
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+- **`public/`**: Contains static assets such as images and the site favicon.
+- **`src/components/icons/`**: Houses individual icon components used throughout the site.
+- **`src/components/ui/`**: Contains reusable UI components like cards, modals, social media sections, etc.
+- **`src/layouts/`**: Includes layout components used to wrap pages and provide consistent structure.
+- **`src/pages/`**: Contains the main pages of the website. Each `.astro` file here corresponds to a route in the site.
+- **Configuration files**:
+  - `.astro/`, `.vscode/`, `dist/`, `node_modules/`: Project-specific directories for Astro, VS Code settings, build output, and dependencies respectively.
+  - `astro.config.mjs`: Configuration for the Astro project.
+  - `tailwind.config.mjs`: Tailwind CSS configuration file.
+  - `tsconfig.json`: TypeScript configuration file.
+  - `package.json`: Lists project dependencies and scripts.
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project, in a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command             | Action                                            |
+| :------------------ | :------------------------------------------------ |
+| `pnpm install`      | Installs dependencies                             |
+| `pnpm dev`          | Starts local dev server at `localhost:4321`       |
+| `pnpm build`        | Builds your production site to `./dist/`          |
+| `pnpm preview`      | Previews your build locally, before deploying     |
+| `pnpm astro ...`    | Runs CLI commands like `astro add`, `astro check` |
+| `pnpm astro --help` | Get help using the Astro CLI                      |
 
-## 👀 Want to learn more?
+## 🌈 Technologies Used
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Astro**: Static site generator for building fast websites.
+- **TypeScript**: Typed superset of JavaScript that compiles to plain JavaScript.
+- **pnpm**: Fast, disk space-efficient package manager.
+
+## 🌐 Deployment
+
+The site can be deployed using static hosting platforms: [Vercel](https://vercel.com/)
+
+## 📚 Learning Resources
+
+For more information, feel free to check [Astro's documentation](https://docs.astro.build) or join the [Astro Discord server](https://astro.build/chat) to ask questions and share ideas.
