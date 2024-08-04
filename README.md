@@ -1,6 +1,6 @@
 # Portfolio with Astro, TypeScript, and pnpm
 
-This is a personal portfolio project built with [Astro](https://astro.build), using [TypeScript](https://www.typescriptlang.org/) and managed with [pnpm](https://pnpm.io/).
+This is a personal portfolio project built with [Astro](https://astro.build), using [TypeScript](https://www.typescriptlang.org/), styling with [Tailwind](https://tailwindcss.com/) and managed with [pnpm](https://pnpm.io/).
 
 ## 🚀 Project Structure
 
@@ -81,7 +81,7 @@ All commands are run from the root of the project, in a terminal:
 
 ## 🌐 Deployment
 
-The site can be deployed using static hosting platforms: [Vercel](https://vercel.com/)
+The site was be deployed using static hosting platforms: [Vercel](https://vercel.com/)
 
 ## 📚 Learning Resources
 
