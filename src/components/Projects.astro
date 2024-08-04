@@ -1,7 +1,15 @@
 ---
 import Card from "./ui/Card.astro";
 
-const projects = [
+type projectType = {
+  title: string;
+  description: string;
+  deploy: string;
+  repository: string;
+  techs: string[];
+};
+
+const projects: projectType[] = [
   {
     title: "All I Do",
     description: "📝 A stylish and functional to-do list.",
