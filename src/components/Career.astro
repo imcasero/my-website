@@ -1,7 +1,17 @@
 ---
 import Step from "./ui/Step.astro";
 
-const careers = [
+type career = {
+  job: string;
+  startDate: string;
+  endDate: string;
+  company: string;
+  website: string;
+  description: string;
+  techs: string[];
+};
+
+const careers: career[] = [
   {
     job: "Front-end Developer",
     startDate: "August 2023",
