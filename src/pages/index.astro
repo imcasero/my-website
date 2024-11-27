@@ -3,7 +3,86 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Imcasero.dev">
-  <main>
-    <h1>Hola nuevo porfolio</h1>
+  <main
+    class="min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300"
+  >
+    <header
+      class="p-4 flex justify-between items-center border-b border-border-light dark:border-border-dark"
+    >
+      <h1 class="text-primary text-xl">Hola nuevo portfolio</h1>
+      <!-- Botón para alternar el modo oscuro -->
+      <button
+        id="theme-toggle"
+        class="p-2 bg-accent-light dark:bg-accent-dark rounded-lg"
+      >
+        <span id="theme-icon" class="text-primary">🌞</span>
+      </button>
+    </header>
+
+    <section class="p-6">
+      <h2 class="text-2xl mb-4">Bienvenido a mi portafolio</h2>
+      <p class="text-muted-light dark:text-muted-dark">
+        Aquí podrás encontrar información sobre mis proyectos, habilidades y
+        experiencia.
+      </p>
+    </section>
   </main>
 </Layout>
+
+<script>
+  // Get elements from the DOM
+  const themeToggleButton = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+
+  /**
+   * Function to set the theme.
+   * @param {boolean} isDarkMode - Indicates whether dark mode is active.
+   */
+  const setTheme = (isDarkMode: boolean) => {
+    // Add or remove the "dark" class based on the state
+    document.documentElement.classList.toggle("dark", isDarkMode);
+
+    // Update the icon, if the element exists
+    if (themeIcon) {
+      themeIcon.textContent = isDarkMode ? "🌙" : "🌞";
+    }
+
+    // Save the user's preference in localStorage
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  };
+
+  /**
+   * Determines the initial theme state.
+   * @returns {boolean} true if dark mode should be enabled.
+   */
+  const getInitialTheme = () => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") return true;
+    if (storedTheme === "light") return false;
+
+    // If no preference is stored, use the system preference
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  };
+
+  /**
+   * Initializes the theme and sets up the button listener.
+   */
+  const initializeTheme = () => {
+    // Set the initial theme
+    const isDarkMode = getInitialTheme();
+    setTheme(isDarkMode);
+
+    // Add a click listener to the toggle button, if it exists
+    if (themeToggleButton) {
+      themeToggleButton.addEventListener("click", () => {
+        const isDarkMode = !document.documentElement.classList.contains("dark");
+        setTheme(isDarkMode);
+      });
+    } else {
+      console.warn("The 'theme-toggle' button was not found in the DOM.");
+    }
+  };
+
+  // Execute the initialization
+  initializeTheme();
+</script>
