@@ -12,11 +12,7 @@ const { extraClass } = Astro.props;
 
 <Card class=`flex flex-col justify-center align-middle gap-6 ${extraClass}`>
   <div class="w-36 m-auto">
-    <Image
-      src={imcasero}
-      alt="Diego Casero Profile Image"
-      class="rounded-full"
-    />
+    <Image src={imcasero} alt="cat" class="rounded-full" loading="eager" />
   </div>
 
   <span
