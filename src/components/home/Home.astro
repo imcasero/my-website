@@ -1,0 +1,11 @@
+---
+import Presentation from "./Cards/Presentation.astro";
+import Profile from "./Cards/Profile.astro";
+import Description from "./Cards/Description.astro";
+---
+
+<section id="Home" class="grid gap-6 md:grid-cols-2 lg:grid-cols-[2fr,1fr]">
+  <Presentation extraClass="md:col-start-1 md:col-span-1" />
+  <Profile extraClass="md:col-start-2 md:row-span-2" />
+  <Description extraClass="md:col-start-1 md:col-span-1" />
+</section>

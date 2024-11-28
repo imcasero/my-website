@@ -1,0 +1,17 @@
+---
+import Card from "@components/shared/Card.astro";
+
+const { extraClass } = Astro.props;
+---
+
+<Card class=`flex flex-col gap-3 ${extraClass}`>
+  <div class="flex flex-col gap-1">
+    <h1 class="text-2xl font-semibold">
+      Diego Casero ~ <span
+        class="font-medium text-muted-light dark:text-muted-dark">Imcasero</span
+      >
+    </h1>
+    <h2 class="text-xl text-primary font-medium">Frontend Developer</h2>
+  </div>
+  <p class="text-sm text-muted-light dark:text-muted-dark">Madrid, Spain 🇪🇸</p>
+</Card>
