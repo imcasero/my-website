@@ -1,0 +1,82 @@
+---
+import ArrowUpRight from "@assets/icons/ArrowUpRight.astro";
+import Github from "@assets/icons/rrss/Github.astro";
+import Card from "@components/shared/Card.astro";
+
+import AstroIcon from "@assets/icons/tech/AstroIcon.astro";
+import CssIcon from "@assets/icons/tech/CssIcon.astro";
+import HtmlIcon from "@assets/icons/tech/HtmlIcon.astro";
+import JavascriptIcon from "@assets/icons/tech/JavascriptIcon.astro";
+import TypescriptIcon from "@assets/icons/tech/TypescriptIcon.astro";
+import NestIcon from "@assets/icons/tech/NestIcon.astro";
+import NextIcon from "@assets/icons/tech/NextIcon.astro";
+import ReactIcon from "@assets/icons/tech/ReactIcon.astro";
+import ReacthookformIcon from "@assets/icons/tech/ReacthookformIcon.astro";
+import TailwindcssIcon from "@assets/icons/tech/TailwindcssIcon.astro";
+import VercelIcon from "@assets/icons/tech/VercelIcon.astro";
+import ViteIcon from "@assets/icons/tech/ViteIcon.astro";
+
+const iconMap: Record<string, any> = {
+  Astro: AstroIcon,
+  Css: CssIcon,
+  Html: HtmlIcon,
+  Javascript: JavascriptIcon,
+  Typescript: TypescriptIcon,
+  Nest: NestIcon,
+  Next: NextIcon,
+  React: ReactIcon,
+  Reacthookform: ReacthookformIcon,
+  Tailwindcss: TailwindcssIcon,
+  Vercel: VercelIcon,
+  Vite: ViteIcon,
+};
+
+const { title, technologies, repository, live_demo, Content } = Astro.props;
+---
+
+<Card class="p-4 flex flex-col gap-2">
+  <h2 class="text-xl font-semibold mb-2 text-primary">{title}</h2>
+  <div class="text-sm">
+    <Content />
+  </div>
+  <div class="flex gap-4 my-2">
+    {
+      technologies.map((tech: string) => {
+        const formattedTech = tech
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .replace(/^\w/, (c) => c.toUpperCase());
+        const Icon = iconMap[formattedTech];
+        return Icon ? (
+          <span class="py-1 px-1 border border-border-light rounded-md dark:border-border-dark">
+            <Icon />
+          </span>
+        ) : (
+          <span class="text-sm">{tech}</span>
+        );
+      })
+    }
+  </div>
+
+  <div class="flex flex-row items-center justify-center gap-2 w-full">
+    <a
+      href={repository}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="border py-1 px-4 text-sm text-center rounded-md border-border-light hover:bg-accent-light dark:border-border-dark dark:hover:bg-accent-dark w-1/2 flex items-center justify-center gap-1"
+    >
+      Repository
+      <Github />
+    </a>
+
+    <a
+      href={live_demo}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="border py-1 px-4 text-sm text-center rounded-md border-border-light hover:bg-accent-light dark:border-border-dark dark:hover:bg-accent-dark w-1/2 flex items-center justify-center gap-1"
+    >
+      Demo
+      <ArrowUpRight />
+    </a>
+  </div>
+</Card>

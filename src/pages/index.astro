@@ -1,12 +1,14 @@
 ---
 import Home from "@components/home/Home.astro";
+import Projects from "@components/projects/Projects.astro";
 import ToggleButton from "@components/toggleButton/ToggleButton.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Imcasero.dev - porfolio">
   <!-- <ToggleButton /> -->
-  <main class="min-h-screen w-[768px] m-auto px-8 py-4">
+  <main class="min-h-screen w-[768px] m-auto px-8 py-4 flex flex-col gap-6">
     <Home />
+    <Projects />
   </main>
 </Layout>
