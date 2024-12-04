@@ -4,7 +4,7 @@ description: "A practical tool for converting pixel values to rem units in CSS, 
 technologies:
   - "Vite"
   - "React"
-  - "CSS"
+  - "Tailwindcss"
 repository: "https://github.com/imcasero/px-to-rem-converter"
 live_demo: "https://px-to-rem-converter-imcasero.vercel.app/"
 ---

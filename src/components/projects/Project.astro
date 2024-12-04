@@ -48,7 +48,7 @@ const { title, technologies, repository, live_demo, Content } = Astro.props;
           .replace(/^\w/, (c) => c.toUpperCase());
         const Icon = iconMap[formattedTech];
         return Icon ? (
-          <span class="py-1 px-1 border border-border-light rounded-md dark:border-border-dark">
+          <span class="py-1 px-1 border border-border-light rounded-md dark:border-border-dark flex items-center">
             <Icon />
           </span>
         ) : (

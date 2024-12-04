@@ -2,6 +2,7 @@
 title: "DevFinder"
 description: "A stylish GitHub developer search tool with stats, recent searches, and profile sharing."
 technologies:
+  - "Vite"
   - "React"
   - "Typescript"
   - "Tailwindcss"
