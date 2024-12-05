@@ -54,9 +54,11 @@ const renderedExperiences = await Promise.all(
             <h3 class="font-semibold text-lg">
               {experience.data.job} -
               <a
-                class="text-sm font-normal text-muted-light dark:text-muted-dark"
+                class="relative text-sm font-normal text-muted-light dark:text-muted-dark transition-colors duration-200 group"
                 href={experience.data.website}
+                target="_blank"
               >
+                <span class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 group-hover:blur-sm transition-all duration-300" />
                 {experience.data.company}
               </a>
             </h3>

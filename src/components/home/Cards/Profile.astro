@@ -16,7 +16,8 @@ const { extraClass } = Astro.props;
   <div class="w-36 m-auto">
     <Image
       src={imcasero}
-      alt="cat"
+      alt="Photo of Diego Casero"
+      alt="Diego Casero"
       class="rounded-full border border-primary"
       loading="eager"
       transition:name="profile-img"
@@ -30,32 +31,43 @@ const { extraClass } = Astro.props;
   </span>
 
   <div class="flex m-auto justify-center align-middle gap-4 w-full">
-    <button
+    <a
+      href="https://www.linkedin.com/in/imcasero/"
+      target="_blank"
       class="py-1 px-1 border border-border-light dark:border-border-dark rounded-lg hover:bg-accent-light dark:hover:bg-accent-dark"
+      aria-label="Visit Diego Casero's LinkedIn profile"
     >
       <Linkedin />
-    </button>
-    <button
+    </a>
+    <a
+      href="https://github.com/imcasero"
+      target="_blank"
       class="py-1 px-1 border border-border-light dark:border-border-dark rounded-lg hover:bg-accent-light dark:hover:bg-accent-dark"
+      aria-label="Visit Diego Casero's GitHub profile"
     >
       <Github />
-    </button>
+    </a>
     <button
       id="mail-button"
       class="py-1 px-1 border border-border-light dark:border-border-dark rounded-lg hover:bg-accent-light dark:hover:bg-accent-dark"
+      aria-label="Copy Diego Casero's email"
     >
       <Gmail />
     </button>
-    <button
+    <a
+      href="https://twitter.com/imcasero_dev"
+      target="_blank"
       class="py-1 px-1 border border-border-light dark:border-border-dark rounded-lg hover:bg-accent-light dark:hover:bg-accent-dark"
+      aria-label="Visit Diego Casero's Twitter profile"
     >
       <X />
-    </button>
+    </a>
   </div>
 
   <a
     href="/about-me/"
     class="w-fit m-auto flex flex-row items-center gap-1 py-1 px-4 rounded-md text-sm bg-background-dark text-text-dark hover:bg-accent-dark dark:bg-background-light dark:text-text-light dark:hover:bg-background-light transition group"
+    aria-label="More about Diego Casero"
   >
     <p>More about me</p>
     <span
@@ -65,6 +77,7 @@ const { extraClass } = Astro.props;
     </span>
   </a>
 </Card>
+
 <div
   id="toast-container"
   class="opacity-0 pointer-events-none z-50 absolute left-1/2 transform -translate-x-1/2 mt-4 transition-opacity duration-500"
@@ -81,18 +94,18 @@ const { extraClass } = Astro.props;
     navigator.clipboard
       .writeText(email)
       .then(() => {
-        // Mostrar el Toast con fade-in
+        // Show Toast with fade-in effect
         toastContainer.classList.remove("opacity-0", "pointer-events-none");
         toastContainer.classList.add("opacity-100");
 
-        // Ocultar el Toast con fade-out después de 1.5 segundos
+        // Hide Toast with fade-out effect after 1.5 seconds
         setTimeout(() => {
           toastContainer.classList.remove("opacity-100");
           toastContainer.classList.add("opacity-0", "pointer-events-none");
         }, 1500);
       })
       .catch((err) => {
-        console.error("Error al copiar al portapapeles", err);
+        console.error("Error copying to clipboard", err);
       });
   });
 </script>

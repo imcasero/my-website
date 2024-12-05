@@ -16,4 +16,4 @@ techs:
   - "Scrum"
 ---
 
-Development of interfaces using React and styled with CSS for complex web applications. Collaboration with multidisciplinary teams to integrate design and functionality. Use of Git and GitLab for version control and Agile with Scrum for project collaboration.
+Focused on building dynamic, user-friendly interfaces with React, collaborating closely with multidisciplinary teams to integrate design and functionality. I use Git and GitLab for version control and follow Agile methodologies with Scrum for effective project collaboration.
