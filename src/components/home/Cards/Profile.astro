@@ -7,11 +7,12 @@ import Gmail from "@assets/icons/rrss/Gmail.astro";
 import Linkedin from "@assets/icons/rrss/Linkedin.astro";
 import X from "@assets/icons/rrss/X.astro";
 import ArrowUpRight from "@assets/icons/ArrowUpRight.astro";
+import Toast from "@components/shared/Toast.astro";
 
 const { extraClass } = Astro.props;
 ---
 
-<Card class=`flex flex-col justify-center align-middle gap-6 ${extraClass}`>
+<Card class={`flex flex-col justify-center align-middle gap-6 ${extraClass}`}>
   <div class="w-36 m-auto">
     <Image
       src={imcasero}
@@ -40,6 +41,7 @@ const { extraClass } = Astro.props;
       <Github />
     </button>
     <button
+      id="mail-button"
       class="py-1 px-1 border border-border-light dark:border-border-dark rounded-lg hover:bg-accent-light dark:hover:bg-accent-dark"
     >
       <Gmail />
@@ -63,3 +65,34 @@ const { extraClass } = Astro.props;
     </span>
   </a>
 </Card>
+<div
+  id="toast-container"
+  class="opacity-0 pointer-events-none z-50 absolute left-1/2 transform -translate-x-1/2 mt-4 transition-opacity duration-500"
+>
+  <Toast />
+</div>
+
+<script is:inline>
+  const button = document.getElementById("mail-button");
+  const toastContainer = document.getElementById("toast-container");
+
+  button.addEventListener("click", () => {
+    const email = "diegocaserosmr@gmail.com";
+    navigator.clipboard
+      .writeText(email)
+      .then(() => {
+        // Mostrar el Toast con fade-in
+        toastContainer.classList.remove("opacity-0", "pointer-events-none");
+        toastContainer.classList.add("opacity-100");
+
+        // Ocultar el Toast con fade-out después de 1.5 segundos
+        setTimeout(() => {
+          toastContainer.classList.remove("opacity-100");
+          toastContainer.classList.add("opacity-0", "pointer-events-none");
+        }, 1500);
+      })
+      .catch((err) => {
+        console.error("Error al copiar al portapapeles", err);
+      });
+  });
+</script>
