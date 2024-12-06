@@ -41,12 +41,12 @@ const renderedExperiences = await Promise.all(
               <Briefcase />
             </div>
             <hr
+              id={`line-${index}`}
               class={`absolute top-4 bottom-0 bg-primary ${
                 index === renderedExperiences.length - 1
                   ? "hidden"
                   : "w-[0.5px]"
               }`}
-              style="height: calc(100% + 250px);"
             />
           </div>
 
@@ -74,3 +74,28 @@ const renderedExperiences = await Promise.all(
     }
   </article>
 </Card>
+
+<script>
+  const adjustLineHeights = () => {
+    const lines = document.querySelectorAll("hr[id^='line-']");
+
+    const screenWidth = window.innerWidth;
+
+    let height;
+    if (screenWidth <= 425) {
+      height = 450;
+    } else if (screenWidth > 425 && screenWidth < 768) {
+      height = 350;
+    } else {
+      height = 250;
+    }
+
+    lines.forEach((line) => {
+      const hrLine = line as HTMLHRElement;
+      hrLine.style.height = `calc(100% + ${height}px)`;
+    });
+  };
+
+  window.addEventListener("load", adjustLineHeights);
+  window.addEventListener("resize", adjustLineHeights);
+</script>
