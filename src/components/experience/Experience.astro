@@ -82,9 +82,9 @@ const renderedExperiences = await Promise.all(
     const screenWidth = window.innerWidth;
 
     let height;
-    if (screenWidth <= 425) {
+    if (screenWidth < 425) {
       height = 450;
-    } else if (screenWidth > 425 && screenWidth < 768) {
+    } else if (screenWidth >= 425 && screenWidth < 768) {
       height = 350;
     } else {
       height = 250;
