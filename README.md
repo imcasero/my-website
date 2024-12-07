@@ -1,7 +1,8 @@
 # 🌐 My Personal Website
 
-Welcome to the repository for my personal portfolio website! This project showcases my work, skills, and featured projects, built with modern web technologies.  
-![Project Preview](Portfolio-shots.png)
+Welcome to the repository for my personal portfolio website! This project showcases my work, skills, and featured projects, built with modern web technologies.
+
+![Project Preview](/public/Portfolio-shots.png)
 
 ---
 
