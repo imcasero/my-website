@@ -19,4 +19,4 @@ techs:
   - "Scrum"
 ---
 
-Development of interfaces using React, Angular, and styled with CSS/SASS for complex web applications. Collaboration with multidisciplinary teams to integrate design and functionality. Use of Git and GitHub for version control and Agile with Scrum for project collaboration.
+**Development of interfaces using React, Angular**, and styled with **CSS/SASS** for **complex web applications**. Collaboration with **multidisciplinary teams** to integrate **design and functionality**. Use of **Git** and **GitHub** for version control and **Agile with Scrum** for project collaboration.

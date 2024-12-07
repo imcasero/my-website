@@ -15,4 +15,4 @@ techs:
   - "SQL"
 ---
 
-Interface layout tasks and utilization of the Figma platform for applications design. Backend development using .NET, contributing to the design and creation of robust solutions for specific projects.
+**Interface layout tasks** and utilization of the **Figma platform** for application design. **Backend development using .NET**, contributing to the **design and creation of robust solutions** for specific projects.
