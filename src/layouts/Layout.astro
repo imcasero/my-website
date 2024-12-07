@@ -11,10 +11,44 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="Portfolio of Diego Casero, frontend developer passionate about technology. Developing with Next.js, Astro, and other modern frontend technologies, while also exploring the world of mechanical keyboards."
+    />
+    <!-- Open Graph meta tags for social media sharing -->
+    <meta
+      property="og:title"
+      content="Diego Casero - Frontend Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Explore the portfolio of Diego Casero, a passionate frontend developer building with Next.js, Astro, and other modern technologies. Also dive into my love for mechanical keyboards."
+    />
+    <meta property="og:image" content="URL_to_your_image.jpg" />
+    <meta property="og:url" content="https://your-portfolio-url.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Diego Casero - Frontend Developer Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Explore the portfolio of Diego Casero, a passionate frontend developer building with Next.js, Astro, and other modern technologies. Also dive into my love for mechanical keyboards."
+    />
+    <meta name="twitter:image" content="URL_to_your_image.jpg" />
+
+    <!-- Basic meta tags -->
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="author" content="Diego Casero" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <title>{title}</title>
     <ClientRouter />
   </head>
