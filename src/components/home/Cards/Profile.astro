@@ -86,26 +86,29 @@ const { extraClass } = Astro.props;
 </div>
 
 <script is:inline>
-  const button = document.getElementById("mail-button");
-  const toastContainer = document.getElementById("toast-container");
+  (() => {
+    const button = document.getElementById("mail-button");
+    const toastContainer = document.getElementById("toast-container");
 
-  button.addEventListener("click", () => {
-    const email = "diegocaserosmr@gmail.com";
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
-        // Show Toast with fade-in effect
-        toastContainer.classList.remove("opacity-0", "pointer-events-none");
-        toastContainer.classList.add("opacity-100");
+    if (!button.hasAttribute("data-listener")) {
+      button.setAttribute("data-listener", "true");
+      button.addEventListener("click", () => {
+        const email = "diegocaserosmr@gmail.com";
+        navigator.clipboard
+          .writeText(email)
+          .then(() => {
+            toastContainer.classList.remove("opacity-0", "pointer-events-none");
+            toastContainer.classList.add("opacity-100");
 
-        // Hide Toast with fade-out effect after 1.5 seconds
-        setTimeout(() => {
-          toastContainer.classList.remove("opacity-100");
-          toastContainer.classList.add("opacity-0", "pointer-events-none");
-        }, 1500);
-      })
-      .catch((err) => {
-        console.error("Error copying to clipboard", err);
+            setTimeout(() => {
+              toastContainer.classList.remove("opacity-100");
+              toastContainer.classList.add("opacity-0", "pointer-events-none");
+            }, 1500);
+          })
+          .catch((err) => {
+            console.error("Error copying to clipboard", err);
+          });
       });
-  });
+    }
+  })();
 </script>
