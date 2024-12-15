@@ -1,9 +1,11 @@
 ---
-import Card from "@components/shared/Card.astro";
 import { getCollection, render } from "astro:content";
 import Project from "./Project.astro";
 
 const projects = await getCollection("projects");
+const sortedProjects = projects.sort(
+  (a, b) => a.data.priority - b.data.priority
+);
 ---
 
 <div>
@@ -11,7 +13,7 @@ const projects = await getCollection("projects");
 
   <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {
-      projects.map(async (project) => {
+      sortedProjects.map(async (project) => {
         const { title, technologies, repository, live_demo } = project.data;
         const { Content } = await render(project);
 

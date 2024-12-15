@@ -6,7 +6,8 @@ const projects = defineCollection({
     description: z.string(),
     technologies: z.array(z.string()),
     repository: z.string().url(),
-    live_demo: z.string().url(),
+    live_demo: z.string().url().optional(),
+    priority: z.number(),
   }),
 });
 

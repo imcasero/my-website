@@ -63,20 +63,26 @@ const { title, technologies, repository, live_demo, Content } = Astro.props;
       href={repository}
       target="_blank"
       rel="noopener noreferrer"
-      class="border py-1 px-4 text-sm text-center rounded-md border-border-light hover:bg-accent-light dark:border-border-dark dark:hover:bg-accent-dark w-1/2 flex items-center justify-center gap-1"
+      class={`border py-1 px-4 text-sm text-center rounded-md border-border-light hover:bg-accent-light dark:border-border-dark dark:hover:bg-accent-dark flex items-center justify-center gap-1 ${
+        live_demo ? "w-1/2" : "w-full"
+      }`}
     >
       Repository
       <Github />
     </a>
 
-    <a
-      href={live_demo}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="border py-1 px-4 text-sm text-center rounded-md border-border-light hover:bg-accent-light dark:border-border-dark dark:hover:bg-accent-dark w-1/2 flex items-center justify-center gap-1"
-    >
-      Demo
-      <ArrowUpRight />
-    </a>
+    {
+      live_demo && (
+        <a
+          href={live_demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border py-1 px-4 text-sm text-center rounded-md border-border-light hover:bg-accent-light dark:border-border-dark dark:hover:bg-accent-dark flex items-center justify-center gap-1 w-1/2"
+        >
+          Demo
+          <ArrowUpRight />
+        </a>
+      )
+    }
   </div>
 </Card>
