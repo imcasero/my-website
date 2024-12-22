@@ -7,7 +7,7 @@ technologies:
   - "Tailwindcss"
   - "Vercel"
 repository: "https://github.com/imcasero/Listify"
-live_demo: "https://listify-delta.vercel.app/"
+live_demo: "https://listify.imcasero.dev/"
 priority: 1
 ---
 
