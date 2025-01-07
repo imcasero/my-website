@@ -8,7 +8,7 @@ technologies:
   - "Tailwindcss"
   - "Vercel"
 repository: "https://github.com/imcasero/devfinder"
-live_demo: "https://devfinder-imcasero.vercel.app/"
+live_demo: "https://devfinder.imcasero.dev/"
 priority: 2
 ---
 
