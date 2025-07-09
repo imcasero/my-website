@@ -16,4 +16,5 @@ techs:
   - "Scrum"
 ---
 
-**Focused on building dynamic, user-friendly interfaces with React**, collaborating closely with **multidisciplinary teams** to integrate **design and functionality**. I use **Git** and **GitLab** for version control and follow **Agile methodologies** with **Scrum** for effective project collaboration.
+**Focused on building dynamic, user-friendly interfaces with React**, using **microfrontends** to create scalable and modular solutions. Actively contributed to the **refactoring of internal tools**, improving performance and usability for over **5,000 daily users**.  
+Collaborated with **multidisciplinary teams** to align design and functionality, applying **Agile methodologies (Scrum)** for effective teamwork. Used **Git** and **GitLab** for version control and project management.
