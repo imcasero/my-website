@@ -8,10 +8,48 @@
 		<title>Astro Basics</title>
 		<link rel="stylesheet" href="/src/styles/global.css" />
 	</head>
-	<body>
+	<body class="bg-bg-primary text-text-primary">
+		<button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded border-border border">
+			Toggle Theme
+		</button>
 		<slot />
 	</body>
 </html>
+
+<script>
+	const toggleButton = document.getElementById('theme-toggle');
+	const html = document.documentElement;
+
+	const savedTheme = localStorage.getItem('theme');
+	const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+	html.setAttribute('data-theme', initialTheme);
+
+	toggleButton?.addEventListener('click', () => {
+		const currentTheme = html.getAttribute('data-theme');
+		const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+	
+		if (!document.startViewTransition) {
+			html.setAttribute('data-theme', newTheme);
+			localStorage.setItem('theme', newTheme);
+		} else {
+			document.startViewTransition(() => {
+				html.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+			});
+		}
+	});
+</script>
+
+<script is:inline>
+	(function() {
+		const theme = localStorage.getItem('theme') ||
+			(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		document.documentElement.setAttribute('data-theme', theme);
+	})();
+</script>
 
 <style>
 	html,
