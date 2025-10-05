@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -16,7 +16,7 @@
   color-scheme: light;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* Backgrounds */
   --bg-primary: #171717;
 
@@ -31,11 +31,15 @@
 }
 
 html {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 * {
-  transition: background-color 0.3s ease, color 0.3s ease,
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
     border-color 0.3s ease;
 }
 
@@ -51,7 +55,7 @@ html {
   --color-border: var(--border-color);
 
   /* Font sizes */
-  --font-size-title: 2.5rem;
+  --font-size-title: 5.5rem;
   --font-size-header: 1.5rem;
   --font-size-annotation: 0.875rem;
 }

@@ -1,61 +1,69 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-		<link rel="stylesheet" href="/src/styles/global.css" />
-	</head>
-	<body class="bg-bg-primary text-text-primary flex flex-col items-center justify-center">
-		<button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded border-border border">
-			Toggle Theme
-		</button>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Imcasero</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body
+    class="bg-bg-primary text-text-primary flex flex-col items-center justify-center"
+  >
+    <button
+      id="theme-toggle"
+      class="fixed top-4 right-4 p-2 rounded border-border border"
+    >
+      Toggle Theme
+    </button>
+    <slot />
+  </body>
 </html>
 
 <script>
-	const toggleButton = document.getElementById('theme-toggle');
-	const html = document.documentElement;
+  const toggleButton = document.getElementById('theme-toggle');
+  const html = document.documentElement;
 
-	const savedTheme = localStorage.getItem('theme');
-	const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia(
+    '(prefers-color-scheme: dark)'
+  ).matches;
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 
-	html.setAttribute('data-theme', initialTheme);
+  html.setAttribute('data-theme', initialTheme);
 
-	toggleButton?.addEventListener('click', () => {
-		const currentTheme = html.getAttribute('data-theme');
-		const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  toggleButton?.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-	
-		if (!document.startViewTransition) {
-			html.setAttribute('data-theme', newTheme);
-			localStorage.setItem('theme', newTheme);
-		} else {
-			document.startViewTransition(() => {
-				html.setAttribute('data-theme', newTheme);
-				localStorage.setItem('theme', newTheme);
-			});
-		}
-	});
+    if (!document.startViewTransition) {
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    } else {
+      document.startViewTransition(() => {
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    }
+  });
 </script>
 
 <script is:inline>
-	(function() {
-		const theme = localStorage.getItem('theme') ||
-			(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-		document.documentElement.setAttribute('data-theme', theme);
-	})();
+  (function () {
+    const theme =
+      localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
 </script>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
