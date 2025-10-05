@@ -4,28 +4,28 @@
 
 :root {
   /* Backgrounds */
-  --bg-primary: #f5f5f5;
+  --bg-primary: #efefef;
 
   /* Text colors */
   --text-primary: #000000;
   --text-secondary: #404040;
 
   /* Border */
-  --border-color: #404040;
+  --border-color: #d4d4d4;
 
   color-scheme: light;
 }
 
 [data-theme="dark"] {
   /* Backgrounds */
-  --bg-primary: #1a1a1a;
+  --bg-primary: #171717;
 
   /* Text colors */
   --text-primary: #ffffff;
   --text-secondary: #d4d4d4;
 
   /* Border */
-  --border-color: #d4d4d4;
+  --border-color: #404040;
 
   color-scheme: dark;
 }
@@ -35,7 +35,8 @@ html {
 }
 
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 @theme inline {
