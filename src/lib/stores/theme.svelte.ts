@@ -1,5 +1,3 @@
-import { writable } from "svelte/store";
-
 type Theme = "light" | "dark";
 
 const isBrowser = typeof window !== "undefined";
@@ -25,39 +23,39 @@ const setThemeOnDocument = (newTheme: Theme) => {
   localStorage.setItem("theme", newTheme);
 };
 
-function createThemeStore() {
-  const { subscribe, set, update } = writable<Theme>(getInitialTheme());
+function createThemeState() {
+  let currentTheme = $state<Theme>(getInitialTheme());
 
   if (isBrowser) {
     setThemeOnDocument(getInitialTheme());
+
+    // Listen to system theme changes
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const stored = localStorage.getItem("theme");
+        if (!stored) {
+          const newTheme = e.matches ? "dark" : "light";
+          currentTheme = newTheme;
+          setThemeOnDocument(newTheme);
+        }
+      });
   }
 
   return {
-    subscribe,
+    get current() {
+      return currentTheme;
+    },
     set: (value: Theme) => {
+      currentTheme = value;
       setThemeOnDocument(value);
-      set(value);
     },
     toggle: () => {
-      update((current) => {
-        const newTheme = current === "light" ? "dark" : "light";
-        setThemeOnDocument(newTheme);
-        return newTheme;
-      });
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      currentTheme = newTheme;
+      setThemeOnDocument(newTheme);
     },
   };
 }
 
-export const theme = createThemeStore();
-
-if (isBrowser) {
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
-      const stored = localStorage.getItem("theme");
-      if (!stored) {
-        const newTheme = e.matches ? "dark" : "light";
-        theme.set(newTheme);
-      }
-    });
-}
+export const theme = createThemeState();
