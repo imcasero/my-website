@@ -13,23 +13,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Svelte 5 + TypeScript + Vite application recently migrated from Astro. It uses Tailwind CSS v4 for styling with a custom theme system.
 
+**Important**: This project uses modern Svelte 5 syntax with runes (NOT legacy mode). All new code must use:
+- `$state()` for reactive state
+- `$derived()` for computed values
+- `onclick` instead of `on:click` for event handlers
+- Direct property access instead of store subscriptions
+
+### Path Aliases
+
+- `$lib` - Resolves to `src/lib/` for cleaner imports
+- Import components as `$lib/components/...` instead of relative paths
+
 ### Core State Management
 
-The application uses two custom Svelte stores for managing UI state:
+The application uses Svelte 5 runes-based state management (not traditional stores):
 
-**Theme Store** (`src/lib/stores/theme.ts`):
+**Theme State** (`src/lib/stores/theme.svelte.ts`):
+- Uses `$state()` rune for reactive theme state
 - Manages light/dark theme switching
 - Persists to localStorage as `theme`
 - Syncs with system preference when no stored value exists
 - Updates `data-theme` attribute on `document.documentElement`
 - Automatically responds to system theme changes
+- Exposed API: `theme.current` (getter), `theme.set(value)`, `theme.toggle()`
 
-**Mode Store** (`src/lib/stores/mode.ts`):
+**Mode State** (`src/lib/stores/mode.svelte.ts`):
+- Uses `$state()` rune for reactive mode state
 - Toggles between "static" and "terminal" view modes
 - Persists to localStorage as `mode`
 - Defaults to "static" mode
+- Exposed API: `currentMode.current` (getter), `currentMode.set(value)`, `currentMode.toggle()`
 
-Both stores follow a consistent pattern with `subscribe`, `set`, and `toggle` methods.
+**Note**: State files use `.svelte.ts` extension to enable runes support outside `.svelte` components.
 
 ### Theming System
 
@@ -45,8 +60,9 @@ Themes are implemented using CSS custom properties (CSS variables) in `src/app.c
 ### Component Structure
 
 - Shared components in `src/lib/components/shared/`
-- Components use Svelte 5 reactive syntax (`$:` for reactive statements)
-- ThemeToggle and ModeToggle are positioned fixed at top-right and top-left respectively
+- Components use Svelte 5 runes: `$derived()` for reactive computations
+- Access state via `.current` property (e.g., `theme.current`)
+- ThemeToggle and ModeToggle use modern `onclick` event syntax
 
 ### Styling Conventions
 
