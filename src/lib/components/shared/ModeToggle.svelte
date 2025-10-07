@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { currentMode } from "$lib/stores/mode";
+  import { currentMode } from "$lib/stores/mode.svelte";
 
-  $: isTerminal = $currentMode === "terminal";
+  let isTerminal = $derived(currentMode.current === "terminal");
 </script>
 
 <button
-  on:click={() => currentMode.toggle()}
+  onclick={() => currentMode.toggle()}
   class="w-fit p-3 rounded-lg
          bg-card border border-border
          hover:bg-accent transition-all duration-300"

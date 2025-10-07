@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { theme } from "$lib/stores/theme";
+  import { theme } from "$lib/stores/theme.svelte";
 
-  $: isDark = $theme === "dark";
+  let isDark = $derived(theme.current === "dark");
 </script>
 
 <button
-  on:click={() => theme.toggle()}
+  onclick={() => theme.toggle()}
   class="w-fit p-3 rounded-lg
          bg-card border border-border
          hover:bg-accent transition-all duration-300"

@@ -2,7 +2,7 @@
   import ThemeToggle from "$lib/components/shared/ThemeToggle.svelte";
   import ModeToggle from "$lib/components/shared/ModeToggle.svelte";
 
-  import { currentMode } from "$lib/stores/mode";
+  import { currentMode } from "$lib/stores/mode.svelte";
 </script>
 
 <div class="app flex justify-center items-center flex-col w-full p-3 gap-3">
@@ -11,7 +11,7 @@
     <ThemeToggle />
   </header>
 
-  {#if $currentMode === "static"}
+  {#if currentMode.current === "static"}
     <p>Static view</p>
   {:else}
     <p>Terminal view</p>
