@@ -5,9 +5,11 @@
   import { currentMode } from "$lib/stores/mode";
 </script>
 
-<div class="app flex justify-center align-middle">
-  <ThemeToggle />
-  <ModeToggle />
+<div class="app flex justify-center items-center flex-col w-full p-3 gap-3">
+  <header class="w-full flex justify-between items-center">
+    <ModeToggle />
+    <ThemeToggle />
+  </header>
 
   {#if $currentMode === "static"}
     <p>Static view</p>
@@ -18,7 +20,6 @@
 
 <style>
   .app {
-    min-height: 100vh;
     transition:
       background-color 0.3s ease,
       color 0.3s ease;

@@ -6,10 +6,9 @@
 
 <button
   on:click={() => theme.toggle()}
-  class="fixed top-4 right-4 z-50 p-3 rounded-lg
+  class="w-fit p-3 rounded-lg
          bg-card border border-border
-         hover:bg-accent transition-all duration-300
-         hover:scale-105 active:scale-95"
+         hover:bg-accent transition-all duration-300"
   aria-label="Toggle theme"
   title={isDark ? "Switch to light mode" : "Switch to dark mode"}
 >
