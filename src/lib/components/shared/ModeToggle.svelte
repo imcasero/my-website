@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { currentMode } from "../../stores/mode";
+  import { currentMode } from "$lib/stores/mode";
 
   $: isTerminal = $currentMode === "terminal";
 </script>

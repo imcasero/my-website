@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { theme } from "../../stores/theme";
+  import { theme } from "$lib/stores/theme";
 
   $: isDark = $theme === "dark";
 </script>

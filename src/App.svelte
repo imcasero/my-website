@@ -1,8 +1,8 @@
 <script lang="ts">
-  import ThemeToggle from "./lib/components/shared/ThemeToggle.svelte";
-  import ModeToggle from "./lib/components/shared/ModeToggle.svelte";
+  import ThemeToggle from "$lib/components/shared/ThemeToggle.svelte";
+  import ModeToggle from "$lib/components/shared/ModeToggle.svelte";
 
-  import { currentMode } from "./lib/stores/mode";
+  import { currentMode } from "$lib/stores/mode";
 </script>
 
 <div class="app flex justify-center align-middle">
