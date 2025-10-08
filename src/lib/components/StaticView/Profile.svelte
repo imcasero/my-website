@@ -5,19 +5,21 @@
 
 <Card>
   <div>
-    <Command text="whoami" />
-    <h1 class="text-4xl">
-      Diego Casero<span
-        class="font-bold animate-[pulse_0.8s_ease-in-out_infinite] opacity-0"
-      >
-        _
-      </span>
-    </h1>
+    <Command prompt="whoami">
+      <h1 class="text-4xl">
+        Diego Casero<span
+          class="font-bold animate-[pulse_0.8s_ease-in-out_infinite] opacity-0"
+        >
+          _
+        </span>
+      </h1>
+    </Command>
   </div>
   <p class="text-lg text-muted-foreground">@imcasero.dev</p>
 
   <div>
-    <Command text="cat ~/role.txt" />
-    <p class="text-lg">Software Developer</p>
+    <Command prompt="cat ~/role.txt">
+      <p class="text-lg">Software Developer</p>
+    </Command>
   </div>
 </Card>
