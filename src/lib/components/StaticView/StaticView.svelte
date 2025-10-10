@@ -2,6 +2,7 @@
   import About from "./About.svelte";
   import Profile from "./Profile.svelte";
   import Stats from "./Stats.svelte";
+  import TechStack from "./TechStack.svelte";
 </script>
 
 <section class="w-full mx-auto space-y-8 mt-12">
@@ -9,5 +10,6 @@
     <Profile />
     <About />
     <Stats />
+    <TechStack />
   </div>
 </section>
