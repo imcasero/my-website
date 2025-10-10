@@ -1,5 +1,6 @@
 <script lang="ts">
   import About from "./About.svelte";
+  import Contact from "./Contact.svelte";
   import Experience from "./Experience.svelte";
   import Profile from "./Profile.svelte";
   import Stats from "./Stats.svelte";
@@ -13,5 +14,6 @@
     <Stats />
     <TechStack />
     <Experience />
+    <Contact />
   </div>
 </section>
