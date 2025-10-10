@@ -20,7 +20,7 @@
   <h2 class="text-2xl">/tech-stack</h2>
   <div>
     <Command prompt="ls -la ~/tech-stack/">
-      <div class="flex flex-col gap-1 font-mono text-sm">
+      <div class="flex flex-col gap-2 font-mono text-sm">
         {#each techStack as tech}
           <div class="flex gap-3">
             <span class="text-muted-foreground w-28">drwxr-xr-x</span>
