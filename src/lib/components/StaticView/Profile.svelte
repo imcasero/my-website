@@ -5,7 +5,10 @@
 
 <Card>
   <div>
-    <Command prompt="whoami">
+    <div>
+      <p class="text-sm text-muted-foreground">
+        <span class="text-primary">$</span> whoami
+      </p>
       <h1 class="text-4xl">
         Diego Casero<span
           class="font-bold animate-[pulse_0.8s_ease-in-out_infinite] opacity-0"
@@ -13,7 +16,7 @@
           _
         </span>
       </h1>
-    </Command>
+    </div>
   </div>
   <p class="text-lg text-muted-foreground">@imcasero.dev</p>
 
