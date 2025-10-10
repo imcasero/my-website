@@ -14,5 +14,7 @@
       <span>{prompt}</span>
     </div>
   </div>
-  <div class="pl-4 border-l-2 border-primary/30">{@render children()}</div>
+  <div class="pl-4 border-l-1 ml-1 border-primary/30">
+    {@render children()}
+  </div>
 </div>
