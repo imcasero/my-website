@@ -58,9 +58,12 @@ export function resolvePath(
   currentPath: string,
   targetPath: string
 ): string | null {
-  // Si es ruta absoluta (empieza con ~), usar directamente
   if (targetPath.startsWith("~")) {
     return targetPath;
+  }
+
+  if (targetPath.startsWith("./")) {
+    targetPath = targetPath.substring(2);
   }
 
   // Si es ".." o "../", subir un nivel
@@ -71,8 +74,7 @@ export function resolvePath(
     return parts.join("/") || "~";
   }
 
-  // Si es ".", quedarse en el mismo
-  if (targetPath === ".") {
+  if (targetPath === "." || targetPath === "") {
     return currentPath;
   }
 
