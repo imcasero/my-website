@@ -44,7 +44,7 @@ const commands: Record<string, Command> = {
 
       return {
         type: "text",
-        content: `Available commands:\n\n${helpText}\n\nType 'help <command>' for more info.\n\nTips:\n  cat <file>           - View text files (cat about.txt)\n  sh <script.sh>       - Execute shell scripts (sh connect.sh)\n  ./<script.sh>        - Execute shell scripts (./connect.sh)`,
+        content: `Available commands:\n\n${helpText}\n\nType 'help <command>' for more info.\n\nTips:\n  cat <file>           - View text files (cat about.txt or cat ./about.txt)\n  cd <path>            - Change directory (cd projects or cd ./projects)\n  sh <script.sh>       - Execute shell scripts (sh connect.sh)\n  ./<script.sh>        - Execute shell scripts (./connect.sh)\n  ./                   - Refers to current directory`,
       };
     },
   },
@@ -365,8 +365,7 @@ export function executeCommand(input: string): CommandResult {
     };
   }
 
-  // Detectar si es un script con ./
-  if (trimmed.startsWith("./")) {
+  if (trimmed.startsWith("./") && trimmed.endsWith(".sh")) {
     return commands.sh.execute([trimmed]);
   }
 
