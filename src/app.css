@@ -40,18 +40,17 @@
 
   /* Terminal colors - Light theme */
   --terminal-bg: oklch(0.98 0 0);
-  --terminal-text: oklch(0.2 0.15 145);
-  --terminal-prompt: oklch(0.3 0.2 145);
+  --terminal-text: oklch(0.2 0 0);
+  --terminal-prompt: oklch(0.2 0 0);
   --terminal-error: oklch(0.5 0.22 25);
-  --terminal-success: oklch(0.4 0.2 145);
+  --terminal-success: oklch(0.2 0 0);
   --terminal-warning: oklch(0.5 0.18 85);
-  --terminal-comment: oklch(0.5 0.05 145);
-  --terminal-cursor: oklch(0.3 0.2 145);
+  --terminal-comment: oklch(0.5 0 0);
+  --terminal-cursor: oklch(0.2 0 0);
 
   /* Shared */
   --radius: 0.625rem;
-  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas",
-    monospace;
+  --font-mono: "Courier New", "IBM Plex Mono", "Courier", "Monaco", monospace;
   --font-sans: system-ui, -apple-system, sans-serif;
 }
 
@@ -92,13 +91,13 @@
 
   /* Terminal colors - Dark theme */
   --terminal-bg: oklch(0.05 0 0);
-  --terminal-text: oklch(0.9 0.18 145);
-  --terminal-prompt: oklch(0.9 0.18 145);
+  --terminal-text: oklch(0.9 0 0);
+  --terminal-prompt: oklch(0.9 0 0);
   --terminal-error: oklch(0.6 0.22 25);
-  --terminal-success: oklch(0.7 0.15 145);
+  --terminal-success: oklch(0.9 0 0);
   --terminal-warning: oklch(0.75 0.18 85);
-  --terminal-comment: oklch(0.5 0.05 145);
-  --terminal-cursor: oklch(0.9 0.18 145);
+  --terminal-comment: oklch(0.7 0 0);
+  --terminal-cursor: oklch(0.9 0 0);
 }
 
 @theme inline {
@@ -162,7 +161,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
   }
 
   /* Terminal animations */
