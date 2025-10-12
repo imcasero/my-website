@@ -15,10 +15,10 @@
   <span class="flex items-center gap-2">
     {#if isTerminal}
       <span>>_</span>
-      <span>Terminal</span>
+      <span>Static View</span>
     {:else}
       <span>⌘</span>
-      <span>Static</span>
+      <span>Terminal View</span>
     {/if}
   </span>
 </button>

@@ -2,6 +2,7 @@
   import ThemeToggle from "$lib/components/shared/ThemeToggle.svelte";
   import ModeToggle from "$lib/components/shared/ModeToggle.svelte";
   import StaticView from "$lib/components/StaticView/StaticView.svelte";
+  import Terminal from "$lib/components/TerminalView/Terminal.svelte";
 
   import { currentMode } from "$lib/stores/mode.svelte";
 </script>
@@ -15,7 +16,7 @@
   {#if currentMode.current === "static"}
     <StaticView />
   {:else}
-    <p>Terminal view</p>
+    <Terminal />
   {/if}
 </div>
 

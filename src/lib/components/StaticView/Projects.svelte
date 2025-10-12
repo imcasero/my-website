@@ -12,14 +12,16 @@
     },
     {
       name: "Karyo API",
-      description: "REST API for job application management with query capabilities",
+      description:
+        "REST API for job application management with query capabilities",
       tech: ["NestJS", "TypeScript", "Prisma ORM", "PostgreSQL"],
       repo: "https://github.com/imcasero/karyo-api",
       demo: null,
     },
     {
       name: "DevFinder",
-      description: "GitHub user search tool with profile exploration and recent searches",
+      description:
+        "GitHub user search tool with profile exploration and recent searches",
       tech: ["React", "TypeScript", "TailwindCSS"],
       repo: "https://github.com/imcasero/devfinder",
       demo: "https://devfinder.imcasero.dev/",
@@ -37,7 +39,7 @@
 <Card>
   <h2 class="text-2xl">/projects</h2>
   <div>
-    <Command prompt="curl https://api.imcasero.dev/projects">
+    <Command prompt="cat ~/projects/all.json">
       <div class="flex flex-col gap-4 font-mono text-sm">
         {#each projects as project}
           <div class="flex flex-col gap-2 border-l-2 border-primary/30 pl-3">
@@ -47,7 +49,9 @@
             <p class="text-muted-foreground">{project.description}</p>
             <div class="flex flex-wrap gap-2">
               {#each project.tech as tech}
-                <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                <span
+                  class="text-xs bg-primary/10 text-primary px-2 py-1 rounded"
+                >
                   {tech}
                 </span>
               {/each}
