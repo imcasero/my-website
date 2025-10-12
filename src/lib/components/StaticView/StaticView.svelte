@@ -3,6 +3,7 @@
   import Contact from "./Contact.svelte";
   import Experience from "./Experience.svelte";
   import Profile from "./Profile.svelte";
+  import Projects from "./Projects.svelte";
   import Stats from "./Stats.svelte";
   import TechStack from "./TechStack.svelte";
 </script>
@@ -14,6 +15,7 @@
     <Stats />
     <TechStack />
     <Experience />
+    <Projects />
     <Contact />
   </div>
 </section>
