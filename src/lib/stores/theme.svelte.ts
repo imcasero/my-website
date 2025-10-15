@@ -2,18 +2,11 @@ type Theme = "light" | "dark";
 
 const isBrowser = typeof window !== "undefined";
 
-const getSystemTheme = (): Theme => {
-  if (!isBrowser) return "dark";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-};
-
 const getInitialTheme = (): Theme => {
   if (!isBrowser) return "dark";
 
   const stored = localStorage.getItem("theme") as Theme | null;
-  return stored || getSystemTheme();
+  return stored || "dark";
 };
 
 const setThemeOnDocument = (newTheme: Theme) => {
