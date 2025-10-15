@@ -13,7 +13,7 @@ const getInitialTheme = (): Theme => {
   if (!isBrowser) return "dark";
 
   const stored = localStorage.getItem("theme") as Theme | null;
-  return stored || getSystemTheme();
+  return stored || "dark";
 };
 
 const setThemeOnDocument = (newTheme: Theme) => {
