@@ -50,7 +50,7 @@
 
   /* Shared */
   --radius: 0.625rem;
-  --font-mono: "Courier New", "IBM Plex Mono", "Courier", "Monaco", monospace;
+  --font-mono: "Space Mono", "Courier New", "Courier", "Monaco", monospace;
   --font-sans: system-ui, -apple-system, sans-serif;
 }
 
