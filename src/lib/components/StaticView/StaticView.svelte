@@ -4,7 +4,6 @@
   import Experience from "./Experience.svelte";
   import Profile from "./Profile.svelte";
   import Projects from "./Projects.svelte";
-  import Stats from "./Stats.svelte";
   import TechStack from "./TechStack.svelte";
 </script>
 
@@ -12,7 +11,6 @@
   <div class="w-full lg:w-1/2 mx-auto flex flex-col gap-4">
     <Profile />
     <About />
-    <Stats />
     <TechStack />
     <Experience />
     <Projects />
