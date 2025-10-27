@@ -1,47 +1,142 @@
-# Svelte + TS + Vite
+# 🚀 my-website (imcasero.dev)
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+Personal portfolio built with **Svelte 5**, **TypeScript**, **Vite**, and **Tailwind CSS v4**.
 
-## Recommended IDE Setup
+## ✨ Features
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+- 🎨 **Svelte 5 with Runes** - Using the latest Svelte 5 syntax (`$state`, `$derived`)
+- 🌓 **Dark/Light Theme** - Persistent theme system with system preference support
+- 💻 **Interactive Terminal View** - Functional terminal with custom commands
+- 📱 **Responsive Design** - Adapted to all devices
+- ⚡ **Vite** - Ultra-fast build tool
+- 🎨 **Tailwind CSS v4** - Custom theme system in OKLCH color space
+- 🧪 **Complete Testing** - Vitest with 119 tests and high coverage
 
-## Need an official Svelte framework?
+## 🛠️ Tech Stack
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+- [Svelte 5](https://svelte.dev/) - Reactive framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Vite](https://vitejs.dev/) - Build tool and dev server
+- [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS
+- [Vitest](https://vitest.dev/) - Testing framework
 
-## Technical considerations
+## 📦 Installation
 
-**Why use this over SvelteKit?**
+```bash
+# Install dependencies
+pnpm install
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+# Start development server
+pnpm dev
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+# Build for production
+pnpm build
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+# Preview build
+pnpm preview
 ```
+
+## 🧪 Testing
+
+```bash
+# Run tests in watch mode
+pnpm test
+
+# Run tests with visual UI
+pnpm test:ui
+
+# Run tests once
+pnpm test:run
+
+# Generate coverage report
+pnpm test:coverage
+```
+
+For more information about testing, check [TESTING.md](./TESTING.md).
+
+### 📊 Test Coverage
+
+- **119 tests** passing
+- **~90% coverage** on stores
+- **~94% coverage** on terminal logic
+- **100% coverage** on virtual filesystem
+
+## 📁 Project Structure
+
+```
+src/
+├── lib/
+│   ├── components/
+│   │   ├── shared/          # Reusable components
+│   │   ├── StaticView/      # Static portfolio view
+│   │   └── TerminalView/    # Interactive terminal view
+│   ├── stores/              # State management with Svelte 5 runes
+│   │   ├── theme.svelte.ts
+│   │   ├── mode.svelte.ts
+│   │   └── terminal.svelte.ts
+│   └── terminal/            # Terminal logic
+│       ├── commands.ts
+│       └── filesystem.ts
+├── test/
+│   └── setup.ts             # Test configuration
+├── App.svelte
+└── main.ts
+```
+
+## 🎯 Available Commands
+
+### Development
+- `pnpm dev` - Start development server
+- `pnpm build` - Generate production build
+- `pnpm preview` - Preview production build
+- `pnpm check` - Run Svelte and TypeScript type checking
+
+### Testing
+- `pnpm test` - Tests in watch mode
+- `pnpm test:ui` - Visual test interface
+- `pnpm test:run` - Run all tests once
+- `pnpm test:coverage` - Generate coverage report
+
+## 🌟 Terminal Features
+
+The interactive terminal includes the following commands:
+
+- `help` or `?` - Show help
+- `ls [path]` - List files and directories
+- `cd <path>` - Change directory
+- `pwd` - Show current directory
+- `cat <file>` - Display file contents
+- `sh <script.sh>` - Execute scripts
+- `clear` - Clear screen
+- `whoami` - User information
+- `history` - Command history
+- `banner` - Welcome banner
+
+### Navigation
+- `↑` / `↓` - Navigate through command history
+- `cd ..` - Go up one level
+- `./script.sh` - Execute scripts directly
+
+## 🎨 Theme System
+
+The project implements a theme system with:
+
+- **Persistence** in localStorage
+- **Synchronization** with system preferences
+- **CSS Variables** in OKLCH color space
+- **Separate themes** for UI and terminal
+
+## 📄 License
+
+This is a personal project without a specific license.
+
+## 👤 Author
+
+**Diego Casero** (@imcasero)
+
+- Portfolio: [imcasero.dev](https://imcasero.dev)
+- GitHub: [@imcasero](https://github.com/imcasero)
+
+---
+
+⭐ If you like this project, feel free to give it a star!
