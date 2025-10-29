@@ -8,13 +8,16 @@
   onclick={() => theme.toggle()}
   class="w-fit p-3 rounded-lg
          bg-card border border-border
-         hover:bg-accent transition-all duration-300"
-  aria-label="Toggle theme"
+         hover:bg-accent transition-all duration-300
+         focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+  aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+  aria-pressed={isDark}
   title={isDark ? "Switch to light mode" : "Switch to dark mode"}
 >
   {#if isDark}
     <svg
       class="w-5 h-5 text-foreground"
+      aria-hidden="true"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -29,6 +32,7 @@
   {:else}
     <svg
       class="w-5 h-5 text-foreground"
+      aria-hidden="true"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"

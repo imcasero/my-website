@@ -8,16 +8,18 @@
   onclick={() => currentMode.toggle()}
   class="w-fit p-3 rounded-lg
          bg-card border border-border
-         hover:bg-accent transition-all duration-300"
-  aria-label="Toggle mode"
-  title={isTerminal ? "Switch to static mode" : "Switch to terminal mode"}
+         hover:bg-accent transition-all duration-300
+         focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+  aria-label={isTerminal ? "Switch to static view" : "Switch to terminal view"}
+  aria-pressed={isTerminal}
+  title={isTerminal ? "Switch to static view" : "Switch to terminal view"}
 >
   <span class="flex items-center gap-2">
     {#if isTerminal}
-      <span>>_</span>
+      <span aria-hidden="true">>_</span>
       <span>Static View</span>
     {:else}
-      <span>⌘</span>
+      <span aria-hidden="true">⌘</span>
       <span>Terminal View</span>
     {/if}
   </span>

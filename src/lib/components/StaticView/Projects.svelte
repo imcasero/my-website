@@ -61,20 +61,54 @@
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                title="View {project.name} repository on GitHub (opens in new tab)"
+                aria-label="View {project.name} repository on GitHub (external link, opens in new tab)"
+                class="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1
+                       focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded"
               >
                 <span class="text-primary">→</span>
                 <span>repo</span>
+                <svg
+                  class="w-3.5 h-3.5 flex-shrink-0"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
               </a>
               {#if project.demo}
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                  title="View {project.name} live demo (opens in new tab)"
+                  aria-label="View {project.name} live demo (external link, opens in new tab)"
+                  class="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1
+                         focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded"
                 >
                   <span class="text-primary">→</span>
                   <span>demo</span>
+                  <svg
+                    class="w-3.5 h-3.5 flex-shrink-0"
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
                 </a>
               {/if}
             </div>
