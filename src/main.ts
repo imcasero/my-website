@@ -2,7 +2,7 @@ import { mount } from "svelte";
 import "./app.css";
 import App from "./App.svelte";
 import { inject } from "@vercel/analytics";
-import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 
 injectSpeedInsights();
 
