@@ -22,7 +22,7 @@
     <ThemeToggle />
   </header>
 
-  <main id="main-content" tabindex="-1">
+  <main id="main-content" tabindex="-1" class="w-full flex justify-center">
     {#if currentMode.current === "static"}
       <StaticView />
     {:else}

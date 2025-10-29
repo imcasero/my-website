@@ -60,7 +60,8 @@ Type 'help' or '?' to see available commands
 </script>
 
 <div
-  class="terminal-container flex flex-col h-[80vh] w-full max-w-5xl border border-border rounded-lg overflow-hidden bg-background"
+  class="terminal-container flex flex-col w-full max-w-5xl border border-border rounded-lg overflow-hidden bg-background"
+  style="height: 80vh; min-height: 500px; max-height: 800px;"
 >
   <div
     bind:this={terminalContainer}
