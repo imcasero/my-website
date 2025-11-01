@@ -23,7 +23,7 @@
       <div class="flex flex-col gap-2 font-mono text-sm">
         {#each techStack as tech}
           <div class="flex gap-3">
-            <span class="text-muted-foreground w-28">drwxr-xr-x</span>
+            <span class="text-muted-foreground w-28">-rw-r--r--</span>
             <span class="text-muted-foreground w-24">{tech.category}</span>
             <span>{tech.name}</span>
           </div>
