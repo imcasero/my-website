@@ -9,8 +9,8 @@
     <Command prompt="cat ~/about.txt">
       <div class="space-y-4">
         <p>
-          At 15, I discovered programming — and there was no turning back. It
-          was a field where learning never stops, and where every problem solved
+          At 15, I discovered programming — and there was no turning back. It is
+          a field where learning never stops, and where every problem solved
           reveals new ones to tackle. That constant evolution is what keeps me
           obsessed.
         </p>
@@ -19,8 +19,8 @@
           What drew me to the frontend was bridging technical complexity with
           user-facing simplicity — building interfaces that hide intricate logic
           behind intuitive experiences. Early in my career, solving problems
-          independently taught me to learn by reading others’ code and to code
-          for the next developer, not to prove that I’m clever.
+          independently by reading others’ code taught me importamt of coding
+          for the next developer and not to prove that I’m clever.
         </p>
 
         <p>
