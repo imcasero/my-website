@@ -17,39 +17,56 @@
 </script>
 
 <Card>
-  <h2 class="section-title">/tech-stack</h2>
-  <div>
-    <Command prompt="ls -la ~/tech-stack/">
-      <div class="flex flex-col gap-1.5 font-mono text-sm">
-        {#each techStack as tech}
-          <div class="tech-row flex gap-3 items-center">
-            <span class="perm">-rw-r--r--</span>
-            <span class="cat">{tech.category}</span>
-            <span class="tech-name">{tech.name}</span>
-          </div>
-        {/each}
-      </div>
-    </Command>
-  </div>
+  <h2 class="section-title">
+    <span class="indicator">●</span>/tech-stack
+  </h2>
+  <Command prompt="ls -la ~/tech-stack/">
+    <div class="flex flex-col gap-2 font-mono">
+      {#each techStack as tech}
+        <div class="tech-row">
+          <span class="perm">-rw-r--r--</span>
+          <span class="cat">{tech.category}</span>
+          <span class="tech-name">{tech.name}</span>
+        </div>
+      {/each}
+    </div>
+  </Command>
 </Card>
 
 <style>
   .section-title {
-    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    color: var(--terminal-prompt);
+    color: var(--foreground);
     letter-spacing: -0.01em;
+  }
+
+  .indicator {
+    color: var(--terminal-prompt);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .tech-row {
+    display: flex;
+    gap: 1.25rem;
+    align-items: baseline;
+    font-size: 0.875rem;
   }
 
   .perm {
     color: var(--terminal-comment);
     width: 7rem;
     flex-shrink: 0;
+    font-size: 0.8rem;
   }
 
   .cat {
     color: var(--terminal-warning);
-    width: 6rem;
+    width: 5.5rem;
     flex-shrink: 0;
   }
 

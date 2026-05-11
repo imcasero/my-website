@@ -5,31 +5,58 @@
 
 <Card>
   <div class="flex flex-col gap-1">
-    <p class="text-sm" style="color: var(--terminal-comment)">
-      <span class="dollar">$</span> whoami
+    <p class="cmd-label">
+      <span class="dollar">$</span>
+      <span class="cmd-name">whoami</span>
     </p>
-    <h1 class="text-4xl font-bold" style="color: var(--terminal-success)">
-      Diego Casero<span class="cursor">_</span>
-    </h1>
+    <h1 class="name">Diego Casero<span class="cursor">_</span></h1>
   </div>
-  <p class="text-sm" style="color: var(--terminal-warning)">@imcasero.dev</p>
+  <p class="handle">@imcasero.dev</p>
 
-  <div>
-    <Command prompt="cat ~/role.txt">
-      <p class="text-lg" style="color: var(--terminal-success)">Software Developer</p>
-    </Command>
-  </div>
+  <Command prompt="cat ~/role.txt">
+    <p class="role">Software Developer</p>
+  </Command>
 </Card>
 
 <style>
+  .cmd-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+  }
+
   .dollar {
     color: var(--terminal-prompt);
     font-weight: 700;
   }
 
-  .cursor {
+  .cmd-name {
+    color: var(--muted-foreground);
+  }
+
+  .name {
+    font-size: 2.5rem;
     font-weight: 700;
-    animation: cursor-blink 1s step-end infinite;
+    color: var(--terminal-success);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-top: 0.25rem;
+  }
+
+  .cursor {
     color: var(--terminal-prompt);
+    animation: cursor-blink 1s step-end infinite;
+  }
+
+  .handle {
+    font-size: 0.9rem;
+    color: var(--terminal-warning);
+  }
+
+  .role {
+    font-size: 1.1rem;
+    color: var(--terminal-success);
+    font-weight: 600;
   }
 </style>

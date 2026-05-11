@@ -17,19 +17,19 @@
   Skip to main content
 </a>
 
-<div class="app flex justify-center items-center flex-col w-full p-3 gap-3">
-  <header class="toolbar w-full flex justify-between items-center">
-    <div class="toolbar-left">
+<div class="app flex flex-col items-center w-full min-h-screen px-4 py-4 gap-4">
+  <div class="layout-container w-full">
+    <header class="toolbar flex justify-between items-center">
       <ModeToggle />
-    </div>
-    <div class="toolbar-right flex items-center gap-1.5">
-      <AccentPicker />
-      <div class="toolbar-divider"></div>
-      <ThemeToggle />
-    </div>
-  </header>
+      <div class="flex items-center gap-1.5">
+        <AccentPicker />
+        <div class="toolbar-divider"></div>
+        <ThemeToggle />
+      </div>
+    </header>
+  </div>
 
-  <main id="main-content" tabindex="-1" class="w-full flex justify-center">
+  <main id="main-content" tabindex="-1" class="layout-container w-full">
     {#if currentMode.current === "static"}
       <StaticView />
     {:else}
@@ -43,6 +43,12 @@
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
+  }
+
+  .layout-container {
+    max-width: 860px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .toolbar {

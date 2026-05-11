@@ -7,12 +7,12 @@
   let { prompt, children }: Props = $props();
 </script>
 
-<div class="cmd flex flex-col gap-2">
+<div class="cmd flex flex-col gap-3">
   <div class="cmd-line flex items-center gap-2 text-sm">
     <span class="dollar">$</span>
     <span class="cmd-text">{prompt}</span>
   </div>
-  <div class="cmd-output pl-4 border-l border-border/60 ml-1">
+  <div class="cmd-output">
     {@render children()}
   </div>
 </div>
@@ -25,12 +25,11 @@
   }
 
   .cmd-text {
-    color: var(--terminal-text, var(--foreground));
-    opacity: 0.7;
+    color: var(--muted-foreground);
+    font-size: 0.8rem;
   }
 
   .cmd-output {
-    border-left-color: color-mix(in oklch, var(--terminal-prompt) 25%, transparent);
-    transition: border-color 0.3s ease;
+    padding-left: 1rem;
   }
 </style>
