@@ -101,7 +101,7 @@
   }
 
   .project-desc {
-    color: var(--muted-foreground);
+    color: var(--foreground);
     line-height: 1.6;
     font-size: 0.82rem;
   }

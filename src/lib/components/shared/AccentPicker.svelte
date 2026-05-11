@@ -96,6 +96,14 @@
   .theme-btn {
     border-radius: 3px;
     letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .btn-prefix {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
   }
 
   .prompt-dollar {

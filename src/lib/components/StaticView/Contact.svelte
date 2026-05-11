@@ -92,7 +92,8 @@
     align-items: center;
     gap: 0.4rem;
     margin-left: 0.75rem;
-    color: var(--terminal-comment);
+    color: var(--foreground);
+    opacity: 0.7;
     text-decoration: none;
     font-size: 0.82rem;
     transition: color 0.15s ease;
