@@ -6,6 +6,9 @@
     --prompt-h: 210;
     --success-h: 190;
     --warning-h: 85;
+    --prompt-c: 0.18;
+    --success-c: 0.18;
+    --warning-c: 0.18;
 }
 
 :root,
@@ -47,12 +50,12 @@
     /* Terminal colors - Light theme */
     --terminal-bg: oklch(0.97 0 0);
     --terminal-text: oklch(0.18 0 0);
-    --terminal-prompt: oklch(0.42 0.18 var(--prompt-h));
+    --terminal-prompt: oklch(0.42 var(--prompt-c) var(--prompt-h));
     --terminal-error: oklch(0.5 0.22 25);
-    --terminal-success: oklch(0.42 0.18 var(--success-h));
-    --terminal-warning: oklch(0.5 0.18 var(--warning-h));
+    --terminal-success: oklch(0.42 var(--success-c) var(--success-h));
+    --terminal-warning: oklch(0.5 var(--warning-c) var(--warning-h));
     --terminal-comment: oklch(0.55 0 0);
-    --terminal-cursor: oklch(0.42 0.18 var(--prompt-h));
+    --terminal-cursor: oklch(0.42 var(--prompt-c) var(--prompt-h));
 
     /* Shared */
     --radius: 0.625rem;
@@ -98,12 +101,12 @@
     /* Terminal colors - Dark theme */
     --terminal-bg: oklch(0.08 0 0);
     --terminal-text: oklch(0.88 0 0);
-    --terminal-prompt: oklch(0.72 0.18 var(--prompt-h));
+    --terminal-prompt: oklch(0.82 var(--prompt-c) var(--prompt-h));
     --terminal-error: oklch(0.65 0.22 25);
-    --terminal-success: oklch(0.72 0.18 var(--success-h));
-    --terminal-warning: oklch(0.78 0.18 var(--warning-h));
+    --terminal-success: oklch(0.72 var(--success-c) var(--success-h));
+    --terminal-warning: oklch(0.78 var(--warning-c) var(--warning-h));
     --terminal-comment: oklch(0.55 0 0);
-    --terminal-cursor: oklch(0.72 0.18 var(--prompt-h));
+    --terminal-cursor: oklch(0.82 var(--prompt-c) var(--prompt-h));
 }
 
 @theme inline {

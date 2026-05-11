@@ -1,6 +1,7 @@
 const isBrowser = typeof window !== "undefined";
 
 export type ThemeName =
+  | "mono"
   | "ocean"
   | "dracula"
   | "monokai"
@@ -16,21 +17,34 @@ export type ThemePreset = {
   promptHue: number;
   successHue: number;
   warningHue: number;
+  promptChroma: number;
+  successChroma: number;
+  warningChroma: number;
   swatches: [string, string, string];
 };
 
 export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
+  mono: {
+    label: "Mono",
+    hue: 0,
+    promptHue: 0,
+    successHue: 0,
+    warningHue: 0,
+    promptChroma: 0,
+    successChroma: 0,
+    warningChroma: 0,
+    swatches: ["oklch(0.85 0 0)", "oklch(0.6 0 0)", "oklch(0.4 0 0)"],
+  },
   ocean: {
     label: "Ocean",
     hue: 210,
     promptHue: 210,
     successHue: 190,
     warningHue: 85,
-    swatches: [
-      "oklch(0.65 0.2 210)",
-      "oklch(0.7 0.18 190)",
-      "oklch(0.75 0.18 85)",
-    ],
+    promptChroma: 0.18,
+    successChroma: 0.18,
+    warningChroma: 0.18,
+    swatches: ["oklch(0.65 0.2 210)", "oklch(0.7 0.18 190)", "oklch(0.75 0.18 85)"],
   },
   dracula: {
     label: "Dracula",
@@ -38,11 +52,10 @@ export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
     promptHue: 280,
     successHue: 135,
     warningHue: 60,
-    swatches: [
-      "oklch(0.65 0.22 280)",
-      "oklch(0.7 0.22 330)",
-      "oklch(0.7 0.2 135)",
-    ],
+    promptChroma: 0.18,
+    successChroma: 0.18,
+    warningChroma: 0.18,
+    swatches: ["oklch(0.65 0.22 280)", "oklch(0.7 0.22 330)", "oklch(0.7 0.2 135)"],
   },
   monokai: {
     label: "Monokai",
@@ -50,11 +63,10 @@ export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
     promptHue: 55,
     successHue: 130,
     warningHue: 330,
-    swatches: [
-      "oklch(0.75 0.2 55)",
-      "oklch(0.7 0.2 130)",
-      "oklch(0.7 0.22 330)",
-    ],
+    promptChroma: 0.18,
+    successChroma: 0.18,
+    warningChroma: 0.18,
+    swatches: ["oklch(0.75 0.2 55)", "oklch(0.7 0.2 130)", "oklch(0.7 0.22 330)"],
   },
   nord: {
     label: "Nord",
@@ -62,11 +74,10 @@ export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
     promptHue: 218,
     successHue: 100,
     warningHue: 40,
-    swatches: [
-      "oklch(0.62 0.14 218)",
-      "oklch(0.72 0.12 100)",
-      "oklch(0.75 0.14 40)",
-    ],
+    promptChroma: 0.14,
+    successChroma: 0.12,
+    warningChroma: 0.14,
+    swatches: ["oklch(0.62 0.14 218)", "oklch(0.72 0.12 100)", "oklch(0.75 0.14 40)"],
   },
   solarized: {
     label: "Solarized",
@@ -74,11 +85,10 @@ export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
     promptHue: 195,
     successHue: 145,
     warningHue: 45,
-    swatches: [
-      "oklch(0.62 0.16 195)",
-      "oklch(0.68 0.15 145)",
-      "oklch(0.78 0.18 45)",
-    ],
+    promptChroma: 0.16,
+    successChroma: 0.15,
+    warningChroma: 0.18,
+    swatches: ["oklch(0.62 0.16 195)", "oklch(0.68 0.15 145)", "oklch(0.78 0.18 45)"],
   },
   catppuccin: {
     label: "Catppuccin",
@@ -86,11 +96,10 @@ export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
     promptHue: 302,
     successHue: 155,
     warningHue: 35,
-    swatches: [
-      "oklch(0.62 0.18 302)",
-      "oklch(0.72 0.16 155)",
-      "oklch(0.78 0.18 35)",
-    ],
+    promptChroma: 0.18,
+    successChroma: 0.16,
+    warningChroma: 0.18,
+    swatches: ["oklch(0.62 0.18 302)", "oklch(0.72 0.16 155)", "oklch(0.78 0.18 35)"],
   },
   gruvbox: {
     label: "Gruvbox",
@@ -98,11 +107,10 @@ export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
     promptHue: 85,
     successHue: 130,
     warningHue: 30,
-    swatches: [
-      "oklch(0.72 0.18 35)",
-      "oklch(0.75 0.15 85)",
-      "oklch(0.68 0.16 130)",
-    ],
+    promptChroma: 0.18,
+    successChroma: 0.15,
+    warningChroma: 0.16,
+    swatches: ["oklch(0.72 0.18 35)", "oklch(0.75 0.15 85)", "oklch(0.68 0.16 130)"],
   },
   "rose-pine": {
     label: "Rose Pine",
@@ -110,15 +118,14 @@ export const THEME_PRESETS: Record<ThemeName, ThemePreset> = {
     promptHue: 340,
     successHue: 145,
     warningHue: 40,
-    swatches: [
-      "oklch(0.62 0.18 340)",
-      "oklch(0.68 0.16 145)",
-      "oklch(0.75 0.16 40)",
-    ],
+    promptChroma: 0.18,
+    successChroma: 0.16,
+    warningChroma: 0.16,
+    swatches: ["oklch(0.62 0.18 340)", "oklch(0.68 0.16 145)", "oklch(0.75 0.16 40)"],
   },
 };
 
-const DEFAULT_THEME: ThemeName = "ocean";
+const DEFAULT_THEME: ThemeName = "mono";
 
 const getInitialTheme = (): ThemeName => {
   if (!isBrowser) return DEFAULT_THEME;
@@ -128,12 +135,15 @@ const getInitialTheme = (): ThemeName => {
 
 const applyTheme = (name: ThemeName) => {
   if (!isBrowser) return;
-  const preset = THEME_PRESETS[name];
+  const p = THEME_PRESETS[name];
   const root = document.documentElement;
-  root.style.setProperty("--accent-h", String(preset.hue));
-  root.style.setProperty("--prompt-h", String(preset.promptHue));
-  root.style.setProperty("--success-h", String(preset.successHue));
-  root.style.setProperty("--warning-h", String(preset.warningHue));
+  root.style.setProperty("--accent-h", String(p.hue));
+  root.style.setProperty("--prompt-h", String(p.promptHue));
+  root.style.setProperty("--success-h", String(p.successHue));
+  root.style.setProperty("--warning-h", String(p.warningHue));
+  root.style.setProperty("--prompt-c", String(p.promptChroma));
+  root.style.setProperty("--success-c", String(p.successChroma));
+  root.style.setProperty("--warning-c", String(p.warningChroma));
   localStorage.setItem("accent", name);
 };
 
@@ -157,6 +167,5 @@ function createAccentState() {
 
 export const accent = createAccentState();
 
-// Backward-compat aliases
 export type AccentName = ThemeName;
 export const ACCENT_PRESETS = THEME_PRESETS;
