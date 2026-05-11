@@ -19,9 +19,11 @@
 
 <div class="app flex flex-col items-center w-full min-h-screen px-4 py-4 gap-4">
   <div class="layout-container w-full">
-    <header class="toolbar flex justify-between items-center">
-      <ModeToggle />
-      <div class="flex items-center gap-1.5">
+    <header class="toolbar flex justify-between items-center gap-2">
+      <div class="flex-shrink-0">
+        <ModeToggle />
+      </div>
+      <div class="flex items-center gap-1.5 min-w-0 flex-shrink-0">
         <AccentPicker />
         <div class="toolbar-divider"></div>
         <ThemeToggle />

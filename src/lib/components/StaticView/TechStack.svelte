@@ -21,7 +21,7 @@
     <span class="indicator">●</span>/tech-stack
   </h2>
   <Command prompt="ls -la ~/tech-stack/">
-    <div class="flex flex-col gap-2 font-mono">
+    <div class="stack-list">
       {#each techStack as tech}
         <div class="tech-row">
           <span class="perm">-rw-r--r--</span>
@@ -50,28 +50,56 @@
     flex-shrink: 0;
   }
 
+  .stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    overflow-x: hidden;
+  }
+
   .tech-row {
     display: flex;
-    gap: 1.25rem;
     align-items: baseline;
-    font-size: 0.875rem;
+    gap: 0.75rem;
+    min-width: 0;
   }
 
   .perm {
     color: var(--terminal-comment);
-    width: 7rem;
+    font-size: 0.75rem;
     flex-shrink: 0;
-    font-size: 0.8rem;
+    white-space: nowrap;
   }
 
   .cat {
     color: var(--terminal-warning);
-    width: 5.5rem;
+    width: 5rem;
     flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.82rem;
   }
 
   .tech-name {
     color: var(--terminal-success);
     font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ≤ 480px: ocultar perm, reducir cat */
+  @media (max-width: 480px) {
+    .perm {
+      display: none;
+    }
+
+    .cat {
+      width: 4.5rem;
+      font-size: 0.78rem;
+    }
+
+    .stack-list {
+      font-size: 0.82rem;
+    }
   }
 </style>

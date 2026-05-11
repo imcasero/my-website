@@ -6,17 +6,16 @@
 
 <button
   onclick={() => currentMode.toggle()}
-  class="cmd-btn flex items-center gap-2 px-3 py-1.5 font-mono text-xs
-         border border-border bg-card text-foreground
-         hover:border-primary transition-colors duration-150
-         focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+  class="cmd-btn"
   aria-label={isTerminal ? "Switch to static view" : "Switch to terminal view"}
   aria-pressed={isTerminal}
   title={isTerminal ? "Switch to static view" : "Switch to terminal view"}
 >
-  <span class="dollar">$</span>
-  <span class="text-muted-foreground">view</span>
-  <span class="separator">:</span>
+  <span class="prefix">
+    <span class="dollar">$</span>
+    <span class="label">view</span>
+    <span class="sep">:</span>
+  </span>
   {#if isTerminal}
     <span class="icon">&gt;_</span>
     <span class="value">terminal</span>
@@ -28,9 +27,30 @@
 
 <style>
   .cmd-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.375rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
     border-radius: 3px;
-    letter-spacing: 0.02em;
+    cursor: pointer;
     white-space: nowrap;
+    transition: border-color 0.15s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .cmd-btn:hover {
+    border-color: var(--terminal-prompt);
+  }
+
+  .cmd-btn:focus {
+    outline: none;
+    border-color: var(--terminal-prompt);
+    box-shadow: 0 0 0 1px var(--terminal-prompt);
   }
 
   .dollar {
@@ -38,9 +58,12 @@
     font-weight: 700;
   }
 
-  .separator {
+  .label {
     color: var(--muted-foreground);
-    margin: 0 -2px;
+  }
+
+  .sep {
+    color: var(--muted-foreground);
   }
 
   .icon {
@@ -51,5 +74,11 @@
   .value {
     color: var(--terminal-success);
     font-weight: 700;
+  }
+
+  @media (max-width: 540px) {
+    .prefix {
+      display: none;
+    }
   }
 </style>

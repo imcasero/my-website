@@ -29,9 +29,11 @@
     aria-expanded={open}
     aria-haspopup="listbox"
   >
-    <span class="prompt-dollar">$</span>
-    <span class="text-muted-foreground">theme</span>
-    <span class="separator">:</span>
+    <span class="btn-prefix">
+      <span class="prompt-dollar">$</span>
+      <span class="text-muted-foreground">theme</span>
+      <span class="separator">:</span>
+    </span>
     <span class="theme-name">{currentPreset.label}</span>
     <span class="swatches">
       {#each currentPreset.swatches as swatch}
@@ -155,5 +157,17 @@
 
   .option--selected {
     background-color: color-mix(in oklch, var(--primary) 8%, transparent);
+  }
+
+  @media (max-width: 540px) {
+    .btn-prefix {
+      display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .theme-name {
+      display: none;
+    }
   }
 </style>
