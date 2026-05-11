@@ -33,7 +33,7 @@
 </script>
 
 {#snippet CaixaBankDescription()}
-  <div class="space-y-3">
+  <div class="space-y-3 text-sm">
     <p>
       Build internal tools serving 5,000+ daily users—complex forms with
       dependent field logic, multi-step validation, and state management using
@@ -41,112 +41,68 @@
       microfrontend architecture and custom component libraries.
     </p>
     <div>
-      <p class="text-primary mb-2"><span class="text-muted-foreground">##</span> Impact:</p>
-      <ul class="space-y-1 ml-4">
-        <li>
-          <span class="text-primary">→</span> Introduced bi-weekly coffee breaks for team cohesion and knowledge
-          sharing
-        </li>
-        <li>
-          <span class="text-primary">→</span> Actively participated in Agile adoption: retrospectives, sprint
-          planning improvements, and team collaboration initiatives
-        </li>
-        <li><span class="text-primary">→</span> Delivered production features for critical automation workflows</li>
-        <li>
-          <span class="text-primary">→</span> Reduced key processes from months to days through systematic
-          refactoring
-        </li>
-        <li><span class="text-primary">→</span> Established testing patterns for complex form validation logic</li>
-        <li>
-          <span class="text-primary">→</span> Regular participant in code reviews and architectural discussions
-        </li>
+      <p class="impact-label"><span class="comment">##</span> Impact:</p>
+      <ul class="space-y-1 ml-4 mt-1">
+        <li><span class="arrow">→</span> Introduced bi-weekly coffee breaks for team cohesion and knowledge sharing</li>
+        <li><span class="arrow">→</span> Actively participated in Agile adoption: retrospectives, sprint planning improvements, and team collaboration initiatives</li>
+        <li><span class="arrow">→</span> Delivered production features for critical automation workflows</li>
+        <li><span class="arrow">→</span> Reduced key processes from months to days through systematic refactoring</li>
+        <li><span class="arrow">→</span> Established testing patterns for complex form validation logic</li>
+        <li><span class="arrow">→</span> Regular participant in code reviews and architectural discussions</li>
       </ul>
     </div>
-
-    <p class="text-sm">
-      <span class="text-primary">$</span> <span class="text-muted-foreground">stack:</span> React, TypeScript, Formik,
-      CSS Modules, Jest, Microfrontends, Scrum
-    </p>
+    <p class="stack-line"><span class="dollar">$</span> <span class="comment">stack:</span> React, TypeScript, Formik, CSS Modules, Jest, Microfrontends, Scrum</p>
   </div>
 {/snippet}
 
 {#snippet GlobantDescription()}
-  <div class="space-y-3">
+  <div class="space-y-3 text-sm">
     <p>
       Joined specialized training program for Iberia's digital transformation.
       Worked on Customer Experience team handling pre/post-purchase flows on
       public website. Rapidly grew from junior to team's React reference.
     </p>
-
     <div>
-      <p class="text-primary mb-2"><span class="text-muted-foreground">##</span> Impact:</p>
-      <ul class="space-y-1 ml-4">
-        <li>
-          <span class="text-primary">→</span> Drove 30% reduction in production bugs through systematic clean code
-          practices and testing
-        </li>
-        <li>
-          <span class="text-primary">→</span> Led React adoption: built company's first React web component and
-          established reusable component library
-        </li>
-        <li>
-          <span class="text-primary">→</span> Developed comprehensive POC exploring hexagonal architecture patterns
-          for complex frontend migration
-        </li>
-        <li>
-          <span class="text-primary">→</span> Became primary code reviewer for React implementations and active
-          participant in architectural decisions
-        </li>
-        <li>
-          <span class="text-primary">→</span> Collaborated with cloud team on AWS deployment pipeline (S3,
-          CloudFront)
-        </li>
-        <li>
-          <span class="text-primary">→</span> Improved performance and test coverage across legacy Angular (1.x, 2+)
-          codebase
-        </li>
+      <p class="impact-label"><span class="comment">##</span> Impact:</p>
+      <ul class="space-y-1 ml-4 mt-1">
+        <li><span class="arrow">→</span> Drove 30% reduction in production bugs through systematic clean code practices and testing</li>
+        <li><span class="arrow">→</span> Led React adoption: built company's first React web component and established reusable component library</li>
+        <li><span class="arrow">→</span> Developed comprehensive POC exploring hexagonal architecture patterns for complex frontend migration</li>
+        <li><span class="arrow">→</span> Became primary code reviewer for React implementations and active participant in architectural decisions</li>
+        <li><span class="arrow">→</span> Collaborated with cloud team on AWS deployment pipeline (S3, CloudFront)</li>
+        <li><span class="arrow">→</span> Improved performance and test coverage across legacy Angular (1.x, 2+) codebase</li>
       </ul>
     </div>
-
-    <p class="text-sm">
-      <span class="text-primary">$</span> <span class="text-muted-foreground">stack:</span> React, Angular, TypeScript,
-      SASS, Jest, Web Components, AWS, GitLab
-    </p>
+    <p class="stack-line"><span class="dollar">$</span> <span class="comment">stack:</span> React, Angular, TypeScript, SASS, Jest, Web Components, AWS, GitLab</p>
   </div>
 {/snippet}
 
 {#snippet InetumDescription()}
-  <div class="space-y-3">
+  <div class="space-y-3 text-sm">
     <p>
       Contributed to digital services for Spain's Land Registry public portal.
       Proactively proposed and delivered complete landing page redesign—created
       wireframes in Figma and implemented using HTML, CSS, and vanilla
       JavaScript. Gained exposure to legacy .NET backend systems (VB/C#).
     </p>
-
-    <p class="text-sm">
-      <span class="text-primary">$</span> <span class="text-muted-foreground">stack:</span> HTML, CSS, JavaScript, .NET
-      (VB, C#), Figma
-    </p>
+    <p class="stack-line"><span class="dollar">$</span> <span class="comment">stack:</span> HTML, CSS, JavaScript, .NET (VB, C#), Figma</p>
   </div>
 {/snippet}
 
 <Card>
-  <h2 class="text-2xl">/experience</h2>
+  <h2 class="section-title">/experience</h2>
   <div>
     <Command prompt="cat ~/work-history.log">
-      <div class="flex flex-col gap-4 font-mono text-base">
+      <div class="flex flex-col gap-5 font-mono">
         {#each experiences as exp}
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2">
-              <span class="text-primary">{exp.period}</span>
-              <span class="text-muted-foreground">→</span>
-              <span class="text-foreground font-semibold">{exp.position}</span>
+          <div class="exp-entry flex flex-col gap-1.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="period">{exp.period}</span>
+              <span class="sep">→</span>
+              <span class="position">{exp.position}</span>
             </div>
-            <div class="text-muted-foreground">
-              @{exp.company}
-            </div>
-            <div class="mt-2 opacity-90">
+            <div class="company">@{exp.company}</div>
+            <div class="mt-1.5 exp-body">
               {@render exp.description()}
             </div>
           </div>
@@ -155,3 +111,72 @@
     </Command>
   </div>
 </Card>
+
+<style>
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--terminal-prompt);
+    letter-spacing: -0.01em;
+  }
+
+  .exp-entry {
+    padding-left: 0.75rem;
+    border-left: 2px solid color-mix(in oklch, var(--terminal-warning) 30%, transparent);
+    transition: border-color 0.3s ease;
+  }
+
+  .period {
+    color: var(--terminal-warning);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  .sep {
+    color: var(--terminal-comment);
+  }
+
+  .position {
+    color: var(--terminal-success);
+    font-weight: 700;
+  }
+
+  .company {
+    color: var(--terminal-prompt);
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  .exp-body {
+    opacity: 0.9;
+  }
+
+  /* Snippet internals */
+  :global(.impact-label) {
+    color: var(--terminal-prompt);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  :global(.comment) {
+    color: var(--terminal-comment);
+  }
+
+  :global(.arrow) {
+    color: var(--terminal-success);
+    margin-right: 0.375rem;
+    font-weight: 700;
+  }
+
+  :global(.dollar) {
+    color: var(--terminal-prompt);
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+
+  :global(.stack-line) {
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+    margin-top: 0.25rem;
+  }
+</style>

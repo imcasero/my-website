@@ -17,18 +17,44 @@
 </script>
 
 <Card>
-  <h2 class="text-2xl">/tech-stack</h2>
+  <h2 class="section-title">/tech-stack</h2>
   <div>
     <Command prompt="ls -la ~/tech-stack/">
-      <div class="flex flex-col gap-2 font-mono text-sm">
+      <div class="flex flex-col gap-1.5 font-mono text-sm">
         {#each techStack as tech}
-          <div class="flex gap-3">
-            <span class="text-muted-foreground w-28">-rw-r--r--</span>
-            <span class="text-muted-foreground w-24">{tech.category}</span>
-            <span>{tech.name}</span>
+          <div class="tech-row flex gap-3 items-center">
+            <span class="perm">-rw-r--r--</span>
+            <span class="cat">{tech.category}</span>
+            <span class="tech-name">{tech.name}</span>
           </div>
         {/each}
       </div>
     </Command>
   </div>
 </Card>
+
+<style>
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--terminal-prompt);
+    letter-spacing: -0.01em;
+  }
+
+  .perm {
+    color: var(--terminal-comment);
+    width: 7rem;
+    flex-shrink: 0;
+  }
+
+  .cat {
+    color: var(--terminal-warning);
+    width: 6rem;
+    flex-shrink: 0;
+  }
+
+  .tech-name {
+    color: var(--terminal-success);
+    font-weight: 700;
+  }
+</style>

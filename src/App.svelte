@@ -1,6 +1,7 @@
 <script lang="ts">
   import ThemeToggle from "$lib/components/shared/ThemeToggle.svelte";
   import ModeToggle from "$lib/components/shared/ModeToggle.svelte";
+  import AccentPicker from "$lib/components/shared/AccentPicker.svelte";
   import StaticView from "$lib/components/StaticView/StaticView.svelte";
   import Terminal from "$lib/components/TerminalView/Terminal.svelte";
 
@@ -17,9 +18,15 @@
 </a>
 
 <div class="app flex justify-center items-center flex-col w-full p-3 gap-3">
-  <header class="w-full flex justify-between items-center">
-    <ModeToggle />
-    <ThemeToggle />
+  <header class="toolbar w-full flex justify-between items-center">
+    <div class="toolbar-left">
+      <ModeToggle />
+    </div>
+    <div class="toolbar-right flex items-center gap-1.5">
+      <AccentPicker />
+      <div class="toolbar-divider"></div>
+      <ThemeToggle />
+    </div>
   </header>
 
   <main id="main-content" tabindex="-1" class="w-full flex justify-center">
@@ -36,5 +43,17 @@
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
+  }
+
+  .toolbar {
+    font-family: var(--font-mono);
+  }
+
+  .toolbar-divider {
+    width: 1px;
+    height: 18px;
+    background: var(--border);
+    opacity: 0.6;
+    margin: 0 2px;
   }
 </style>
