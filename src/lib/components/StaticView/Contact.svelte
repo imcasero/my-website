@@ -83,7 +83,7 @@
   }
 
   .label {
-    color: var(--terminal-success);
+    color: var(--primary);
     font-weight: 600;
   }
 

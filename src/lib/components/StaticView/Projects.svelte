@@ -116,9 +116,9 @@
     font-size: 0.72rem;
     padding: 0.15rem 0.55rem;
     border-radius: 3px;
-    background-color: color-mix(in oklch, var(--terminal-success) 10%, transparent);
-    color: var(--terminal-success);
-    border: 1px solid color-mix(in oklch, var(--terminal-success) 22%, transparent);
+    background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+    color: var(--primary);
+    border: 1px solid color-mix(in oklch, var(--primary) 22%, transparent);
     font-weight: 600;
     letter-spacing: 0.02em;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;

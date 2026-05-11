@@ -38,7 +38,7 @@
   .name {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--terminal-success);
+    color: var(--primary);
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-top: 0.25rem;
@@ -56,7 +56,7 @@
 
   .role {
     font-size: 1.1rem;
-    color: var(--terminal-success);
+    color: var(--primary);
     font-weight: 600;
   }
 </style>

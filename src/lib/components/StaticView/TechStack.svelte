@@ -82,7 +82,7 @@
   }
 
   .tech-name {
-    color: var(--terminal-success);
+    color: var(--primary);
     font-weight: 700;
     white-space: nowrap;
   }
