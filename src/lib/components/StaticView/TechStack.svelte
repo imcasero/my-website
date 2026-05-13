@@ -5,14 +5,11 @@
   const techStack = [
     { name: "React", category: "frontend" },
     { name: "Next.js", category: "frontend" },
-    { name: "Angular", category: "frontend" },
     { name: "TypeScript", category: "language" },
-    { name: "Nest.js", category: "backend" },
-    { name: "Node.js", category: "backend" },
+    { name: "Tailwind CSS", category: "frontend" },
+    { name: "NestJS", category: "backend" },
     { name: "PostgreSQL", category: "database" },
     { name: "Docker", category: "devops" },
-    { name: "Tailwind CSS", category: "frontend" },
-    { name: "Git", category: "tools" },
   ];
 </script>
 
