@@ -1,142 +1,65 @@
-# 🚀 my-website (imcasero.dev)
+<div align="center">
 
-Personal portfolio built with **Svelte 5**, **TypeScript**, **Vite**, and **Tailwind CSS v4**.
+# 🌐 imcasero.dev
 
-## ✨ Features
+My personal portfolio — a minimal, themeable site with a static view **and** an interactive terminal mode.
 
-- 🎨 **Svelte 5 with Runes** - Using the latest Svelte 5 syntax (`$state`, `$derived`)
-- 🌓 **Dark/Light Theme** - Persistent theme system with system preference support
-- 💻 **Interactive Terminal View** - Functional terminal with custom commands
-- 📱 **Responsive Design** - Adapted to all devices
-- ⚡ **Vite** - Ultra-fast build tool
-- 🎨 **Tailwind CSS v4** - Custom theme system in OKLCH color space
-- 🧪 **Complete Testing** - Vitest with 119 tests and high coverage
+[![Svelte](https://img.shields.io/badge/Svelte_5-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://svelte.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-## 🛠️ Tech Stack
+[**Visit the site →**](https://imcasero.dev)
 
-- [Svelte 5](https://svelte.dev/) - Reactive framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Vite](https://vitejs.dev/) - Build tool and dev server
-- [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS
-- [Vitest](https://vitest.dev/) - Testing framework
-
-## 📦 Installation
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Preview build
-pnpm preview
-```
-
-## 🧪 Testing
-
-```bash
-# Run tests in watch mode
-pnpm test
-
-# Run tests with visual UI
-pnpm test:ui
-
-# Run tests once
-pnpm test:run
-
-# Generate coverage report
-pnpm test:coverage
-```
-
-For more information about testing, check [TESTING.md](./TESTING.md).
-
-### 📊 Test Coverage
-
-- **119 tests** passing
-- **~90% coverage** on stores
-- **~94% coverage** on terminal logic
-- **100% coverage** on virtual filesystem
-
-## 📁 Project Structure
-
-```
-src/
-├── lib/
-│   ├── components/
-│   │   ├── shared/          # Reusable components
-│   │   ├── StaticView/      # Static portfolio view
-│   │   └── TerminalView/    # Interactive terminal view
-│   ├── stores/              # State management with Svelte 5 runes
-│   │   ├── theme.svelte.ts
-│   │   ├── mode.svelte.ts
-│   │   └── terminal.svelte.ts
-│   └── terminal/            # Terminal logic
-│       ├── commands.ts
-│       └── filesystem.ts
-├── test/
-│   └── setup.ts             # Test configuration
-├── App.svelte
-└── main.ts
-```
-
-## 🎯 Available Commands
-
-### Development
-- `pnpm dev` - Start development server
-- `pnpm build` - Generate production build
-- `pnpm preview` - Preview production build
-- `pnpm check` - Run Svelte and TypeScript type checking
-
-### Testing
-- `pnpm test` - Tests in watch mode
-- `pnpm test:ui` - Visual test interface
-- `pnpm test:run` - Run all tests once
-- `pnpm test:coverage` - Generate coverage report
-
-## 🌟 Terminal Features
-
-The interactive terminal includes the following commands:
-
-- `help` or `?` - Show help
-- `ls [path]` - List files and directories
-- `cd <path>` - Change directory
-- `pwd` - Show current directory
-- `cat <file>` - Display file contents
-- `sh <script.sh>` - Execute scripts
-- `clear` - Clear screen
-- `whoami` - User information
-- `history` - Command history
-- `banner` - Welcome banner
-
-### Navigation
-- `↑` / `↓` - Navigate through command history
-- `cd ..` - Go up one level
-- `./script.sh` - Execute scripts directly
-
-## 🎨 Theme System
-
-The project implements a theme system with:
-
-- **Persistence** in localStorage
-- **Synchronization** with system preferences
-- **CSS Variables** in OKLCH color space
-- **Separate themes** for UI and terminal
-
-## 📄 License
-
-This is a personal project without a specific license.
-
-## 👤 Author
-
-**Diego Casero** (@imcasero)
-
-- Portfolio: [imcasero.dev](https://imcasero.dev)
-- GitHub: [@imcasero](https://github.com/imcasero)
+</div>
 
 ---
 
-⭐ If you like this project, feel free to give it a star!
+<p align="center">
+  <img src="./public/portfolio.png" alt="imcasero.dev preview" width="100%" />
+</p>
+
+---
+
+## ✨ Highlights
+
+- 🌓 **Light / Dark mode** with system preference sync
+- 🎭 **9 custom accent themes** — Mono, Ocean, Dracula, Monokai, Nord, Solarized, Catppuccin, Gruvbox, Rose Pine
+- 💻 **Interactive terminal view** with a small set of real commands
+- 📱 **Fully responsive** across devices
+- ⚡ **Instant load** powered by Vite + Svelte 5 runes
+
+## 🛠️ Stack
+
+| Tool                                          | Role                    |
+| :-------------------------------------------- | :---------------------- |
+| [Svelte 5](https://svelte.dev/)               | UI framework (runes)    |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety             |
+| [Vite](https://vitejs.dev/)                   | Dev server & bundler    |
+| [Tailwind CSS v4](https://tailwindcss.com/)   | Styling (OKLCH theming) |
+| [Vitest](https://vitest.dev/)                 | Testing                 |
+| [Vercel](https://vercel.com/)                 | Hosting                 |
+
+## 🚀 Getting started
+
+```bash
+pnpm install   # install dependencies
+pnpm dev       # start dev server
+pnpm build     # production build
+pnpm preview   # preview production build
+```
+
+## 👤 Author
+
+**Diego Casero** — [@imcasero](https://github.com/imcasero)
+
+## 📄 License
+
+Released under the [MIT License](./LICENSE) — feel free to fork, remix, or use it as a starting point for your own portfolio. A small credit is appreciated but not required.
+
+<div align="center">
+
+⭐ If you like it, drop a star!
+
+</div>
