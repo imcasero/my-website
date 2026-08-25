@@ -148,10 +148,11 @@ const applyTheme = (name: ThemeName) => {
 };
 
 function createAccentState() {
-  let current = $state<ThemeName>(getInitialTheme());
+  const initial = getInitialTheme();
+  let current = $state<ThemeName>(initial);
 
   if (isBrowser) {
-    applyTheme(current);
+    applyTheme(initial);
   }
 
   return {
