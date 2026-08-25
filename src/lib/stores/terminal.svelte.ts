@@ -18,6 +18,7 @@ export interface TerminalState {
   setHistoryIndex: (index: number) => void;
   setCurrentPath: (path: string) => void;
   addLine: (line: Omit<TerminalLine, "id" | "timestamp">) => void;
+  updateLastLine: (content: string) => void;
   addCommand: (command: string) => void;
   getPreviousCommand: () => string | null;
   getNextCommand: () => string | null;
@@ -63,6 +64,10 @@ function createTerminalState(): TerminalState {
         id: crypto.randomUUID(),
         timestamp: new Date(),
       });
+    },
+    updateLastLine: (content: string) => {
+      const last = history[history.length - 1];
+      if (last) last.content = content;
     },
     addCommand: (command: string) => {
       if (command.trim()) {

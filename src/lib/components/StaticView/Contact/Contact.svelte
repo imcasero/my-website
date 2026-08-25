@@ -1,22 +1,18 @@
-<script>
-    import Card from "../../shared/Card.svelte";
-    import Command from "../../shared/Command.svelte";
+<script lang="ts">
+    import SectionHeading from "$lib/components/shared/SectionHeading.svelte";
 
     const contacts = [
         {
-            platform: "email",
             label: "Email",
             value: "diegocaserosmr@gmail.com",
             url: "mailto:diegocaserosmr@gmail.com",
         },
         {
-            platform: "github",
             label: "GitHub",
             value: "github.com/imcasero",
             url: "https://github.com/imcasero",
         },
         {
-            platform: "linkedin",
             label: "LinkedIn",
             value: "linkedin.com/in/imcasero",
             url: "https://linkedin.com/in/imcasero",
@@ -26,116 +22,105 @@
     const extIcon = `M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14`;
 </script>
 
-<Card>
-    <h2 class="section-title">
-        <span class="indicator">●</span>/contact
-    </h2>
-    <Command prompt="./connect.sh --social">
-        <div class="flex flex-col gap-4 font-mono">
-            {#each contacts as contact}
-                <div class="contact-entry">
-                    <div class="contact-header">
-                        <span class="platform">[{contact.platform}]</span>
-                        <span class="sep">→</span>
-                        <span class="label">{contact.label}</span>
-                    </div>
-                    <a
-                        href={contact.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Visit my {contact.label} profile at {contact.value} (opens in new tab)"
-                        class="contact-link"
+<section id="contact" aria-labelledby="contact-heading">
+    <SectionHeading path="contact" id="contact-heading" />
+
+    <ul class="rows">
+        {#each contacts as contact}
+            <li>
+                <a
+                    href={contact.url}
+                    target={contact.url.startsWith("mailto:") ? null : "_blank"}
+                    rel="noopener noreferrer"
+                    aria-label="{contact.label}: {contact.value}"
+                    class="row"
+                >
+                    <span class="meta label">{contact.label}</span>
+                    <span class="value">{contact.value}</span>
+                    <svg
+                        class="ext"
+                        aria-hidden="true"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                     >
-                        <span class="arr">→</span>
-                        <span class="value">{contact.value}</span>
-                        <svg
-                            class="w-3 h-3 shrink-0"
-                            aria-hidden="true"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d={extIcon}
-                            />
-                        </svg>
-                    </a>
-                </div>
-            {/each}
-        </div>
-    </Command>
-</Card>
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d={extIcon}
+                        />
+                    </svg>
+                </a>
+            </li>
+        {/each}
+    </ul>
+</section>
 
 <style>
-    .section-title {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: var(--foreground);
-        letter-spacing: -0.01em;
-    }
-
-    .indicator {
-        color: var(--terminal-prompt);
-        font-size: 0.6rem;
-        flex-shrink: 0;
-    }
-
-    .contact-entry {
+    .rows {
         display: flex;
         flex-direction: column;
-        gap: 0.2rem;
     }
 
-    .contact-header {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
+    .row {
+        display: grid;
+        grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+        align-items: baseline;
+        gap: 1rem;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid var(--hairline);
+        text-decoration: none;
+        color: var(--foreground);
+        transition: color 0.18s ease;
     }
 
-    .platform {
-        color: var(--terminal-warning);
-        font-weight: 700;
-    }
-
-    .sep {
-        color: var(--terminal-comment);
+    .rows li:first-child .row {
+        border-top: 1px solid var(--hairline);
     }
 
     .label {
-        color: var(--primary);
-        font-weight: 600;
-    }
-
-    .contact-link {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        margin-left: 0.75rem;
-        color: var(--foreground);
-        opacity: 0.7;
-        text-decoration: none;
-        font-size: 0.82rem;
-        transition: color 0.15s ease;
-    }
-
-    .contact-link:hover .value {
-        color: var(--terminal-prompt);
-    }
-
-    .arr {
-        color: var(--terminal-prompt);
-        font-weight: 700;
-        flex-shrink: 0;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
     }
 
     .value {
-        transition: color 0.15s ease;
+        font-family: var(--font-mono);
+        font-size: var(--text-base);
+        overflow-wrap: anywhere;
+    }
+
+    .ext {
+        width: 0.85rem;
+        height: 0.85rem;
+        flex-shrink: 0;
+        color: var(--role-meta);
+        transition: color 0.18s ease;
+        align-self: center;
+    }
+
+    .row:hover {
+        color: var(--primary);
+    }
+
+    .row:hover .ext {
+        color: var(--primary);
+    }
+
+    .row:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+
+    @media (max-width: 520px) {
+        .row {
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.25rem 0.75rem;
+        }
+
+        .label {
+            grid-column: 1 / -1;
+        }
     }
 </style>

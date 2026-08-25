@@ -1,83 +1,70 @@
 <script lang="ts">
-  import { theme } from "$lib/stores/theme.svelte";
+    import { theme } from "$lib/stores/theme.svelte";
 
-  let isDark = $derived(theme.current === "dark");
+    let isDark = $derived(theme.current === "dark");
 </script>
 
 <button
-  onclick={() => theme.toggle()}
-  class="cmd-btn"
-  aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-  aria-pressed={isDark}
-  title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    type="button"
+    onclick={() => theme.toggle()}
+    class="icon-btn"
+    aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    aria-pressed={isDark}
+    title={isDark ? "Switch to light mode" : "Switch to dark mode"}
 >
-  <span class="prefix">
-    <span class="dollar">$</span>
-    <span class="label">mode</span>
-    <span class="sep">:</span>
-  </span>
-  {#if isDark}
-    <span class="icon">◐</span>
-    <span class="value">dark</span>
-  {:else}
-    <span class="icon">○</span>
-    <span class="value">light</span>
-  {/if}
+    {#if isDark}
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"
+                fill="currentColor"
+            />
+        </svg>
+    {:else}
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+        >
+            <circle cx="12" cy="12" r="4.2" />
+            <path
+                d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"
+            />
+        </svg>
+    {/if}
 </button>
 
 <style>
-  .cmd-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.375rem 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--foreground);
-    border-radius: 3px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: border-color 0.15s ease;
-    letter-spacing: 0.02em;
-  }
-
-  .cmd-btn:hover {
-    border-color: var(--terminal-prompt);
-  }
-
-  .cmd-btn:focus {
-    outline: none;
-    border-color: var(--terminal-prompt);
-    box-shadow: 0 0 0 1px var(--terminal-prompt);
-  }
-
-  .dollar {
-    color: var(--terminal-prompt);
-    font-weight: 700;
-  }
-
-  .label {
-    color: var(--muted-foreground);
-  }
-
-  .sep {
-    color: var(--muted-foreground);
-  }
-
-  .icon {
-    color: var(--terminal-warning);
-  }
-
-  .value {
-    color: var(--terminal-success);
-    font-weight: 700;
-  }
-
-  @media (max-width: 540px) {
-    .prefix {
-      display: none;
+    .icon-btn {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--card);
+        color: var(--muted-foreground);
+        cursor: pointer;
+        transition:
+            color 0.18s ease,
+            border-color 0.18s ease;
     }
-  }
+
+    .icon-btn svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .icon-btn:hover {
+        color: var(--primary);
+        border-color: color-mix(in oklch, var(--primary) 45%, transparent);
+    }
+
+    .icon-btn:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
 </style>
