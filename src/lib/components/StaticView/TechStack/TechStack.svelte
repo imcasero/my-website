@@ -2,10 +2,13 @@
     import SectionHeading from "$lib/components/shared/SectionHeading.svelte";
 
     const groups = [
-        { category: "frontend", items: ["React", "Next.js", "Tailwind CSS"] },
-        { category: "language", items: ["TypeScript"] },
+        {
+            category: "frontend",
+            items: ["React", "Next.js", "Astro", "Svelte", "Tailwind CSS"],
+        },
+        { category: "language", items: ["TypeScript", "Python"] },
         { category: "backend", items: ["NestJS"] },
-        { category: "database", items: ["PostgreSQL"] },
+        { category: "database", items: ["PostgreSQL", "Supabase"] },
         { category: "devops", items: ["Docker"] },
     ];
 </script>
