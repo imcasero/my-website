@@ -1,10 +1,10 @@
-<script>
-    import Card from "../../shared/Card.svelte";
-    import Command from "../../shared/Command.svelte";
+<script lang="ts">
+    import SectionHeading from "$lib/components/shared/SectionHeading.svelte";
 
     const projects = [
         {
             name: "ChefFlow",
+            thumb: "/projects/chefflow.jpg",
             description:
                 "Recipe and weekly meal planning app with real users and active growth. Self-hosted on a VPS with a custom NestJS backend.",
             tech: [
@@ -17,9 +17,11 @@
             ],
             repo: "https://github.com/orgs/Chefflow/repositories",
             demo: "https://chefflow.pro",
+            host: "chefflow.pro",
         },
         {
             name: "Calmind Series",
+            thumb: "/projects/calmind.jpg",
             description:
                 "Competitive league system for a real Pokémon community. Manages splits, divisions, coach lives, standings and automatic promotions/relegations.",
             tech: [
@@ -31,46 +33,73 @@
             ],
             repo: "https://github.com/imcasero/calmind-series",
             demo: "https://calmind-series.vercel.app",
+            host: "calmind-series.vercel.app",
         },
         {
             name: "Carmen — Graphic Designer",
+            thumb: "/projects/carmen.jpg",
             description:
                 "Portfolio site for a graphic designer. Collaborative project: visual concept by the client, pixel-perfect implementation in React.",
             tech: ["React", "Vite", "TypeScript", "TailwindCSS", "Motion"],
             repo: "https://github.com/imcasero/carmen-port",
             demo: "https://carmen.elnodo.studio",
+            host: "carmen.elnodo.studio",
         },
     ];
 
     const extIcon = `M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14`;
 </script>
 
-<Card>
-    <h2 class="section-title">
-        <span class="indicator">●</span>/projects
-    </h2>
-    <Command prompt="cat ~/projects/all.json">
-        <div class="flex flex-col gap-5 font-mono">
-            {#each projects as project}
-                <div class="project">
-                    <div class="project-name">[{project.name}]</div>
-                    <p class="project-desc">{project.description}</p>
-                    <div class="tags">
+<section id="projects" aria-labelledby="projects-heading">
+    <SectionHeading num="03" label="projects" id="projects-heading" />
+
+    <div class="grid">
+        {#each projects as project}
+            <article class="card surface">
+                <a
+                    class="thumb"
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    aria-hidden="true"
+                >
+                    <span class="chrome">
+                        <span class="dots" aria-hidden="true">
+                            <i></i><i></i><i></i>
+                        </span>
+                        <span class="host">{project.host}</span>
+                    </span>
+                    <img
+                        src={project.thumb}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        width="900"
+                        height="600"
+                    />
+                </a>
+
+                <div class="body">
+                    <h3 class="name">{project.name}</h3>
+                    <p class="desc">{project.description}</p>
+
+                    <ul class="chips">
                         {#each project.tech as tech}
-                            <span class="tag">{tech}</span>
+                            <li class="chip">{tech}</li>
                         {/each}
-                    </div>
+                    </ul>
+
                     <div class="links">
                         <a
-                            href={project.repo}
+                            href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="View {project.name} repository on GitHub (opens in new tab)"
-                            class="link"
+                            aria-label="View {project.name} live demo (opens in new tab)"
+                            class="link primary"
                         >
-                            <span class="arr">→</span>repo
+                            Live demo
                             <svg
-                                class="w-3 h-3"
                                 aria-hidden="true"
                                 fill="none"
                                 stroke="currentColor"
@@ -84,117 +113,203 @@
                                 />
                             </svg>
                         </a>
-                        {#if project.demo}
-                            <a
-                                href={project.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="View {project.name} live demo (opens in new tab)"
-                                class="link"
+                        <a
+                            href={project.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View {project.name} repository on GitHub (opens in new tab)"
+                            class="link"
+                        >
+                            Source
+                            <svg
+                                aria-hidden="true"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                             >
-                                <span class="arr">→</span>demo
-                                <svg
-                                    class="w-3 h-3"
-                                    aria-hidden="true"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d={extIcon}
-                                    />
-                                </svg>
-                            </a>
-                        {/if}
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d={extIcon}
+                                />
+                            </svg>
+                        </a>
                     </div>
                 </div>
-            {/each}
-        </div>
-    </Command>
-</Card>
+            </article>
+        {/each}
+    </div>
+</section>
 
 <style>
-    .section-title {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition:
+            border-color 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+        border-color: color-mix(in oklch, var(--primary) 32%, var(--hairline));
+        transform: translateY(-2px);
+        box-shadow:
+            var(--shadow-card),
+            0 18px 40px -24px oklch(0 0 0 / 0.5);
+    }
+
+    /* ---- Thumbnail with browser chrome ---- */
+    .thumb {
+        display: block;
+        position: relative;
+        background: var(--sunken);
+        border-bottom: 1px solid var(--hairline);
+        overflow: hidden;
+    }
+
+    .chrome {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: var(--foreground);
-        letter-spacing: -0.01em;
+        padding: 0 0.6rem;
+        height: 26px;
+        background: var(--sunken);
+        border-bottom: 1px solid var(--hairline);
     }
 
-    .indicator {
-        color: var(--terminal-prompt);
-        font-size: 0.6rem;
+    .dots {
+        display: flex;
+        gap: 4px;
         flex-shrink: 0;
     }
 
-    .project {
+    .dots i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: color-mix(in oklch, var(--foreground) 22%, transparent);
+    }
+
+    .host {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.02em;
+        color: var(--muted-foreground);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .thumb img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        object-position: top center;
+        transition: transform 0.4s cubic-bezier(0.22, 0.8, 0.3, 1);
+    }
+
+    .card:hover .thumb img {
+        transform: scale(1.03);
+    }
+
+    /* ---- Body ---- */
+    .body {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-        font-size: 0.875rem;
+        gap: 0.65rem;
+        padding: 1.15rem 1.25rem 1.25rem;
+        flex: 1;
     }
 
-    .project-name {
-        color: var(--terminal-prompt);
+    .name {
+        font-family: var(--font-mono);
+        font-size: var(--text-md);
         font-weight: 700;
-        font-size: 0.95rem;
-    }
-
-    .project-desc {
+        letter-spacing: -0.02em;
         color: var(--foreground);
-        line-height: 1.6;
-        font-size: 0.82rem;
     }
 
-    .tags {
+    .desc {
+        font-family: var(--font-prose);
+        font-optical-sizing: auto;
+        font-size: var(--text-base);
+        line-height: 1.55;
+        color: var(--muted-foreground);
+    }
+
+    .chips {
         display: flex;
         flex-wrap: wrap;
         gap: 0.3rem;
     }
 
-    .tag {
-        font-size: 0.72rem;
-        padding: 0.15rem 0.55rem;
-        border-radius: 3px;
-        background-color: color-mix(in oklch, var(--primary) 10%, transparent);
-        color: var(--primary);
-        border: 1px solid color-mix(in oklch, var(--primary) 22%, transparent);
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        transition:
-            background-color 0.3s ease,
-            color 0.3s ease,
-            border-color 0.3s ease;
-    }
-
     .links {
         display: flex;
-        gap: 1rem;
-        margin-top: 0.125rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: auto;
+        padding-top: 0.4rem;
     }
 
     .link {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        gap: 0.3rem;
-        color: var(--terminal-comment);
+        gap: 0.4rem;
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        padding: 0.4rem 0.7rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        color: var(--foreground);
         text-decoration: none;
-        font-size: 0.8rem;
-        transition: color 0.15s ease;
+        transition:
+            border-color 0.18s ease,
+            background-color 0.18s ease,
+            color 0.18s ease;
+    }
+
+    .link svg {
+        width: 0.75rem;
+        height: 0.75rem;
+        flex-shrink: 0;
     }
 
     .link:hover {
-        color: var(--terminal-warning);
+        border-color: color-mix(in oklch, var(--primary) 50%, transparent);
+        color: var(--primary);
     }
 
-    .arr {
-        color: var(--terminal-warning);
-        font-weight: 700;
+    .link.primary {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: var(--primary-foreground);
+    }
+
+    .link.primary:hover {
+        background: color-mix(in oklch, var(--primary) 88%, var(--foreground));
+        color: var(--primary-foreground);
+    }
+
+    .link:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+
+    @media (min-width: 760px) {
+        .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
 </style>

@@ -25,74 +25,48 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="relative">
+<div class="picker">
     <button
+        type="button"
         onclick={() => (open = !open)}
-        class="theme-btn flex items-center gap-2 px-3 py-1.5 font-mono text-xs
-           border border-border bg-card text-foreground
-           hover:border-primary transition-colors duration-150
-           focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-        aria-label="Select color theme"
+        class="trigger"
+        aria-label="Select colour theme"
         aria-expanded={open}
         aria-haspopup="listbox"
     >
-        <span class="btn-prefix">
-            <span class="prompt-dollar">$</span>
-            <span class="text-muted-foreground">theme</span>
-            <span class="separator">:</span>
-        </span>
-        <span class="theme-name">{currentPreset.label}</span>
         <span class="swatches">
             {#each currentPreset.swatches as swatch}
                 <span class="swatch" style="background: {swatch}"></span>
             {/each}
         </span>
-        <span class="chevron text-muted-foreground">{open ? "▴" : "▾"}</span>
+        <span class="name">{currentPreset.label}</span>
+        <span class="chevron" aria-hidden="true">{open ? "▴" : "▾"}</span>
     </button>
 
     {#if open}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <div class="fixed inset-0 z-40" onclick={() => (open = false)}></div>
+        <div class="scrim" onclick={() => (open = false)}></div>
 
-        <div
-            role="listbox"
-            aria-label="Color themes"
-            class="dropdown absolute right-0 top-full mt-1 z-50
-             border border-border bg-card
-             min-w-52.5 py-1 font-mono text-xs
-             shadow-xl"
-        >
-            <div
-                class="dropdown-header px-3 py-1.5 text-muted-foreground border-b border-border mb-1"
-            >
-                -- select theme --
-            </div>
+        <div role="listbox" aria-label="Colour themes" class="dropdown">
+            <p class="dropdown-header">-- select theme --</p>
             {#each themeEntries as [name, preset]}
                 {@const isSelected = accent.current === name}
                 <button
+                    type="button"
                     role="option"
                     aria-selected={isSelected}
                     onclick={() => selectTheme(name)}
-                    class="option w-full flex items-center gap-2 px-3 py-1.5 text-left
-                 hover:bg-muted transition-colors duration-75
-                 {isSelected ? 'option--selected' : ''}"
+                    class="option"
+                    class:selected={isSelected}
                 >
-                    <span class="check w-3 text-center">
-                        {#if isSelected}<span class="text-primary">✓</span>{/if}
-                    </span>
-                    <span
-                        class="flex-1 {isSelected
-                            ? 'text-primary'
-                            : 'text-foreground'}">{preset.label}</span
+                    <span class="check" aria-hidden="true"
+                        >{isSelected ? "✓" : ""}</span
                     >
+                    <span class="option-name">{preset.label}</span>
                     <span class="swatches">
                         {#each preset.swatches as swatch}
-                            <span
-                                class="swatch {isSelected
-                                    ? 'swatch--active'
-                                    : ''}"
-                                style="background: {swatch}"
+                            <span class="swatch" style="background: {swatch}"
                             ></span>
                         {/each}
                     </span>
@@ -103,89 +77,149 @@
 </div>
 
 <style>
-    .theme-btn {
-        border-radius: 3px;
-        letter-spacing: 0.02em;
-        white-space: nowrap;
+    .picker {
+        position: relative;
+        flex: 1;
+        min-width: 0;
     }
 
-    .btn-prefix {
-        display: inline-flex;
+    .trigger {
+        width: 100%;
+        display: flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.45rem;
+        height: 32px;
+        padding: 0 0.55rem;
+        font-family: var(--font-mono);
+        font-size: var(--text-2xs);
+        letter-spacing: 0.03em;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--card);
+        color: var(--foreground);
+        cursor: pointer;
         white-space: nowrap;
+        transition: border-color 0.18s ease;
     }
 
-    .prompt-dollar {
-        color: var(--terminal-prompt);
-        font-weight: 700;
+    .trigger:hover {
+        border-color: color-mix(in oklch, var(--primary) 45%, transparent);
     }
 
-    .separator {
+    .trigger:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+
+    .name {
+        flex: 1;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .chevron {
+        font-size: 8px;
         color: var(--muted-foreground);
-        margin: 0 -2px;
-    }
-
-    .theme-name {
-        color: var(--terminal-success);
-        font-weight: 700;
     }
 
     .swatches {
         display: flex;
         gap: 2px;
         align-items: center;
+        flex-shrink: 0;
     }
 
     .swatch {
         display: inline-block;
-        width: 10px;
-        height: 10px;
+        width: 9px;
+        height: 9px;
         border-radius: 2px;
         flex-shrink: 0;
     }
 
-    .swatch--active {
-        width: 12px;
-        height: 12px;
-        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
-    }
-
-    .chevron {
-        font-size: 8px;
-        margin-left: 2px;
+    .scrim {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
     }
 
     .dropdown {
-        border-radius: 4px;
-        backdrop-filter: blur(4px);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: calc(100% + 4px);
+        z-index: 50;
+        min-width: 12rem;
+        padding: 0.25rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--popover);
+        box-shadow: var(--shadow-card);
+        font-family: var(--font-mono);
     }
 
     .dropdown-header {
+        padding: 0.3rem 0.5rem 0.4rem;
         font-size: 10px;
         letter-spacing: 0.05em;
-        opacity: 0.6;
+        color: var(--muted-foreground);
+        border-bottom: 1px solid var(--hairline);
+        margin-bottom: 0.25rem;
     }
 
     .option {
-        border-radius: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.5rem;
         font-size: 11px;
         letter-spacing: 0.02em;
+        text-align: left;
+        background: transparent;
+        border: none;
+        border-radius: 2px;
+        color: var(--foreground);
+        cursor: pointer;
+        transition: background-color 0.12s ease;
     }
 
-    .option--selected {
-        background-color: color-mix(in oklch, var(--primary) 8%, transparent);
+    .option:hover {
+        background: color-mix(in oklch, var(--foreground) 7%, transparent);
     }
 
-    @media (max-width: 540px) {
-        .btn-prefix {
-            display: none;
+    .option.selected {
+        background: color-mix(in oklch, var(--primary) 12%, transparent);
+        color: var(--primary);
+    }
+
+    .option:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: -2px;
+    }
+
+    .check {
+        width: 0.75rem;
+        color: var(--primary);
+    }
+
+    .option-name {
+        flex: 1;
+    }
+
+    /* Below the rail breakpoint the picker sits in a horizontal row, so the
+       menu opens downward and does not need to stretch. */
+    @media (max-width: 1023px) {
+        .picker {
+            flex: 0 1 auto;
         }
-    }
 
-    @media (max-width: 400px) {
-        .theme-name {
-            display: none;
+        .dropdown {
+            left: auto;
+            right: 0;
+            top: calc(100% + 4px);
+            bottom: auto;
         }
     }
 </style>

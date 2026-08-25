@@ -16,6 +16,23 @@ export interface Command {
   execute: (args: string[]) => CommandResult;
 }
 
+/**
+ * Block wordmark. Built from `█` and spaces only — box-drawing corners do not
+ * share an advance width with `═`/`║` in most mono fonts, which is why the
+ * previous framed banner rendered ragged.
+ */
+export const BANNER_ART = `
+█████  █   █  █████  █████  █████  █████  ████   █████
+  █    ██ ██  █      █   █  █      █      █   █  █   █
+  █    █ █ █  █      █████  █████  ████   ████   █   █
+  █    █   █  █      █   █      █  █      █  █   █   █
+█████  █   █  █████  █   █  █████  █████  █   █  █████`;
+
+export const BANNER_TEXT =
+  "Welcome to imcasero.dev — Software Developer Portfolio\nType 'help' for every command, or click a suggestion below.";
+
+const BANNER = `${BANNER_ART}\n\n${BANNER_TEXT}`;
+
 const commands: Record<string, Command> = {
   help: {
     name: "help",
@@ -337,22 +354,41 @@ const commands: Record<string, Command> = {
     name: "banner",
     description: "Display welcome banner",
     execute: () => {
-      const banner = `
-╔══════════════════════════════════════════╗
-║                                          ║
-║        Welcome to imcasero.dev           ║
-║                                          ║
-║      Software Developer Portfolio        ║
-║                                          ║
-╚══════════════════════════════════════════╝
-
-Type 'help' or '?' to see available commands
-      `;
       return {
         type: "text",
-        content: banner,
+        content: BANNER,
       };
     },
+  },
+
+  about: {
+    name: "about",
+    description: "Who I am",
+    execute: () => ({ type: "component", content: "", component: "About" }),
+  },
+
+  experience: {
+    name: "experience",
+    description: "Where I have worked",
+    execute: () => ({ type: "component", content: "", component: "Experience" }),
+  },
+
+  projects: {
+    name: "projects",
+    description: "What I have built",
+    execute: () => ({ type: "component", content: "", component: "Projects" }),
+  },
+
+  tech: {
+    name: "tech",
+    description: "Tools I work with",
+    execute: () => ({ type: "component", content: "", component: "TechStack" }),
+  },
+
+  contact: {
+    name: "contact",
+    description: "How to reach me",
+    execute: () => ({ type: "component", content: "", component: "Contact" }),
   },
 };
 
@@ -380,4 +416,27 @@ export function executeCommand(input: string): CommandResult {
   }
 
   return command.execute(args);
+}
+
+/** Command names, sorted, for Tab completion and suggestion chips. */
+export const commandNames: string[] = Object.keys(commands).sort();
+
+/**
+ * Longest unique completion for a partial command, or null when the
+ * prefix matches nothing.
+ */
+export function completeCommand(partial: string): string | null {
+  if (!partial) return null;
+  const matches = commandNames.filter((name) => name.startsWith(partial));
+  if (matches.length === 0) return null;
+  if (matches.length === 1) return matches[0];
+
+  // Extend to the longest common prefix shared by all matches.
+  let prefix = matches[0];
+  for (const match of matches.slice(1)) {
+    while (!match.startsWith(prefix)) {
+      prefix = prefix.slice(0, -1);
+    }
+  }
+  return prefix.length > partial.length ? prefix : null;
 }

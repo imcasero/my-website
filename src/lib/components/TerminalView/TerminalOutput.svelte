@@ -26,44 +26,84 @@
     }
 </script>
 
-<div class="terminal-output flex flex-col gap-2">
+<div class="output">
     {#each lines as line (line.id)}
         {#if line.type === "command"}
-            <div class="flex items-center gap-2">
-                <span class="text-primary">{getPrompt(currentPath)}</span>
-                <span class="text-foreground">{line.content}</span>
+            <div class="line cmd">
+                <span class="prompt">{getPrompt(currentPath)}</span>
+                <span>{line.content}</span>
             </div>
         {:else if line.type === "component" && line.component}
             {@const Component = componentMap[line.component]}
-            <div class="component-output my-2">
+            <div class="line terminal-render">
                 {#if Component}
                     <Component />
                 {:else}
-                    <p class="text-error">
+                    <p class="terminal-error">
                         Component not found: {line.component}
                     </p>
                 {/if}
             </div>
         {:else if line.type === "error"}
-            <div class="text-terminal-error">
-                {line.content}
-            </div>
+            <div class="line terminal-error">{line.content}</div>
         {:else if line.type === "text"}
-            <div class="text-muted-foreground whitespace-pre-wrap">
-                {line.content}
-            </div>
+            {@const isArt = line.content.includes("\u2588")}
+            <div class="line text" class:art={isArt}>{line.content}</div>
         {/if}
     {/each}
 </div>
 
 <style>
-    .terminal-output {
-        flex: 1;
-        overflow-y: auto;
-        padding: 1rem;
+    .output {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem 0.9rem;
+        font-size: var(--text-sm);
+        line-height: 1.6;
     }
 
-    .component-output {
-        width: 100%;
+    .line {
+        animation: slide-up 0.15s ease-out;
+    }
+
+    .cmd {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        color: var(--terminal-text);
+    }
+
+    .prompt {
+        color: var(--terminal-prompt);
+        font-weight: 700;
+    }
+
+    .text {
+        white-space: pre-wrap;
+        color: var(--terminal-comment);
+    }
+
+    /* The block wordmark must never wrap — a broken row destroys the letters.
+       It scales with the viewport and scrolls rather than reflowing. */
+    .art {
+        white-space: pre;
+        overflow-x: auto;
+        font-size: clamp(6px, 1.35vw, 11px);
+        line-height: 1.05;
+        color: var(--terminal-prompt);
+        margin-bottom: 0.5rem;
+        scrollbar-width: none;
+    }
+
+    .art::-webkit-scrollbar {
+        display: none;
+    }
+
+    .terminal-render {
+        margin: 0.5rem 0 1rem;
+        padding-left: 0.5rem;
+        border-left: 1px solid
+            color-mix(in oklch, var(--terminal-prompt) 30%, transparent);
     }
 </style>

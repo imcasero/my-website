@@ -1,84 +1,76 @@
 <script lang="ts">
-  import { currentMode } from "$lib/stores/mode.svelte";
+    import { currentMode } from "$lib/stores/mode.svelte";
 
-  let isTerminal = $derived(currentMode.current === "terminal");
+    const options = [
+        { value: "static" as const, icon: "⊞", label: "static" },
+        { value: "terminal" as const, icon: ">_", label: "terminal" },
+    ];
 </script>
 
-<button
-  onclick={() => currentMode.toggle()}
-  class="cmd-btn"
-  aria-label={isTerminal ? "Switch to static view" : "Switch to terminal view"}
-  aria-pressed={isTerminal}
-  title={isTerminal ? "Switch to static view" : "Switch to terminal view"}
->
-  <span class="prefix">
-    <span class="dollar">$</span>
-    <span class="label">view</span>
-    <span class="sep">:</span>
-  </span>
-  {#if isTerminal}
-    <span class="icon">&gt;_</span>
-    <span class="value">terminal</span>
-  {:else}
-    <span class="icon">⊞</span>
-    <span class="value">static</span>
-  {/if}
-</button>
+<div class="segmented" role="group" aria-label="View mode">
+    {#each options as option}
+        {@const selected = currentMode.current === option.value}
+        <button
+            type="button"
+            class="segment"
+            class:selected
+            aria-pressed={selected}
+            onclick={() => currentMode.set(option.value)}
+        >
+            <span class="icon" aria-hidden="true">{option.icon}</span>
+            <span class="label">{option.label}</span>
+        </button>
+    {/each}
+</div>
 
 <style>
-  .cmd-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.375rem 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--foreground);
-    border-radius: 3px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: border-color 0.15s ease;
-    letter-spacing: 0.02em;
-  }
-
-  .cmd-btn:hover {
-    border-color: var(--terminal-prompt);
-  }
-
-  .cmd-btn:focus {
-    outline: none;
-    border-color: var(--terminal-prompt);
-    box-shadow: 0 0 0 1px var(--terminal-prompt);
-  }
-
-  .dollar {
-    color: var(--terminal-prompt);
-    font-weight: 700;
-  }
-
-  .label {
-    color: var(--muted-foreground);
-  }
-
-  .sep {
-    color: var(--muted-foreground);
-  }
-
-  .icon {
-    color: var(--terminal-warning);
-    font-weight: 700;
-  }
-
-  .value {
-    color: var(--terminal-success);
-    font-weight: 700;
-  }
-
-  @media (max-width: 540px) {
-    .prefix {
-      display: none;
+    .segmented {
+        display: flex;
+        padding: 2px;
+        gap: 2px;
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius);
+        background: var(--sunken);
     }
-  }
+
+    .segment {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.5rem;
+        font-family: var(--font-mono);
+        font-size: var(--text-2xs);
+        letter-spacing: 0.04em;
+        color: var(--muted-foreground);
+        background: transparent;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+            color 0.18s ease,
+            background-color 0.18s ease;
+    }
+
+    .segment:hover {
+        color: var(--foreground);
+    }
+
+    .segment.selected {
+        background: var(--card);
+        color: var(--foreground);
+        font-weight: 700;
+        box-shadow: 0 1px 2px oklch(0 0 0 / 0.12);
+    }
+
+    .segment.selected .icon {
+        color: var(--role-prompt);
+    }
+
+    .segment:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 1px;
+    }
 </style>

@@ -1,7 +1,5 @@
 <script lang="ts">
-    import ThemeToggle from "$lib/components/shared/ThemeToggle.svelte";
-    import ModeToggle from "$lib/components/shared/ModeToggle.svelte";
-    import AccentPicker from "$lib/components/shared/AccentPicker.svelte";
+    import Rail from "$lib/components/shared/Rail.svelte";
     import StaticView from "$lib/components/StaticView/StaticView.svelte";
     import Terminal from "$lib/components/TerminalView/Terminal.svelte";
 
@@ -17,21 +15,10 @@
     Skip to main content
 </a>
 
-<div class="app flex flex-col items-center w-full min-h-screen px-4 py-4 gap-4">
-    <div class="layout-container w-full">
-        <header class="toolbar flex justify-between items-center gap-2">
-            <div class="shrink-0">
-                <ModeToggle />
-            </div>
-            <div class="flex items-center gap-1.5 min-w-0 shrink-0">
-                <AccentPicker />
-                <div class="toolbar-divider"></div>
-                <ThemeToggle />
-            </div>
-        </header>
-    </div>
+<div class="shell">
+    <Rail />
 
-    <main id="main-content" tabindex="-1" class="layout-container w-full">
+    <main id="main-content" tabindex="-1" class="content">
         {#if currentMode.current === "static"}
             <StaticView />
         {:else}
@@ -41,27 +28,34 @@
 </div>
 
 <style>
-    .app {
-        transition:
-            background-color 0.3s ease,
-            color 0.3s ease;
-    }
-
-    .layout-container {
-        max-width: 860px;
-        margin: 0 auto;
+    .shell {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 5vw, 3rem) clamp(2rem, 5vw, 4.5rem);
         width: 100%;
+        max-width: var(--shell-max);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+        min-height: 100vh;
     }
 
-    .toolbar {
-        font-family: var(--font-mono);
+    .content {
+        min-width: 0;
+        padding-bottom: clamp(3rem, 8vh, 6rem);
     }
 
-    .toolbar-divider {
-        width: 1px;
-        height: 18px;
-        background: var(--border);
-        opacity: 0.6;
-        margin: 0 2px;
+    .content:focus {
+        outline: none;
+    }
+
+    @media (min-width: 1024px) {
+        .shell {
+            grid-template-columns: var(--rail-w) minmax(0, 1fr);
+            align-items: start;
+        }
+
+        .content {
+            padding-top: clamp(2rem, 5vh, 3.5rem);
+        }
     }
 </style>

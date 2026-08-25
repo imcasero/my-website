@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { executeCommand } from './commands';
+import { executeCommand, completeCommand, commandNames } from './commands';
 import { terminal } from '$lib/stores/terminal.svelte';
 
 vi.mock('./filesystem', async () => {
@@ -353,5 +353,35 @@ describe('Commands', () => {
       result = executeCommand('cat projects');
       expect(result.type).toBe('error');
     });
+  });
+});
+
+describe('completeCommand', () => {
+  it('returns the single matching command', () => {
+    expect(completeCommand('proj')).toBe('projects');
+  });
+
+  it('extends to the longest common prefix when several match', () => {
+    // "c" matches cd, cat, clear, contact -> no shared extension
+    expect(completeCommand('c')).toBeNull();
+    // "co" matches only contact
+    expect(completeCommand('co')).toBe('contact');
+  });
+
+  it('returns null for an unknown prefix', () => {
+    expect(completeCommand('zzz')).toBeNull();
+  });
+
+  it('returns null for an empty prefix', () => {
+    expect(completeCommand('')).toBeNull();
+  });
+
+  it('returns null when the prefix is already complete', () => {
+    expect(completeCommand('pwd')).toBe('pwd');
+  });
+
+  it('exposes sorted command names', () => {
+    expect(commandNames).toContain('projects');
+    expect([...commandNames].sort()).toEqual(commandNames);
   });
 });

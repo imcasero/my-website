@@ -1,186 +1,278 @@
 <script lang="ts">
-  import { terminal, type TerminalState } from "$lib/stores/terminal.svelte";
-  import { executeCommand } from "$lib/terminal/commands";
-  import TerminalInput from "./TerminalInput.svelte";
-  import TerminalOutput from "./TerminalOutput.svelte";
-  import { onMount } from "svelte";
+    import { terminal } from "$lib/stores/terminal.svelte";
+    import { executeCommand, BANNER_ART, BANNER_TEXT } from "$lib/terminal/commands";
+    import TerminalInput from "./TerminalInput.svelte";
+    import TerminalOutput from "./TerminalOutput.svelte";
+    import { onMount } from "svelte";
 
-  let terminalContainer: HTMLDivElement;
+    const SUGGESTIONS = [
+        "about",
+        "experience",
+        "projects",
+        "tech",
+        "contact",
+        "help",
+    ];
 
-  function handleCommand(command: string) {
-    terminal.addLine({ type: "command", content: command });
-    terminal.addCommand(command);
+    let terminalContainer: HTMLDivElement;
+    let inputRef = $state<{ focus: () => void } | null>(null);
 
-    const result = executeCommand(command);
-
-    if (result.content || result.component) {
-      terminal.addLine({
-        type: result.type,
-        content: result.content,
-        component: result.component,
-      });
+    function scrollToBottom() {
+        requestAnimationFrame(() => {
+            if (terminalContainer) {
+                terminalContainer.scrollTop = terminalContainer.scrollHeight;
+            }
+        });
     }
 
-    setTimeout(() => {
-      if (terminalContainer) {
-        terminalContainer.scrollTop = terminalContainer.scrollHeight;
-      }
-    }, 10);
-  }
+    function handleCommand(command: string) {
+        terminal.addLine({ type: "command", content: command });
+        terminal.addCommand(command);
 
-  onMount(() => {
-    if (!terminal.initialized) {
-      terminal.addLine({
-        type: "text",
-        content: `
-╔══════════════════════════════════════════╗
-║                                          ║
-║        Welcome to imcasero.dev           ║
-║                                          ║
-║      Software Developer Portfolio        ║
-║                                          ║
-╚══════════════════════════════════════════╝
+        const result = executeCommand(command);
 
-Type 'help' or '?' to see available commands
-`,
-      });
-      terminal.setInitialized(true);
+        if (result.content || result.component) {
+            terminal.addLine({
+                type: result.type,
+                content: result.content,
+                component: result.component,
+            });
+        }
+
+        scrollToBottom();
     }
-  });
+
+    function runSuggestion(command: string) {
+        handleCommand(command);
+        inputRef?.focus();
+    }
+
+    onMount(() => {
+        if (terminal.initialized) return;
+
+        const reduced = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        terminal.addLine({ type: "text", content: BANNER_ART });
+        terminal.setInitialized(true);
+
+        if (reduced) {
+            terminal.addLine({ type: "text", content: BANNER_TEXT });
+            return;
+        }
+
+        terminal.addLine({ type: "text", content: "" });
+
+        let i = 0;
+        const tick = setInterval(() => {
+            i += 1;
+            terminal.updateLastLine(BANNER_TEXT.slice(0, i));
+            if (i >= BANNER_TEXT.length) clearInterval(tick);
+        }, 18);
+
+        return () => clearInterval(tick);
+    });
 </script>
 
-<div class="terminal-wrapper w-full max-w-5xl">
-  <!-- Terminal chrome -->
-  <div class="terminal-chrome">
-    <div class="traffic-lights">
-      <span class="dot dot-red"></span>
-      <span class="dot dot-yellow"></span>
-      <span class="dot dot-green"></span>
+<div class="terminal-wrapper">
+    <div class="terminal-chrome">
+        <div class="traffic-lights" aria-hidden="true">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-title">
+            <span class="shell-user">diego</span><span class="shell-sep">@</span
+            ><span class="shell-host">imcasero.dev</span><span class="shell-sep"
+            >
+                —
+            </span><span class="shell-path">~</span>
+        </div>
+        <div class="chrome-right">
+            <span class="shell-tag">zsh</span>
+        </div>
     </div>
-    <div class="terminal-title">
-      <span class="shell-user">diego</span>
-      <span class="shell-sep">@</span>
-      <span class="shell-host">imcasero.dev</span>
-      <span class="shell-sep"> — </span>
-      <span class="shell-path">~</span>
-    </div>
-    <div class="chrome-right">
-      <span class="shell-tag">zsh</span>
-    </div>
-  </div>
 
-  <!-- Terminal body -->
-  <div
-    class="terminal-container flex flex-col border border-border border-t-0"
-    style="height: 78vh; min-height: 480px; max-height: 780px;"
-  >
-    <div
-      bind:this={terminalContainer}
-      class="terminal-scroll flex-1 overflow-y-auto"
-    >
-      <TerminalOutput
-        lines={terminal.history}
-        currentPath={terminal.currentPath}
-      />
+    <div class="terminal-container terminal-body">
+        <div
+            bind:this={terminalContainer}
+            class="terminal-scroll scroll-area"
+            role="log"
+            aria-live="polite"
+            aria-label="Terminal output"
+        >
+            <TerminalOutput
+                lines={terminal.history}
+                currentPath={terminal.currentPath}
+            />
+        </div>
+
+        <div class="suggestions">
+            <span class="hint" aria-hidden="true">try</span>
+            {#each SUGGESTIONS as suggestion}
+                <button
+                    type="button"
+                    class="suggestion"
+                    onclick={() => runSuggestion(suggestion)}
+                >
+                    {suggestion}
+                </button>
+            {/each}
+        </div>
+
+        <TerminalInput
+            bind:this={inputRef}
+            currentPath={terminal.currentPath}
+            onSubmit={handleCommand}
+        />
     </div>
-    <TerminalInput
-      currentPath={terminal.currentPath}
-      onSubmit={handleCommand}
-    />
-  </div>
 </div>
 
 <style>
-  .terminal-wrapper {
-    font-family: var(--font-mono);
-    filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.35));
-  }
+    .terminal-wrapper {
+        font-family: var(--font-mono);
+        width: 100%;
+    }
 
-  .terminal-chrome {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 14px;
-    height: 38px;
-    background: color-mix(in oklch, var(--terminal-bg) 85%, white 5%);
-    border: 1px solid var(--border);
-    border-radius: 8px 8px 0 0;
-    border-bottom: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
-  }
+    .terminal-chrome {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0 12px;
+        height: 34px;
+        background: var(--sunken);
+        border: 1px solid var(--border);
+        border-bottom: none;
+        border-radius: 6px 6px 0 0;
+    }
 
-  .traffic-lights {
-    display: flex;
-    gap: 7px;
-    align-items: center;
-  }
+    .traffic-lights {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex-shrink: 0;
+    }
 
-  .dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+    .dot {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
 
-  .dot-red {
-    background: #ff5f57;
-    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25);
-  }
+    .dot-red {
+        background: #ff5f57;
+    }
+    .dot-yellow {
+        background: #ffbd2e;
+    }
+    .dot-green {
+        background: #28c840;
+    }
 
-  .dot-yellow {
-    background: #ffbd2e;
-    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.2);
-  }
+    .terminal-title {
+        font-size: 11px;
+        letter-spacing: 0.01em;
+        color: var(--terminal-comment);
+        user-select: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-  .dot-green {
-    background: #28c840;
-    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.2);
-  }
+    .shell-user {
+        color: var(--terminal-prompt);
+        font-weight: 700;
+    }
+    .shell-host {
+        color: var(--terminal-success);
+        font-weight: 600;
+    }
+    .shell-sep {
+        color: var(--terminal-comment);
+    }
+    .shell-path {
+        color: var(--terminal-warning);
+    }
 
-  .terminal-title {
-    font-size: 12px;
-    letter-spacing: 0.01em;
-    color: var(--terminal-comment);
-    user-select: none;
-  }
+    .chrome-right {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
 
-  .shell-user {
-    color: var(--terminal-prompt);
-    font-weight: 700;
-  }
+    .shell-tag {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        color: var(--terminal-comment);
+        background: color-mix(in oklch, var(--terminal-prompt) 14%, transparent);
+        padding: 1px 6px;
+        border-radius: 3px;
+        border: 1px solid
+            color-mix(in oklch, var(--terminal-prompt) 24%, transparent);
+    }
 
-  .shell-host {
-    color: var(--terminal-success);
-    font-weight: 600;
-  }
+    .terminal-body {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--border);
+        border-radius: 0 0 6px 6px;
+        box-shadow: var(--shadow-card);
+        /* Sized to content, capped — no more 78vh of empty room on first paint. */
+        min-height: 260px;
+        max-height: min(72vh, 720px);
+    }
 
-  .shell-sep {
-    color: var(--terminal-comment);
-  }
+    .scroll-area {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        min-height: 0;
+    }
 
-  .shell-path {
-    color: var(--terminal-warning);
-  }
+    .suggestions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.6rem 0.9rem;
+        border-top: 1px solid
+            color-mix(in oklch, var(--terminal-comment) 30%, transparent);
+    }
 
-  .chrome-right {
-    display: flex;
-    align-items: center;
-  }
+    .hint {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--terminal-comment);
+        margin-right: 0.15rem;
+    }
 
-  .shell-tag {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--terminal-comment);
-    background: color-mix(in oklch, var(--terminal-prompt) 15%, transparent);
-    padding: 1px 7px;
-    border-radius: 3px;
-    border: 1px solid color-mix(in oklch, var(--terminal-prompt) 25%, transparent);
-  }
+    .suggestion {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.02em;
+        padding: 0.2rem 0.55rem;
+        border-radius: 3px;
+        color: var(--terminal-prompt);
+        background: color-mix(in oklch, var(--terminal-prompt) 10%, transparent);
+        border: 1px solid
+            color-mix(in oklch, var(--terminal-prompt) 26%, transparent);
+        cursor: pointer;
+        transition:
+            background-color 0.15s ease,
+            color 0.15s ease;
+    }
 
-  .terminal-container {
-    background: var(--terminal-bg);
-    color: var(--terminal-text);
-    font-family: var(--font-mono);
-    border-radius: 0 0 8px 8px;
-  }
+    .suggestion:hover {
+        background: var(--terminal-prompt);
+        color: var(--terminal-bg);
+    }
+
+    .suggestion:focus-visible {
+        outline: 2px solid var(--terminal-prompt);
+        outline-offset: 2px;
+    }
 </style>
