@@ -11,7 +11,7 @@
 </script>
 
 <section id="tech-stack" aria-labelledby="tech-stack-heading">
-    <SectionHeading num="04" label="tech stack" id="tech-stack-heading" />
+    <SectionHeading path="tech-stack" id="tech-stack-heading" />
 
     <dl class="groups">
         {#each groups as group}

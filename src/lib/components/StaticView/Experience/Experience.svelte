@@ -94,7 +94,7 @@
 </script>
 
 <section id="experience" aria-labelledby="experience-heading">
-    <SectionHeading num="02" label="experience" id="experience-heading" />
+    <SectionHeading path="experience" id="experience-heading" />
 
     <ol class="timeline">
         {#each experiences as exp}

@@ -3,7 +3,7 @@
 </script>
 
 <section id="about" aria-labelledby="about-heading">
-    <SectionHeading num="01" label="about" id="about-heading" />
+    <SectionHeading path="about" id="about-heading" />
 
     <div class="prose">
         <p>

@@ -23,7 +23,7 @@
 </script>
 
 <section id="contact" aria-labelledby="contact-heading">
-    <SectionHeading num="05" label="contact" id="contact-heading" />
+    <SectionHeading path="contact" id="contact-heading" />
 
     <ul class="rows">
         {#each contacts as contact}

@@ -21,8 +21,8 @@
     --text-xl: 1.875rem; /* 30px — big numbers */
     --text-display: clamp(2.5rem, 6vw, 3.25rem);
 
-    --measure: 62ch;
-    --leading-prose: 1.7;
+    --measure: 68ch;
+    --leading-prose: 1.8;
 
     /* ---- Shell ------------------------------------------------------ */
     --shell-max: 1140px;
@@ -36,7 +36,6 @@
     /* ---- Families --------------------------------------------------- */
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
         "Cascadia Mono", Consolas, monospace;
-    --font-prose: "Newsreader", Georgia, "Times New Roman", serif;
     --font-sans: system-ui, -apple-system, sans-serif;
 }
 
@@ -214,7 +213,6 @@
     --color-terminal-cursor: var(--terminal-cursor);
 
     --font-family-mono: var(--font-mono);
-    --font-family-prose: var(--font-prose);
     --font-family-sans: var(--font-sans);
 }
 
@@ -332,10 +330,10 @@
        carries most of the hierarchy, so colour can stay scarce.
        -------------------------------------------------------------- */
     .prose {
-        font-family: var(--font-prose);
-        font-optical-sizing: auto;
-        font-size: var(--text-md);
+        font-family: var(--font-mono);
+        font-size: var(--text-base);
         line-height: var(--leading-prose);
+        letter-spacing: -0.005em;
         color: var(--foreground);
         max-width: var(--measure);
     }
@@ -347,11 +345,11 @@
     /* Conceptual emphasis — max two per paragraph. */
     .em {
         color: var(--foreground);
-        font-weight: 600;
+        font-weight: 700;
         text-decoration: underline;
         text-decoration-color: var(--rule-em);
         text-decoration-thickness: 1.5px;
-        text-underline-offset: 0.2em;
+        text-underline-offset: 0.22em;
         transition: text-decoration-color 0.2s ease;
     }
 
@@ -367,12 +365,17 @@
 
     /* Technical nouns. Mono inside serif already reads as "code", so
        these need no colour of their own. */
+    /* Inline code tint. The halo comes from a box-shadow spread rather than
+       padding, so it never opens a gap before a following comma or period. */
     .term {
         font-family: var(--font-mono);
-        font-size: 0.84em;
         font-weight: 500;
         color: var(--foreground);
-        letter-spacing: -0.01em;
+        background: color-mix(in oklch, var(--foreground) 8%, transparent);
+        box-shadow: 0 0 0 0.2em
+            color-mix(in oklch, var(--foreground) 8%, transparent);
+        border-radius: 2px;
+        white-space: nowrap;
     }
 
     /* ---- Metadata --------------------------------------------------- */
@@ -480,7 +483,6 @@
     .terminal-render .em,
     .terminal-render .key,
     .terminal-render .term {
-        font-family: var(--font-mono);
         font-size: var(--text-sm);
         line-height: 1.65;
     }
@@ -502,6 +504,8 @@
 
     .terminal-render .term {
         color: var(--terminal-prompt);
+        background: transparent;
+        box-shadow: none;
     }
 
     .terminal-render .surface {

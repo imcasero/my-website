@@ -51,7 +51,7 @@
 </script>
 
 <section id="projects" aria-labelledby="projects-heading">
-    <SectionHeading num="03" label="projects" id="projects-heading" />
+    <SectionHeading path="projects" id="projects-heading" />
 
     <div class="grid">
         {#each projects as project}
@@ -240,10 +240,9 @@
     }
 
     .desc {
-        font-family: var(--font-prose);
-        font-optical-sizing: auto;
-        font-size: var(--text-base);
-        line-height: 1.55;
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        line-height: 1.7;
         color: var(--muted-foreground);
     }
 
