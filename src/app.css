@@ -68,7 +68,7 @@
     --input: var(--border);
     --ring: oklch(0.55 var(--prompt-c) var(--accent-h));
 
-    --dot: oklch(0.855 calc(var(--prompt-c) * 0.12) var(--accent-h));
+    --dot: oklch(0.795 calc(var(--prompt-c) * 0.18) var(--accent-h));
     --shadow-card:
         0 1px 2px oklch(0.2 0 0 / 0.04), 0 10px 28px -14px oklch(0.2 0 0 / 0.14);
 
@@ -123,7 +123,7 @@
     --input: var(--border);
     --ring: oklch(0.68 var(--prompt-c) var(--accent-h));
 
-    --dot: oklch(0.29 calc(var(--prompt-c) * 0.2) var(--accent-h));
+    --dot: oklch(0.375 calc(var(--prompt-c) * 0.26) var(--accent-h));
     --shadow-card:
         0 1px 2px oklch(0 0 0 / 0.35), 0 14px 34px -18px oklch(0 0 0 / 0.7);
 
@@ -246,18 +246,8 @@
         z-index: 0;
         pointer-events: none;
         background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-        background-size: 24px 24px;
-        opacity: 0.55;
-        -webkit-mask-image: radial-gradient(
-            ellipse 90% 55% at 50% 0%,
-            #000 0%,
-            transparent 78%
-        );
-        mask-image: radial-gradient(
-            ellipse 90% 55% at 50% 0%,
-            #000 0%,
-            transparent 78%
-        );
+        background-size: 26px 26px;
+        opacity: 0.6;
     }
 
     #app {
