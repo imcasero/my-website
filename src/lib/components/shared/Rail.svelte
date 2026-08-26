@@ -44,6 +44,17 @@
     let step = $state(reduced ? 4 : 0);
     let active = $state("");
 
+    /* A clicked nav link wins over the scroll-spy until the visitor scrolls
+       on their own again: a section near the page bottom can never reach the
+       reading line, so the spy would otherwise snap the marker straight back
+       to whichever section owns that final scroll position. */
+    let pinned: string | null = null;
+
+    function pin(id: string) {
+        pinned = id;
+        active = id;
+    }
+
     let isStatic = $derived(currentMode.current === "static");
 
     /* Boot sequence: type the command line only — never the display name —
@@ -71,32 +82,128 @@
     });
 
     /* Scroll-spy. Re-registers when the view mode flips, since the
-       sections only exist in static mode. */
+       sections only exist in static mode.
+
+       Position-based rather than IntersectionObserver: the last sections
+       can never reach a fixed observer band because the page runs out of
+       scroll, which left the marker stuck on an earlier section. */
     $effect(() => {
         if (!isStatic) {
             active = "";
             return;
         }
 
-        const visible = new Set<string>();
-        const observer = new IntersectionObserver(
-            (entries) => {
-                for (const entry of entries) {
-                    if (entry.isIntersecting) visible.add(entry.target.id);
-                    else visible.delete(entry.target.id);
+        const sections = nav
+            .map((n) => ({ id: n.id, el: document.getElementById(n.id) }))
+            .filter(
+                (n): n is { id: string; el: HTMLElement } => n.el !== null,
+            );
+
+        if (sections.length === 0) return;
+
+        let frame = 0;
+
+        const update = () => {
+            frame = 0;
+
+            if (pinned) {
+                active = pinned;
+                return;
+            }
+
+            const viewport = window.innerHeight;
+            const line = viewport * 0.3;
+            const maxScroll = Math.max(
+                0,
+                document.documentElement.scrollHeight - viewport,
+            );
+            const y = window.scrollY;
+
+            /* Activation point of a section: the scroll offset at which
+               its top crosses the reading line. */
+            const points = sections.map(
+                (s) => s.el.getBoundingClientRect().top + y - line,
+            );
+
+            /* Near the end the page simply runs out of scroll: the last
+               sections' points land past maxScroll, or crowd into its final
+               pixels, so the marker never reached them. Cap each one so it
+               owns a slice of the tail, then restore the ordering. */
+            if (maxScroll > viewport) {
+                const slice = viewport * 0.25;
+                for (let i = points.length - 1; i > 0; i--) {
+                    const cap =
+                        maxScroll - (points.length - 1 - i + 0.5) * slice;
+                    points[i] = Math.min(points[i], cap);
                 }
-                const first = nav.find((n) => visible.has(n.id));
-                if (first) active = first.id;
-            },
-            { rootMargin: "-15% 0px -75% 0px" },
-        );
+                for (let i = 1; i < points.length; i++) {
+                    points[i] = Math.max(points[i], points[i - 1]);
+                }
+            }
 
-        for (const item of nav) {
-            const el = document.getElementById(item.id);
-            if (el) observer.observe(el);
-        }
+            let current = sections[0].id;
+            for (let i = 0; i < sections.length; i++) {
+                if (y >= points[i] - 1) current = sections[i].id;
+            }
 
-        return () => observer.disconnect();
+            active = current;
+        };
+
+        const schedule = () => {
+            if (!frame) frame = requestAnimationFrame(update);
+        };
+
+        /* Wheel, a pointer press (scrollbar drags included) and the
+           scrolling keys mean the visitor took over — anything else,
+           including the smooth scroll a nav click starts, leaves the pin
+           in place. A press on a nav link re-pins right after, since
+           pointerdown lands before click. */
+        const SCROLL_KEYS = new Set([
+            "ArrowUp",
+            "ArrowDown",
+            "PageUp",
+            "PageDown",
+            "Home",
+            "End",
+            " ",
+        ]);
+
+        const release = () => {
+            if (!pinned) return;
+            pinned = null;
+            schedule();
+        };
+
+        const onKeydown = (e: KeyboardEvent) => {
+            if (SCROLL_KEYS.has(e.key)) release();
+        };
+
+        /* A deep link lands mid-page for the same reason a click does —
+           on load, and on browser history moves between anchors. */
+        const pinHash = () => {
+            const hash = location.hash.slice(1);
+            if (sections.some((s) => s.id === hash)) pin(hash);
+        };
+
+        pinHash();
+
+        update();
+        window.addEventListener("scroll", schedule, { passive: true });
+        window.addEventListener("resize", schedule);
+        window.addEventListener("wheel", release, { passive: true });
+        window.addEventListener("pointerdown", release, { passive: true });
+        window.addEventListener("keydown", onKeydown);
+        window.addEventListener("hashchange", pinHash);
+
+        return () => {
+            if (frame) cancelAnimationFrame(frame);
+            window.removeEventListener("scroll", schedule);
+            window.removeEventListener("resize", schedule);
+            window.removeEventListener("wheel", release);
+            window.removeEventListener("pointerdown", release);
+            window.removeEventListener("keydown", onKeydown);
+            window.removeEventListener("hashchange", pinHash);
+        };
     });
 </script>
 
@@ -126,6 +233,7 @@
                     class="nav-link"
                     class:active={active === item.id}
                     aria-current={active === item.id ? "true" : undefined}
+                    onclick={() => pin(item.id)}
                 >
                     <span class="marker" aria-hidden="true">
                         {active === item.id ? "▸" : ""}
