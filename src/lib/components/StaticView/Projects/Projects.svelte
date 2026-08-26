@@ -270,7 +270,7 @@
         letter-spacing: 0.02em;
         padding: 0.4rem 0.7rem;
         border-radius: var(--radius);
-        border: 1px solid var(--border);
+        border: 1px solid var(--border-interactive);
         color: var(--foreground);
         text-decoration: none;
         transition:
@@ -304,6 +304,10 @@
     .link:focus-visible {
         outline: 2px solid var(--ring);
         outline-offset: 2px;
+    }
+
+    .link.primary:focus-visible {
+        outline-color: var(--primary-foreground);
     }
 
     @media (min-width: 760px) {

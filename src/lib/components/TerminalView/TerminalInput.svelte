@@ -106,6 +106,11 @@
         font-size: var(--text-sm);
     }
 
+    .input-row:focus-within {
+        outline: 2px solid var(--terminal-prompt);
+        outline-offset: 2px;
+    }
+
     .prompt {
         color: var(--terminal-prompt);
         font-weight: 700;
@@ -129,7 +134,6 @@
 
     .ghost {
         color: var(--terminal-comment);
-        opacity: 0.75;
     }
 
     .terminal-input {

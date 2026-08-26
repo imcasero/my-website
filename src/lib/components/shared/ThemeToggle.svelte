@@ -43,7 +43,7 @@
         width: 32px;
         height: 32px;
         flex-shrink: 0;
-        border: 1px solid var(--hairline);
+        border: 1px solid var(--border-interactive);
         border-radius: var(--radius);
         background: var(--card);
         color: var(--muted-foreground);

@@ -93,7 +93,7 @@
         font-family: var(--font-mono);
         font-size: var(--text-2xs);
         letter-spacing: 0.03em;
-        border: 1px solid var(--hairline);
+        border: 1px solid var(--border-interactive);
         border-radius: var(--radius);
         background: var(--card);
         color: var(--foreground);
@@ -152,7 +152,7 @@
         z-index: 50;
         min-width: 12rem;
         padding: 0.25rem;
-        border: 1px solid var(--border);
+        border: 1px solid var(--border-interactive);
         border-radius: var(--radius);
         background: var(--popover);
         box-shadow: var(--shadow-card);

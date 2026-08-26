@@ -103,8 +103,9 @@
 <aside class="rail" class:booted={step > 0}>
     <div class="identity">
         <p class="cmd" aria-hidden="true">
-            <span class="dollar">$</span><span class="typed">{typed}</span
-            ><span class="caret">_</span>
+            <span class="dollar">$</span><span class="typed">{typed}</span><span
+                class="caret">_</span
+            >
         </p>
 
         <h1 class="name" class:in={step >= 1}>Diego<br />Casero</h1>
@@ -223,6 +224,7 @@
 
     .status {
         margin-top: 0.55rem;
+        margin-left: 0.35rem;
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
@@ -305,7 +307,7 @@
         place-items: center;
         width: 32px;
         height: 32px;
-        border: 1px solid var(--hairline);
+        border: 1px solid var(--border-interactive);
         border-radius: var(--radius);
         color: var(--role-meta);
         transition:

@@ -28,7 +28,7 @@
         display: flex;
         padding: 2px;
         gap: 2px;
-        border: 1px solid var(--hairline);
+        border: 1px solid var(--border-interactive);
         border-radius: var(--radius);
         background: var(--sunken);
     }

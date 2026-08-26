@@ -207,7 +207,7 @@
     .shell-tag {
         font-size: 10px;
         letter-spacing: 0.08em;
-        color: var(--terminal-comment);
+        color: var(--terminal-prompt);
         background: color-mix(in oklch, var(--terminal-prompt) 14%, transparent);
         padding: 1px 6px;
         border-radius: 3px;

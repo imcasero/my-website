@@ -249,7 +249,7 @@
         letter-spacing: 0.04em;
         color: var(--muted-foreground);
         background: transparent;
-        border: 1px solid var(--hairline);
+        border: 1px solid var(--border-interactive);
         border-radius: var(--radius);
         cursor: pointer;
         transition:

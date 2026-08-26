@@ -58,7 +58,7 @@
         padding: 0.45rem 0.8rem;
         font-family: var(--font-mono);
         font-size: var(--text-xs);
-        border: 1px solid var(--border);
+        border: 1px solid var(--border-interactive);
         border-radius: var(--radius);
         color: var(--muted-foreground);
         text-decoration: none;

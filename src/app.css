@@ -59,10 +59,12 @@
     --accent: oklch(0.955 0 0);
     --accent-foreground: oklch(0.205 0 0);
     --destructive: oklch(0.52 0.22 27.325);
-    --destructive-foreground: oklch(0.52 0.22 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
 
     --border: oklch(0.885 calc(var(--prompt-c) * 0.08) var(--accent-h));
     --hairline: oklch(0.925 calc(var(--prompt-c) * 0.07) var(--accent-h));
+    /* Only visible boundary of interactive controls — must clear 3:1 (WCAG 1.4.11) */
+    --border-interactive: oklch(0.625 calc(var(--prompt-c) * 0.08) var(--accent-h));
     --input: var(--border);
     --ring: oklch(0.55 var(--prompt-c) var(--accent-h));
 
@@ -117,6 +119,7 @@
 
     --border: oklch(0.305 calc(var(--prompt-c) * 0.16) var(--accent-h));
     --hairline: oklch(0.255 calc(var(--prompt-c) * 0.14) var(--accent-h));
+    --border-interactive: oklch(0.5 calc(var(--prompt-c) * 0.16) var(--accent-h));
     --input: var(--border);
     --ring: oklch(0.68 var(--prompt-c) var(--accent-h));
 
@@ -181,6 +184,7 @@
     --color-destructive: var(--destructive);
     --color-destructive-foreground: var(--destructive-foreground);
     --color-border: var(--border);
+    --color-border-interactive: var(--border-interactive);
     --color-input: var(--input);
     --color-ring: var(--ring);
     --color-chart-1: var(--chart-1);

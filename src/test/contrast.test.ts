@@ -158,20 +158,131 @@ function contrast(
   return (hi + 0.05) / (lo + 0.05);
 }
 
-/** [foreground token, background token, minimum ratio, description] */
-const PAIRS: [string, string, number, string][] = [
+/**
+ * A background to measure against: either an opaque token, or a translucent
+ * `color-mix(in oklch, <tint> <amount>%, transparent)` composited over one.
+ * Several surfaces in the UI are tinted chips, and a tint moves the ratio
+ * enough to flip a pass into a fail.
+ */
+type Surface = string | { tint: string; amount: number; over: string };
+
+/** Resolves a Surface to the opaque colour the eye actually receives. */
+function surface(
+  theme: "light" | "dark",
+  spec: Surface,
+  knobs: Knobs,
+): [number, number, number] {
+  if (typeof spec === "string") return token(theme, spec, knobs);
+
+  const tint = token(theme, spec.tint, knobs);
+  const base = token(theme, spec.over, knobs);
+  return tint.map(
+    (channel, i) => channel * spec.amount + base[i] * (1 - spec.amount),
+  ) as [number, number, number];
+}
+
+function describeSurface(spec: Surface): string {
+  return typeof spec === "string"
+    ? spec
+    : `${spec.tint} ${spec.amount * 100}% over ${spec.over}`;
+}
+
+/**
+ * [foreground token, background surface, minimum ratio, description]
+ *
+ * 4.5 is AA for normal text; 3 is AA for the visible boundary of a control
+ * or a focus indicator (1.4.11). Purely decorative rules (--border,
+ * --hairline) are deliberately absent — WCAG does not hold them to a ratio.
+ */
+const PAIRS: [string, Surface, number, string][] = [
+  // Page and card surfaces.
   ["--foreground", "--background", 4.5, "body text"],
   ["--muted-foreground", "--background", 4.5, "muted text"],
   ["--primary", "--background", 4.5, "role / company / links"],
   ["--foreground", "--card", 4.5, "card body text"],
   ["--muted-foreground", "--card", 4.5, "card muted text"],
   ["--primary-foreground", "--primary", 4.5, "primary button label"],
+
+  // Terminal body.
   ["--terminal-text", "--terminal-bg", 4.5, "terminal body"],
   ["--terminal-prompt", "--terminal-bg", 4.5, "terminal prompt"],
   ["--terminal-comment", "--terminal-bg", 4.5, "terminal comment"],
   ["--terminal-success", "--terminal-bg", 4.5, "terminal success"],
   ["--terminal-warning", "--terminal-bg", 4.5, "terminal warning"],
   ["--terminal-error", "--terminal-bg", 4.5, "terminal error"],
+
+  // Terminal chrome sits on --sunken, not --terminal-bg.
+  ["--terminal-comment", "--sunken", 4.5, "chrome title and separators"],
+  ["--terminal-prompt", "--sunken", 4.5, "chrome user"],
+  ["--terminal-success", "--sunken", 4.5, "chrome host"],
+  ["--terminal-warning", "--sunken", 4.5, "chrome path"],
+  ["--muted-foreground", "--sunken", 4.5, "mode toggle segment, project host"],
+  [
+    "--terminal-prompt",
+    { tint: "--terminal-prompt", amount: 0.14, over: "--sunken" },
+    4.5,
+    "shell tag on tinted chip",
+  ],
+
+  // Tinted chips inside the terminal body.
+  [
+    "--terminal-prompt",
+    { tint: "--terminal-prompt", amount: 0.1, over: "--terminal-bg" },
+    4.5,
+    "suggestion chip",
+  ],
+  ["--terminal-bg", "--terminal-prompt", 4.5, "suggestion chip, hovered"],
+
+  // `cat` / `sh` re-render the static components inside .terminal-render, so
+  // static tokens land on --terminal-bg rather than the surface they were
+  // tuned against.
+  ["--foreground", "--terminal-bg", 4.5, "static body text in terminal"],
+  ["--muted-foreground", "--terminal-bg", 4.5, "static muted text in terminal"],
+  ["--primary", "--terminal-bg", 4.5, "static primary text in terminal"],
+  [
+    "--muted-foreground",
+    { tint: "--foreground", amount: 0.05, over: "--terminal-bg" },
+    4.5,
+    "chip in terminal",
+  ],
+
+  // Accent picker dropdown.
+  ["--muted-foreground", "--popover", 4.5, "dropdown header"],
+  ["--foreground", "--popover", 4.5, "dropdown option"],
+  [
+    "--primary",
+    { tint: "--primary", amount: 0.12, over: "--popover" },
+    4.5,
+    "dropdown option, selected",
+  ],
+
+  // Tinted chips in the static view.
+  [
+    "--muted-foreground",
+    { tint: "--foreground", amount: 0.05, over: "--card" },
+    4.5,
+    "chip on card",
+  ],
+  [
+    "--muted-foreground",
+    { tint: "--foreground", amount: 0.05, over: "--background" },
+    4.5,
+    "chip on page",
+  ],
+  [
+    "--foreground",
+    { tint: "--foreground", amount: 0.08, over: "--background" },
+    4.5,
+    "inline term highlight",
+  ],
+
+  // Non-text: control boundaries and focus indicators (1.4.11).
+  ["--border-interactive", "--background", 3, "control border on page"],
+  ["--border-interactive", "--card", 3, "control border on card"],
+  ["--border-interactive", "--sunken", 3, "control border on sunken"],
+  ["--ring", "--background", 3, "focus ring on page"],
+  ["--ring", "--card", 3, "focus ring on card"],
+  ["--ring", "--popover", 3, "focus ring in dropdown"],
 ];
 
 const presetNames = Object.keys(THEME_PRESETS) as ThemeName[];
@@ -186,11 +297,11 @@ describe("palette contrast", () => {
           it(`${presetName}: ${label} meets ${min}:1`, () => {
             const ratio = contrast(
               token(themeName, fg, knobs),
-              token(themeName, bg, knobs),
+              surface(themeName, bg, knobs),
             );
             expect(
               Number(ratio.toFixed(2)),
-              `${fg} on ${bg} in ${themeName}/${presetName}`,
+              `${fg} on ${describeSurface(bg)} in ${themeName}/${presetName}`,
             ).toBeGreaterThanOrEqual(min);
           });
         }
