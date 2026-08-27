@@ -1,0 +1,7 @@
+# Biome se encarga de todo lo que no sea .svelte
+*
+!src/**/*.svelte
+
+node_modules
+dist
+pnpm-lock.yaml

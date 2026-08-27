@@ -1,0 +1,29 @@
+// Debug de Vite/Vitest.
+[
+  {
+    "label": "Vitest: archivo actual",
+    "adapter": "JavaScript",
+    "request": "launch",
+    "program": "$ZED_WORKTREE_ROOT/node_modules/.bin/vitest",
+    "args": ["run", "--no-file-parallelism", "$ZED_FILE"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "console": "integratedTerminal"
+  },
+  {
+    "label": "Vitest: todo",
+    "adapter": "JavaScript",
+    "request": "launch",
+    "program": "$ZED_WORKTREE_ROOT/node_modules/.bin/vitest",
+    "args": ["run", "--no-file-parallelism"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "console": "integratedTerminal"
+  },
+  {
+    "label": "Vite: dev server",
+    "adapter": "JavaScript",
+    "request": "launch",
+    "program": "$ZED_WORKTREE_ROOT/node_modules/.bin/vite",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "console": "integratedTerminal"
+  }
+]
