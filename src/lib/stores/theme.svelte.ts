@@ -23,16 +23,14 @@ function createThemeState() {
     setThemeOnDocument(getInitialTheme());
 
     // Listen to system theme changes
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const stored = localStorage.getItem("theme");
-        if (!stored) {
-          const newTheme = e.matches ? "dark" : "light";
-          currentTheme = newTheme;
-          setThemeOnDocument(newTheme);
-        }
-      });
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      const stored = localStorage.getItem("theme");
+      if (!stored) {
+        const newTheme = e.matches ? "dark" : "light";
+        currentTheme = newTheme;
+        setThemeOnDocument(newTheme);
+      }
+    });
   }
 
   return {

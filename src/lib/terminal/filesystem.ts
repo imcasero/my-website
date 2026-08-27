@@ -54,10 +54,7 @@ export const filesystem: Record<string, FileSystemNode> = {
   },
 };
 
-export function resolvePath(
-  currentPath: string,
-  targetPath: string
-): string | null {
+export function resolvePath(currentPath: string, targetPath: string): string | null {
   if (targetPath.startsWith("~")) {
     return targetPath;
   }
@@ -79,9 +76,7 @@ export function resolvePath(
   }
 
   // Ruta relativa
-  return currentPath === "~"
-    ? `~/${targetPath}`
-    : `${currentPath}/${targetPath}`;
+  return currentPath === "~" ? `~/${targetPath}` : `${currentPath}/${targetPath}`;
 }
 
 export function getNode(path: string): FileSystemNode | null {

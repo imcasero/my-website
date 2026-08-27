@@ -2,153 +2,151 @@
 @import "tw-animate-css";
 
 :root {
-    /* Accent knobs — driven by the accent store (see stores/accent.svelte.ts) */
-    --accent-h: 210;
-    --prompt-h: 210;
-    --success-h: 190;
-    --warning-h: 85;
-    --prompt-c: 0.18;
-    --success-c: 0.18;
-    --warning-c: 0.18;
+  /* Accent knobs — driven by the accent store (see stores/accent.svelte.ts) */
+  --accent-h: 210;
+  --prompt-h: 210;
+  --success-h: 190;
+  --warning-h: 85;
+  --prompt-c: 0.18;
+  --success-c: 0.18;
+  --warning-c: 0.18;
 
-    /* ---- Type scale ------------------------------------------------- */
-    --text-2xs: 0.6875rem; /* 11px — rail meta, permissions, tags */
-    --text-xs: 0.75rem; /* 12px — labels, chips */
-    --text-sm: 0.8125rem; /* 13px — mono metadata, nav */
-    --text-base: 0.9375rem; /* 15px — mono body, UI */
-    --text-md: 1.0625rem; /* 17px — prose */
-    --text-lg: 1.375rem; /* 22px — entry headlines */
-    --text-xl: 1.875rem; /* 30px — big numbers */
-    --text-display: clamp(2.5rem, 6vw, 3.25rem);
+  /* ---- Type scale ------------------------------------------------- */
+  --text-2xs: 0.6875rem; /* 11px — rail meta, permissions, tags */
+  --text-xs: 0.75rem; /* 12px — labels, chips */
+  --text-sm: 0.8125rem; /* 13px — mono metadata, nav */
+  --text-base: 0.9375rem; /* 15px — mono body, UI */
+  --text-md: 1.0625rem; /* 17px — prose */
+  --text-lg: 1.375rem; /* 22px — entry headlines */
+  --text-xl: 1.875rem; /* 30px — big numbers */
+  --text-display: clamp(2.5rem, 6vw, 3.25rem);
 
-    --measure: 68ch;
-    --leading-prose: 1.8;
+  --measure: 68ch;
+  --leading-prose: 1.8;
 
-    /* ---- Shell ------------------------------------------------------ */
-    --shell-max: 1140px;
-    --rail-w: 292px;
-    --gutter: clamp(1.25rem, 4vw, 2.5rem);
-    --space-section: clamp(3.25rem, 6vw, 5rem);
+  /* ---- Shell ------------------------------------------------------ */
+  --shell-max: 1140px;
+  --rail-w: 292px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --space-section: clamp(3.25rem, 6vw, 5rem);
 
-    /* ---- Radius ----------------------------------------------------- */
-    --radius: 4px;
+  /* ---- Radius ----------------------------------------------------- */
+  --radius: 4px;
 
-    /* ---- Families --------------------------------------------------- */
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
-        "Cascadia Mono", Consolas, monospace;
-    --font-sans: system-ui, -apple-system, sans-serif;
+  /* ---- Families --------------------------------------------------- */
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, "Cascadia Mono", Consolas, monospace;
+  --font-sans: system-ui, -apple-system, sans-serif;
 }
 
 :root,
 [data-theme="light"] {
-    /* Surfaces — the page sits below the cards, so elevation reads */
-    --background: oklch(0.974 calc(var(--prompt-c) * 0.05) var(--accent-h));
-    --foreground: oklch(0.19 calc(var(--prompt-c) * 0.06) var(--accent-h));
-    --card: oklch(1 0 0);
-    --card-foreground: var(--foreground);
-    --popover: oklch(1 0 0);
-    --popover-foreground: var(--foreground);
-    --sunken: oklch(0.948 calc(var(--prompt-c) * 0.07) var(--accent-h));
+  /* Surfaces — the page sits below the cards, so elevation reads */
+  --background: oklch(0.974 calc(var(--prompt-c) * 0.05) var(--accent-h));
+  --foreground: oklch(0.19 calc(var(--prompt-c) * 0.06) var(--accent-h));
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+  --sunken: oklch(0.948 calc(var(--prompt-c) * 0.07) var(--accent-h));
 
-    --primary: oklch(0.42 var(--prompt-c) var(--accent-h));
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.955 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.955 0 0);
-    --muted-foreground: oklch(0.495 calc(var(--prompt-c) * 0.05) var(--accent-h));
-    --accent: oklch(0.955 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.52 0.22 27.325);
-    --destructive-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.42 var(--prompt-c) var(--accent-h));
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.955 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.955 0 0);
+  --muted-foreground: oklch(0.495 calc(var(--prompt-c) * 0.05) var(--accent-h));
+  --accent: oklch(0.955 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.52 0.22 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
 
-    --border: oklch(0.885 calc(var(--prompt-c) * 0.08) var(--accent-h));
-    --hairline: oklch(0.925 calc(var(--prompt-c) * 0.07) var(--accent-h));
-    /* Only visible boundary of interactive controls — must clear 3:1 (WCAG 1.4.11) */
-    --border-interactive: oklch(0.625 calc(var(--prompt-c) * 0.08) var(--accent-h));
-    --input: var(--border);
-    --ring: oklch(0.55 var(--prompt-c) var(--accent-h));
+  --border: oklch(0.885 calc(var(--prompt-c) * 0.08) var(--accent-h));
+  --hairline: oklch(0.925 calc(var(--prompt-c) * 0.07) var(--accent-h));
+  /* Only visible boundary of interactive controls — must clear 3:1 (WCAG 1.4.11) */
+  --border-interactive: oklch(0.625 calc(var(--prompt-c) * 0.08) var(--accent-h));
+  --input: var(--border);
+  --ring: oklch(0.55 var(--prompt-c) var(--accent-h));
 
-    --dot: oklch(0.795 calc(var(--prompt-c) * 0.18) var(--accent-h));
-    --shadow-card:
-        0 1px 2px oklch(0.2 0 0 / 0.04), 0 10px 28px -14px oklch(0.2 0 0 / 0.14);
+  --dot: oklch(0.795 calc(var(--prompt-c) * 0.18) var(--accent-h));
+  --shadow-card: 0 1px 2px oklch(0.2 0 0 / 0.04), 0 10px 28px -14px oklch(0.2 0 0 / 0.14);
 
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 
-    /* Terminal palette */
-    --terminal-bg: oklch(0.955 calc(var(--prompt-c) * 0.06) var(--accent-h));
-    --terminal-text: oklch(0.18 0 0);
-    --terminal-prompt: oklch(0.42 var(--prompt-c) var(--prompt-h));
-    --terminal-error: oklch(0.5 0.22 25);
-    --terminal-success: oklch(0.42 var(--success-c) var(--success-h));
-    --terminal-warning: oklch(0.46 var(--warning-c) var(--warning-h));
-    --terminal-comment: oklch(0.5 0 0);
-    --terminal-cursor: oklch(0.42 var(--prompt-c) var(--prompt-h));
+  /* Terminal palette */
+  --terminal-bg: oklch(0.955 calc(var(--prompt-c) * 0.06) var(--accent-h));
+  --terminal-text: oklch(0.18 0 0);
+  --terminal-prompt: oklch(0.42 var(--prompt-c) var(--prompt-h));
+  --terminal-error: oklch(0.5 0.22 25);
+  --terminal-success: oklch(0.42 var(--success-c) var(--success-h));
+  --terminal-warning: oklch(0.46 var(--warning-c) var(--warning-h));
+  --terminal-comment: oklch(0.5 0 0);
+  --terminal-cursor: oklch(0.42 var(--prompt-c) var(--prompt-h));
 }
 
 [data-theme="dark"] {
-    --background: oklch(0.15 calc(var(--prompt-c) * 0.13) var(--accent-h));
-    --foreground: oklch(0.955 calc(var(--prompt-c) * 0.03) var(--accent-h));
-    --card: oklch(0.195 calc(var(--prompt-c) * 0.14) var(--accent-h));
-    --card-foreground: var(--foreground);
-    --popover: oklch(0.205 calc(var(--prompt-c) * 0.14) var(--accent-h));
-    --popover-foreground: var(--foreground);
-    --sunken: oklch(0.122 calc(var(--prompt-c) * 0.12) var(--accent-h));
+  --background: oklch(0.15 calc(var(--prompt-c) * 0.13) var(--accent-h));
+  --foreground: oklch(0.955 calc(var(--prompt-c) * 0.03) var(--accent-h));
+  --card: oklch(0.195 calc(var(--prompt-c) * 0.14) var(--accent-h));
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.205 calc(var(--prompt-c) * 0.14) var(--accent-h));
+  --popover-foreground: var(--foreground);
+  --sunken: oklch(0.122 calc(var(--prompt-c) * 0.12) var(--accent-h));
 
-    --primary: oklch(0.78 var(--prompt-c) var(--accent-h));
-    --primary-foreground: oklch(0.145 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.665 calc(var(--prompt-c) * 0.06) var(--accent-h));
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.396 0.141 25.723);
-    --destructive-foreground: oklch(0.637 0.237 25.331);
+  --primary: oklch(0.78 var(--prompt-c) var(--accent-h));
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.665 calc(var(--prompt-c) * 0.06) var(--accent-h));
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
 
-    --border: oklch(0.305 calc(var(--prompt-c) * 0.16) var(--accent-h));
-    --hairline: oklch(0.255 calc(var(--prompt-c) * 0.14) var(--accent-h));
-    --border-interactive: oklch(0.5 calc(var(--prompt-c) * 0.16) var(--accent-h));
-    --input: var(--border);
-    --ring: oklch(0.68 var(--prompt-c) var(--accent-h));
+  --border: oklch(0.305 calc(var(--prompt-c) * 0.16) var(--accent-h));
+  --hairline: oklch(0.255 calc(var(--prompt-c) * 0.14) var(--accent-h));
+  --border-interactive: oklch(0.5 calc(var(--prompt-c) * 0.16) var(--accent-h));
+  --input: var(--border);
+  --ring: oklch(0.68 var(--prompt-c) var(--accent-h));
 
-    --dot: oklch(0.375 calc(var(--prompt-c) * 0.26) var(--accent-h));
-    --shadow-card:
-        0 1px 2px oklch(0 0 0 / 0.35), 0 14px 34px -18px oklch(0 0 0 / 0.7);
+  --dot: oklch(0.375 calc(var(--prompt-c) * 0.26) var(--accent-h));
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.35), 0 14px 34px -18px oklch(0 0 0 / 0.7);
 
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(0.269 0 0);
-    --sidebar-ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
 
-    --terminal-bg: oklch(0.115 calc(var(--prompt-c) * 0.11) var(--accent-h));
-    --terminal-text: oklch(0.9 0 0);
-    --terminal-prompt: oklch(0.82 var(--prompt-c) var(--prompt-h));
-    --terminal-error: oklch(0.68 0.2 25);
-    --terminal-success: oklch(0.76 var(--success-c) var(--success-h));
-    --terminal-warning: oklch(0.8 var(--warning-c) var(--warning-h));
-    --terminal-comment: oklch(0.6 0 0);
-    --terminal-cursor: oklch(0.82 var(--prompt-c) var(--prompt-h));
+  --terminal-bg: oklch(0.115 calc(var(--prompt-c) * 0.11) var(--accent-h));
+  --terminal-text: oklch(0.9 0 0);
+  --terminal-prompt: oklch(0.82 var(--prompt-c) var(--prompt-h));
+  --terminal-error: oklch(0.68 0.2 25);
+  --terminal-success: oklch(0.76 var(--success-c) var(--success-h));
+  --terminal-warning: oklch(0.8 var(--warning-c) var(--warning-h));
+  --terminal-comment: oklch(0.6 0 0);
+  --terminal-cursor: oklch(0.82 var(--prompt-c) var(--prompt-h));
 }
 
 /* ---------------------------------------------------------------------
@@ -159,420 +157,415 @@
    meaningful instead of decorating every other word.
    ------------------------------------------------------------------ */
 :root {
-    --role-prompt: var(--terminal-prompt); /* shell $, carets, chrome  */
-    --role-key: var(--terminal-prompt); /* hard facts: numbers      */
-    --role-meta: var(--muted-foreground); /* labels, periods, paths   */
-    --role-link: var(--primary); /* actionable text          */
-    --rule-em: color-mix(in oklch, var(--terminal-prompt) 45%, transparent);
+  --role-prompt: var(--terminal-prompt); /* shell $, carets, chrome  */
+  --role-key: var(--terminal-prompt); /* hard facts: numbers      */
+  --role-meta: var(--muted-foreground); /* labels, periods, paths   */
+  --role-link: var(--primary); /* actionable text          */
+  --rule-em: color-mix(in oklch, var(--terminal-prompt) 45%, transparent);
 }
 
 @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-card: var(--card);
-    --color-card-foreground: var(--card-foreground);
-    --color-popover: var(--popover);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-primary: var(--primary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-secondary: var(--secondary);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-muted: var(--muted);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-accent: var(--accent);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-destructive: var(--destructive);
-    --color-destructive-foreground: var(--destructive-foreground);
-    --color-border: var(--border);
-    --color-border-interactive: var(--border-interactive);
-    --color-input: var(--input);
-    --color-ring: var(--ring);
-    --color-chart-1: var(--chart-1);
-    --color-chart-2: var(--chart-2);
-    --color-chart-3: var(--chart-3);
-    --color-chart-4: var(--chart-4);
-    --color-chart-5: var(--chart-5);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-interactive: var(--border-interactive);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 
-    --radius-sm: 2px;
-    --radius-md: 4px;
-    --radius-lg: 6px;
-    --radius-xl: 10px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
 
-    --color-sidebar: var(--sidebar);
-    --color-sidebar-foreground: var(--sidebar-foreground);
-    --color-sidebar-primary: var(--sidebar-primary);
-    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-    --color-sidebar-accent: var(--sidebar-accent);
-    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-    --color-sidebar-border: var(--sidebar-border);
-    --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
-    --color-terminal-bg: var(--terminal-bg);
-    --color-terminal-text: var(--terminal-text);
-    --color-terminal-prompt: var(--terminal-prompt);
-    --color-terminal-error: var(--terminal-error);
-    --color-terminal-success: var(--terminal-success);
-    --color-terminal-warning: var(--terminal-warning);
-    --color-terminal-comment: var(--terminal-comment);
-    --color-terminal-cursor: var(--terminal-cursor);
+  --color-terminal-bg: var(--terminal-bg);
+  --color-terminal-text: var(--terminal-text);
+  --color-terminal-prompt: var(--terminal-prompt);
+  --color-terminal-error: var(--terminal-error);
+  --color-terminal-success: var(--terminal-success);
+  --color-terminal-warning: var(--terminal-warning);
+  --color-terminal-comment: var(--terminal-comment);
+  --color-terminal-cursor: var(--terminal-cursor);
 
-    --font-family-mono: var(--font-mono);
-    --font-family-sans: var(--font-sans);
+  --font-family-mono: var(--font-mono);
+  --font-family-sans: var(--font-sans);
 }
 
 @layer base {
-    * {
-        @apply border-border outline-ring/50;
-    }
+  * {
+    @apply border-border outline-ring/50;
+  }
 
-    html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 5rem;
-    }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
 
-    body {
-        @apply bg-background text-foreground;
-        font-family: var(--font-mono);
-        font-size: var(--text-base);
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-    }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-    /* Atmospheric dot field — keeps the page from reading as a flat void */
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-        background-size: 26px 26px;
-        opacity: 0.6;
-    }
+  /* Atmospheric dot field — keeps the page from reading as a flat void */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.6;
+  }
 
-    #app {
-        position: relative;
-        z-index: 1;
-    }
+  #app {
+    position: relative;
+    z-index: 1;
+  }
 
-    ::selection {
-        background: color-mix(in oklch, var(--terminal-prompt) 28%, transparent);
-    }
+  ::selection {
+    background: color-mix(in oklch, var(--terminal-prompt) 28%, transparent);
+  }
 
-    @keyframes cursor-blink {
-        0%,
-        49% {
-            opacity: 1;
-        }
-        50%,
-        100% {
-            opacity: 0;
-        }
+  @keyframes cursor-blink {
+    0%,
+    49% {
+      opacity: 1;
     }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
 
-    @keyframes typing {
-        from {
-            width: 0;
-        }
-        to {
-            width: 100%;
-        }
+  @keyframes typing {
+    from {
+      width: 0;
     }
+    to {
+      width: 100%;
+    }
+  }
 
-    @keyframes slide-up {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-    .terminal-cursor {
-        animation: cursor-blink 1s step-end infinite;
-    }
+  .terminal-cursor {
+    animation: cursor-blink 1s step-end infinite;
+  }
 
-    .terminal-scroll::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-    }
+  .terminal-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 
-    .terminal-scroll::-webkit-scrollbar-track {
-        background: var(--terminal-bg);
-    }
+  .terminal-scroll::-webkit-scrollbar-track {
+    background: var(--terminal-bg);
+  }
 
-    .terminal-scroll::-webkit-scrollbar-thumb {
-        background: var(--terminal-prompt);
-        border-radius: 4px;
-    }
+  .terminal-scroll::-webkit-scrollbar-thumb {
+    background: var(--terminal-prompt);
+    border-radius: 4px;
+  }
 
-    .terminal-scroll::-webkit-scrollbar-thumb:hover {
-        background: var(--terminal-success);
-    }
+  .terminal-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--terminal-success);
+  }
 
-    .terminal-scroll {
-        scrollbar-width: thin;
-        scrollbar-color: var(--terminal-prompt) var(--terminal-bg);
-    }
+  .terminal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--terminal-prompt) var(--terminal-bg);
+  }
 }
 
 @layer components {
-    /* ---- Prose ------------------------------------------------------
+  /* ---- Prose ------------------------------------------------------
        Serif body copy against mono metadata. The family switch alone
        carries most of the hierarchy, so colour can stay scarce.
        -------------------------------------------------------------- */
-    .prose {
-        font-family: var(--font-mono);
-        font-size: var(--text-base);
-        line-height: var(--leading-prose);
-        letter-spacing: -0.005em;
-        color: var(--foreground);
-        max-width: var(--measure);
-    }
+  .prose {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    line-height: var(--leading-prose);
+    letter-spacing: -0.005em;
+    color: var(--foreground);
+    max-width: var(--measure);
+  }
 
-    .prose p + p {
-        margin-top: 0.85em;
-    }
+  .prose p + p {
+    margin-top: 0.85em;
+  }
 
-    /* Conceptual emphasis — max two per paragraph. */
-    .em {
-        color: var(--foreground);
-        font-weight: 700;
-        text-decoration: underline;
-        text-decoration-color: var(--rule-em);
-        text-decoration-thickness: 1.5px;
-        text-underline-offset: 0.22em;
-        transition: text-decoration-color 0.2s ease;
-    }
+  /* Conceptual emphasis — max two per paragraph. */
+  .em {
+    color: var(--foreground);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--rule-em);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.22em;
+    transition: text-decoration-color 0.2s ease;
+  }
 
-    /* Hard facts only: metrics, counts, dates. Rare, therefore loud. */
-    .key {
-        font-family: var(--font-mono);
-        font-size: 0.86em;
-        font-weight: 700;
-        font-variant-numeric: tabular-nums;
-        color: var(--role-key);
-        letter-spacing: -0.01em;
-    }
+  /* Hard facts only: metrics, counts, dates. Rare, therefore loud. */
+  .key {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--role-key);
+    letter-spacing: -0.01em;
+  }
 
-    /* Technical nouns. Mono inside serif already reads as "code", so
+  /* Technical nouns. Mono inside serif already reads as "code", so
        these need no colour of their own. */
-    /* Inline code tint. The halo comes from a box-shadow spread rather than
+  /* Inline code tint. The halo comes from a box-shadow spread rather than
        padding, so it never opens a gap before a following comma or period. */
-    .term {
-        font-family: var(--font-mono);
-        font-weight: 500;
-        color: var(--foreground);
-        background: color-mix(in oklch, var(--foreground) 8%, transparent);
-        box-shadow: 0 0 0 0.2em
-            color-mix(in oklch, var(--foreground) 8%, transparent);
-        border-radius: 2px;
-        white-space: nowrap;
-    }
+  .term {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--foreground);
+    background: color-mix(in oklch, var(--foreground) 8%, transparent);
+    box-shadow: 0 0 0 0.2em color-mix(in oklch, var(--foreground) 8%, transparent);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
 
-    /* ---- Metadata --------------------------------------------------- */
-    .meta {
-        font-family: var(--font-mono);
-        font-size: var(--text-xs);
-        color: var(--role-meta);
-        letter-spacing: 0.02em;
-    }
+  /* ---- Metadata --------------------------------------------------- */
+  .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--role-meta);
+    letter-spacing: 0.02em;
+  }
 
-    .chip {
-        display: inline-flex;
-        align-items: center;
-        font-family: var(--font-mono);
-        font-size: var(--text-2xs);
-        font-weight: 500;
-        letter-spacing: 0.02em;
-        padding: 0.2rem 0.5rem;
-        border-radius: 3px;
-        color: var(--muted-foreground);
-        background: color-mix(in oklch, var(--foreground) 5%, transparent);
-        border: 1px solid var(--hairline);
-        white-space: nowrap;
-    }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    color: var(--muted-foreground);
+    background: color-mix(in oklch, var(--foreground) 5%, transparent);
+    border: 1px solid var(--hairline);
+    white-space: nowrap;
+  }
 
-    .surface {
-        background: var(--card);
-        border: 1px solid var(--hairline);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow-card);
-    }
+  .surface {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
 
-    /* ---- Scroll reveal ---------------------------------------------- */
-    .reveal {
-        opacity: 0;
-        transform: translateY(14px);
-        transition:
-            opacity 0.55s cubic-bezier(0.22, 0.8, 0.3, 1),
-            transform 0.55s cubic-bezier(0.22, 0.8, 0.3, 1);
-    }
+  /* ---- Scroll reveal ---------------------------------------------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 0.8, 0.3, 1),
+      transform 0.55s cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
 
-    .reveal.revealed {
-        opacity: 1;
-        transform: none;
-    }
+  .reveal.revealed {
+    opacity: 1;
+    transform: none;
+  }
 
-    /* ---- Terminal --------------------------------------------------- */
-    .terminal-container {
-        background: var(--terminal-bg);
-        color: var(--terminal-text);
-        font-family: var(--font-mono);
-        font-variant-ligatures: none;
-    }
+  /* ---- Terminal --------------------------------------------------- */
+  .terminal-container {
+    background: var(--terminal-bg);
+    color: var(--terminal-text);
+    font-family: var(--font-mono);
+    font-variant-ligatures: none;
+  }
 
-    .terminal-prompt {
-        color: var(--terminal-prompt);
-        @apply font-bold;
-    }
+  .terminal-prompt {
+    color: var(--terminal-prompt);
+    @apply font-bold;
+  }
 
-    .terminal-error {
-        color: var(--terminal-error);
-    }
+  .terminal-error {
+    color: var(--terminal-error);
+  }
 
-    .terminal-success {
-        color: var(--terminal-success);
-    }
+  .terminal-success {
+    color: var(--terminal-success);
+  }
 
-    .terminal-warning {
-        color: var(--terminal-warning);
-    }
+  .terminal-warning {
+    color: var(--terminal-warning);
+  }
 
-    .terminal-comment {
-        color: var(--terminal-comment);
-        @apply italic;
-    }
+  .terminal-comment {
+    color: var(--terminal-comment);
+    @apply italic;
+  }
 
-    .terminal-input {
-        background: transparent;
-        border: none;
-        outline: none;
-        color: var(--terminal-text);
-        font-family: var(--font-mono);
-        font-variant-ligatures: none;
-        caret-color: var(--terminal-cursor);
-    }
+  .terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--terminal-text);
+    font-family: var(--font-mono);
+    font-variant-ligatures: none;
+    caret-color: var(--terminal-cursor);
+  }
 
-    .terminal-input::selection {
-        background: var(--terminal-prompt);
-        color: var(--terminal-bg);
-    }
+  .terminal-input::selection {
+    background: var(--terminal-prompt);
+    color: var(--terminal-bg);
+  }
 
-    .terminal-line {
-        animation: slide-up 0.15s ease-out;
-    }
+  .terminal-line {
+    animation: slide-up 0.15s ease-out;
+  }
 
-    .ascii-art {
-        @apply whitespace-pre font-mono text-xs leading-tight;
-    }
+  .ascii-art {
+    @apply whitespace-pre font-mono text-xs leading-tight;
+  }
 
-    /* The `cat` / `sh` commands reuse the static section components. Inside
+  /* The `cat` / `sh` commands reuse the static section components. Inside
        the shell they must read as terminal output, not as an article.
        (app.css is plain CSS — no Svelte :global() wrapper here.) */
-    .terminal-render .prose,
-    .terminal-render .desc,
-    .terminal-render .em,
-    .terminal-render .key,
-    .terminal-render .term {
-        font-size: var(--text-sm);
-        line-height: 1.65;
-    }
+  .terminal-render .prose,
+  .terminal-render .desc,
+  .terminal-render .em,
+  .terminal-render .key,
+  .terminal-render .term {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+  }
 
-    .terminal-render .prose {
-        max-width: none;
-        color: var(--terminal-text);
-    }
+  .terminal-render .prose {
+    max-width: none;
+    color: var(--terminal-text);
+  }
 
-    .terminal-render .em {
-        color: var(--terminal-warning);
-        text-decoration: none;
-        font-weight: 700;
-    }
+  .terminal-render .em {
+    color: var(--terminal-warning);
+    text-decoration: none;
+    font-weight: 700;
+  }
 
-    .terminal-render .key {
-        color: var(--terminal-success);
-    }
+  .terminal-render .key {
+    color: var(--terminal-success);
+  }
 
-    .terminal-render .term {
-        color: var(--terminal-prompt);
-        background: transparent;
-        box-shadow: none;
-    }
+  .terminal-render .term {
+    color: var(--terminal-prompt);
+    background: transparent;
+    box-shadow: none;
+  }
 
-    .terminal-render .surface {
-        background: transparent;
-        box-shadow: none;
-        border-color: var(--terminal-comment);
-    }
+  .terminal-render .surface {
+    background: transparent;
+    box-shadow: none;
+    border-color: var(--terminal-comment);
+  }
 
-    .terminal-render .thumb {
-        display: none;
-    }
+  .terminal-render .thumb {
+    display: none;
+  }
 }
 
 @layer utilities {
-    .text-gradient-terminal {
-        @apply bg-gradient-to-r from-terminal-success to-terminal-warning bg-clip-text text-transparent;
-    }
+  .text-gradient-terminal {
+    @apply bg-gradient-to-r from-terminal-success to-terminal-warning bg-clip-text text-transparent;
+  }
 
-    .glow-terminal {
-        text-shadow:
-            0 0 10px var(--terminal-prompt),
-            0 0 20px var(--terminal-prompt),
-            0 0 30px var(--terminal-prompt);
-    }
+  .glow-terminal {
+    text-shadow:
+      0 0 10px var(--terminal-prompt),
+      0 0 20px var(--terminal-prompt),
+      0 0 30px var(--terminal-prompt);
+  }
 
-    .scanlines::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to bottom,
-            transparent 50%,
-            rgba(0, 0, 0, 0.05) 50%
-        );
-        background-size: 100% 4px;
-        pointer-events: none;
-        z-index: 10;
-    }
+  .scanlines::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.05) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+  }
 
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 
-    .focus\:not-sr-only:focus {
-        position: static;
-        width: auto;
-        height: auto;
-        padding: inherit;
-        margin: inherit;
-        overflow: visible;
-        clip: auto;
-        white-space: normal;
-    }
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+  html {
+    scroll-behavior: auto;
+  }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

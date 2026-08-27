@@ -44,9 +44,7 @@ const commands: Record<string, Command> = {
         if (cmd) {
           return {
             type: "text",
-            content: `${cmd.name} - ${cmd.description}\nUsage: ${
-              cmd.usage || cmd.name
-            }`,
+            content: `${cmd.name} - ${cmd.description}\nUsage: ${cmd.usage || cmd.name}`,
           };
         }
         return {
@@ -112,14 +110,10 @@ const commands: Record<string, Command> = {
 
       const formatted = items
         .map((item) => {
-          const itemPath =
-            resolvedPath === "~" ? `~/${item}` : `${resolvedPath}/${item}`;
+          const itemPath = resolvedPath === "~" ? `~/${item}` : `${resolvedPath}/${item}`;
           const itemNode = getNode(itemPath);
-          const prefix =
-            itemNode?.type === "directory" ? "drwxr-xr-x" : "-rw-r--r--";
-          return `${prefix}  ${item}${
-            itemNode?.type === "directory" ? "/" : ""
-          }`;
+          const prefix = itemNode?.type === "directory" ? "drwxr-xr-x" : "-rw-r--r--";
+          return `${prefix}  ${item}${itemNode?.type === "directory" ? "/" : ""}`;
         })
         .join("\n");
 

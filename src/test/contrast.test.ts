@@ -108,11 +108,7 @@ function token(theme: "light" | "dark", name: string, knobs: Knobs) {
   if (current) parts.push(current);
 
   const [l, c, h] = parts;
-  return oklchToRgb(
-    component(l, knobs),
-    component(c, knobs),
-    component(h, knobs),
-  );
+  return oklchToRgb(component(l, knobs), component(c, knobs), component(h, knobs));
 }
 
 /** OKLCH -> gamma-encoded sRGB, clamped to gamut. */
@@ -142,16 +138,11 @@ function oklchToRgb(L: number, C: number, H: number): [number, number, number] {
 }
 
 function luminance([r, g, b]: [number, number, number]): number {
-  const lin = [r, g, b].map((v) =>
-    v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4,
-  );
+  const lin = [r, g, b].map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
   return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
 }
 
-function contrast(
-  fg: [number, number, number],
-  bg: [number, number, number],
-): number {
+function contrast(fg: [number, number, number], bg: [number, number, number]): number {
   const a = luminance(fg);
   const b = luminance(bg);
   const [hi, lo] = a > b ? [a, b] : [b, a];
@@ -167,24 +158,20 @@ function contrast(
 type Surface = string | { tint: string; amount: number; over: string };
 
 /** Resolves a Surface to the opaque colour the eye actually receives. */
-function surface(
-  theme: "light" | "dark",
-  spec: Surface,
-  knobs: Knobs,
-): [number, number, number] {
+function surface(theme: "light" | "dark", spec: Surface, knobs: Knobs): [number, number, number] {
   if (typeof spec === "string") return token(theme, spec, knobs);
 
   const tint = token(theme, spec.tint, knobs);
   const base = token(theme, spec.over, knobs);
-  return tint.map(
-    (channel, i) => channel * spec.amount + base[i] * (1 - spec.amount),
-  ) as [number, number, number];
+  return tint.map((channel, i) => channel * spec.amount + base[i] * (1 - spec.amount)) as [
+    number,
+    number,
+    number,
+  ];
 }
 
 function describeSurface(spec: Surface): string {
-  return typeof spec === "string"
-    ? spec
-    : `${spec.tint} ${spec.amount * 100}% over ${spec.over}`;
+  return typeof spec === "string" ? spec : `${spec.tint} ${spec.amount * 100}% over ${spec.over}`;
 }
 
 /**
@@ -295,10 +282,7 @@ describe("palette contrast", () => {
 
         for (const [fg, bg, min, label] of PAIRS) {
           it(`${presetName}: ${label} meets ${min}:1`, () => {
-            const ratio = contrast(
-              token(themeName, fg, knobs),
-              surface(themeName, bg, knobs),
-            );
+            const ratio = contrast(token(themeName, fg, knobs), surface(themeName, bg, knobs));
             expect(
               Number(ratio.toFixed(2)),
               `${fg} on ${describeSurface(bg)} in ${themeName}/${presetName}`,
