@@ -1,0 +1,6 @@
+# Prettier solo se usa para .svelte (ver script "format").
+# De todo lo demás se encarga Biome.
+node_modules
+dist
+coverage
+pnpm-lock.yaml
