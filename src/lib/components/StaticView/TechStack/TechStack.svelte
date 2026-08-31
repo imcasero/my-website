@@ -1,16 +1,6 @@
 <script lang="ts">
   import SectionHeading from "$lib/components/shared/SectionHeading.svelte";
-
-  const groups = [
-    {
-      category: "frontend",
-      items: ["React", "Next.js", "Astro", "Svelte", "Tailwind CSS"],
-    },
-    { category: "language", items: ["TypeScript", "Python"] },
-    { category: "backend", items: ["NestJS"] },
-    { category: "database", items: ["PostgreSQL", "Supabase"] },
-    { category: "devops", items: ["Docker"] },
-  ];
+  import { groups } from "./constants";
 </script>
 
 <section id="tech-stack" aria-labelledby="tech-stack-heading">
