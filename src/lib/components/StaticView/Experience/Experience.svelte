@@ -3,8 +3,8 @@
   import { experiences, VISIBLE_BULLETS } from "./constants";
   let expanded = $state<Record<string, boolean>>({});
 
-  function toggle(company: string) {
-    expanded[company] = !expanded[company];
+  function toggle(key: string) {
+    expanded[key] = !expanded[key];
   }
 </script>
 
@@ -13,39 +13,47 @@
 
   <ol class="timeline">
     {#each experiences as exp}
-      {@const isOpen = expanded[exp.company] ?? false}
-      {@const shown = isOpen ? exp.impact : exp.impact.slice(0, VISIBLE_BULLETS)}
-      {@const hidden = exp.impact.length - VISIBLE_BULLETS}
       <li class="entry">
         <span class="node" aria-hidden="true"></span>
 
-        <p class="period meta">{exp.period}</p>
-        <h3 class="position">{exp.position}</h3>
         <p class="company">@{exp.company}</p>
 
-        <div class="prose body">
-          <p>{@html exp.summary}</p>
+        <ol class="roles" class:multi={exp.roles.length > 1}>
+          {#each exp.roles as role}
+            {@const key = `${exp.company}::${role.position}`}
+            {@const isOpen = expanded[key] ?? false}
+            {@const shown = isOpen ? role.impact : role.impact.slice(0, VISIBLE_BULLETS)}
+            {@const hidden = role.impact.length - VISIBLE_BULLETS}
+            <li class="role">
+              <p class="period meta">{role.period}</p>
+              <h3 class="position">{role.position}</h3>
 
-          {#if exp.impact.length}
-            <ul class="impact">
-              {#each shown as bullet}
-                <li>{@html bullet}</li>
-              {/each}
-            </ul>
+              <div class="prose body">
+                <p>{@html role.summary}</p>
 
-            {#if hidden > 0}
-              <button
-                type="button"
-                class="more"
-                onclick={() => toggle(exp.company)}
-                aria-expanded={isOpen}
-              >
-                <span class="chev" aria-hidden="true">{isOpen ? "−" : "+"}</span>
-                {isOpen ? "show less" : `${hidden} more`}
-              </button>
-            {/if}
-          {/if}
-        </div>
+                {#if role.impact.length}
+                  <ul class="impact">
+                    {#each shown as bullet}
+                      <li>{@html bullet}</li>
+                    {/each}
+                  </ul>
+
+                  {#if hidden > 0}
+                    <button
+                      type="button"
+                      class="more"
+                      onclick={() => toggle(key)}
+                      aria-expanded={isOpen}
+                    >
+                      <span class="chev" aria-hidden="true">{isOpen ? "−" : "+"}</span>
+                      {isOpen ? "show less" : `${hidden} more`}
+                    </button>
+                  {/if}
+                {/if}
+              </div>
+            </li>
+          {/each}
+        </ol>
 
         <ul class="chips">
           {#each exp.stack as tech}
@@ -101,6 +109,38 @@
     text-transform: uppercase;
   }
 
+  .company {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--primary);
+  }
+
+  .roles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 0.9rem;
+  }
+
+  .roles.multi {
+    padding-left: 1rem;
+    border-left: 1px solid var(--hairline);
+  }
+
+  .role {
+    position: relative;
+  }
+
+  .roles.multi .role::before {
+    content: "";
+    position: absolute;
+    left: calc(-1rem - 1px);
+    top: 0.55rem;
+    width: 0.6rem;
+    height: 1px;
+    background: var(--hairline);
+  }
+
   .position {
     margin-top: 0.35rem;
     font-family: var(--font-mono);
@@ -109,13 +149,6 @@
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: var(--foreground);
-  }
-
-  .company {
-    margin-top: 0.15rem;
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    color: var(--primary);
   }
 
   .body {
